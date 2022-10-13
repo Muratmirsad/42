@@ -16,14 +16,3 @@ void    *ft_memcpy(void *dest, const void *src, size_t len)
     }
     return (dest);
 }
-
-#include <stdio.h>
-int main()
-{
-    char dest[] = "selam";
-    char src[] = "00000";
-    int len = 5;
-    printf("s", ft_memcpy(dest, src, len));
-
-    return (0);
-}
