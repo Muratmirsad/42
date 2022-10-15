@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int ft_isascii(int a)
 {
     if (a < 32 || a > 126)

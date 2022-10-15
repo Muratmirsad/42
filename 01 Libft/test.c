@@ -1,14 +1,17 @@
 #include "libft.h"
-#include <stdio.h>
 
 int main()
 {
-    char src[] = "sealam";
-    char dest[] = "denemeaaa";
-    int len = 8;
-    len = ft_strlcat(dest, src, len);
-    printf("%s\n", dest);
-    printf("%d\n", len);
+    //char src[] = "seblam";
+    //char dest[] = "la";
+    int i = 0;
+    int *p;
+    p = ft_calloc(5, 4);
+    while (i < 20)
+    {
+        printf("%d\n", p[i]);
+        i++;
+    }
 
     return 0;
 }
