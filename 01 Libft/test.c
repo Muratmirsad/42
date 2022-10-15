@@ -2,16 +2,12 @@
 
 int main()
 {
-    //char src[] = "seblam";
+    char src[] = "seblam";
     //char dest[] = "la";
-    int i = 0;
-    int *p;
-    p = ft_calloc(5, 4);
-    while (i < 20)
-    {
-        printf("%d\n", p[i]);
-        i++;
-    }
+    //int i = 0;
+    char *p;
+    p = ft_strdup(src);
+    printf("%s\n", p);
 
     return 0;
 }

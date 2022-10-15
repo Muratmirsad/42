@@ -14,5 +14,6 @@ void    *memchr(const void *ptr, int c, size_t n);
 int ft_memcmp(const void *ptr, const void *find, size_t n);
 int ft_strnstr(const char *str, const char *find, size_t len);
 void    *ft_calloc(size_t numberofelements, size_t sizeofelements);
+char    *ft_strdup(const char *str);
 
 #endif
