@@ -2,12 +2,12 @@
 
 int main()
 {
-    char src[] = "seblam";
-    //char dest[] = "la";
+    char src[] = "11 22 33 44";
+    char dest = ' ';
     //int i = 0;
-    char *p;
-    p = ft_strdup(src);
-    printf("%s\n", p);
+    //char *p;
+    *ft_split(src, dest);
+    //printf("%s\n", p);
 
     return 0;
 }

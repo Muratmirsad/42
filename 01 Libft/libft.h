@@ -15,5 +15,9 @@ int ft_memcmp(const void *ptr, const void *find, size_t n);
 int ft_strnstr(const char *str, const char *find, size_t len);
 void    *ft_calloc(size_t numberofelements, size_t sizeofelements);
 char    *ft_strdup(const char *str);
+char    *ft_substr(char const *str, unsigned int start, size_t len);
+char    *ft_strjoin(const char *s1, const char *s2);
+char    *ft_strtrim(char const *str, char const *cut);
+char    **ft_split(char const *str, char c);
 
 #endif
