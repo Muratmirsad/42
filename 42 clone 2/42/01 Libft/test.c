@@ -6,7 +6,7 @@ int main()
     //char dest = ' ';
     //int i = -76832;
     //char *p; 
-    ft_putchar_fd('a', 1);
+    ft_atoi("7362823");
     //printf("%s\n", p);
 
     return 0;

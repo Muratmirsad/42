@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void    *ft_convert(char *rstr, int number, int factor, int x)
+static  void    *ft_convert(char *rstr, int number, int factor, int x)
 {
     while (factor-- > 0)
     {

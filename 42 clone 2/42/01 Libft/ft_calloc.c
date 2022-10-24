@@ -3,7 +3,7 @@
 void    *ft_calloc(size_t numberofelements, size_t sizeofelements)
 {
     char    *str;
-    int     i;
+    size_t     i;
 
     i = 0;
     str = (char *)malloc(numberofelements * sizeofelements);

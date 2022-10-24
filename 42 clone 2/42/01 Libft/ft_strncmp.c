@@ -2,9 +2,9 @@
 
 int ft_strncmp(const char *str, const char *find, size_t n)
 {
-    int i_str;
-    int i_find;
-    int key;
+    size_t i_str;
+    size_t i_find;
+    size_t key;
 
     i_str = 0;
     key = ft_strlen(find);
