@@ -15,13 +15,6 @@ static  int ft_size(const char *str, char c)
     return (ir + 1);
 }
 
-static  void    ft_2dmalloc(char **rstr, int a)
-{
-    rstr = (char **)malloc(a * sizeof(char*));
-    if (!rstr)
-        return (0);
-}
-
 char    **ft_split(const char *str, char c)
 {
     char    **rstr;
@@ -30,7 +23,9 @@ char    **ft_split(const char *str, char c)
     int     istr;
     int     string;
 
-    ft_2dmalloc(rstr, ft_size(str, c));
+    rstr = (char **)malloc(ft_size(str, c) * sizeof(char*));
+    if (!rstr)
+        return (0);
     istr = 0;
     string = 0;
     while (str[istr])
@@ -48,4 +43,5 @@ char    **ft_split(const char *str, char c)
             rstr[string][i++] = str[istr++];
         rstr[string++][i] = 0;
     }
+    return (rstr);
 }

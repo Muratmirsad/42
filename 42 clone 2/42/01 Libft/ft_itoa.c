@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static  void    *ft_convert(char *rstr, int number, int factor, int x)
+static  void    ft_convert(char *rstr, int number, int factor, int x)
 {
     while (factor-- > 0)
     {
@@ -9,7 +9,7 @@ static  void    *ft_convert(char *rstr, int number, int factor, int x)
      }
 }
 
-int ft_control(int number, int factor)
+static  int ft_control(int number, int factor)
 {
     while (number > 9)
     {
@@ -40,7 +40,7 @@ char *ft_itoa(int number)
         return (0);
     ft_convert(rstr, number, factor, x);
     if (x == 1)
-        *(rstr) = '-';
+        *rstr = '-';
     *(rstr + factor + x) = 0;
     return (rstr);
 }

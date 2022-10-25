@@ -12,7 +12,10 @@ char    *ft_strmapi(const char *str, char (*f)(unsigned int, char))
         return (0);
     i = 0;
     while (str[i])
-        rstr[i] = f(i, str[i++]);
+    {
+        rstr[i] = f(i, str[i]);
+        i++;
+    }
     rstr[i] = 0;
     return (rstr);
 }
