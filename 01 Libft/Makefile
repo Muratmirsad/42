@@ -36,6 +36,6 @@ codes = ft_isalpha.c \
 		ft_putnbr_fd.c
 
 agubuga:
-		gcc -Wall -Wextra -Wextra -c $(codes) -I ./ ar rc $(NAME) $(codes:%.c=%.o)
+		gcc -Wall -Wextra -Wextra $(codes) -I ./ ar rc $(NAME) $(codes:%.o=%.c)
   
 all: agubuga
