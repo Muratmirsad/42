@@ -5,6 +5,8 @@ size_t  ft_strlcat(char *dest, const char *src, size_t dest_size)
     size_t  id;
     size_t  is;
 
+    id = 0;
+    is = 0;
     while (*(dest + id))
         id++;
     while (*(src + is) && is < dest_size)
