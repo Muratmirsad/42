@@ -1,5 +1,3 @@
-NAME = libft.a
-
 codes = ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
@@ -35,7 +33,13 @@ codes = ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
-agubuga:
-		gcc -Wall -Wextra -Wextra $(codes) -I ./ ar rc $(NAME) $(codes:%.o=%.c)
-  
-all: agubuga
+NAME = libft.a
+
+$(NAME):
+		gcc -Wall -Wextra -Wextra -c $(codes)
+		./ ar -rc $(NAME) $(codes:%.c=%.o)
+
+clean: 
+		find . -type f \( -name "*.o" \) -delete
+
+all: $(NAME)
