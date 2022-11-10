@@ -7,8 +7,8 @@ int ft_memcmp(const void *ptr, const void *find, size_t n)
     i = 0;
     while (i < n)
     {
-        if (*((const char *)ptr + i) != *((const char *)find + i))
-            return (*((const char *)ptr + i) - *((const char *)find + i));
+        if (*((const unsigned char *)ptr + i) != *((const unsigned char *)find + i))
+            return (*((const unsigned char *)ptr + i) - *((const unsigned char *)find + i));
         i++;
     }
     return (0);

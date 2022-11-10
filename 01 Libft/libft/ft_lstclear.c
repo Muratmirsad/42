@@ -6,7 +6,7 @@ void    ft_lstclear(t_list **lst, void (*del)(void *))
 
     p = *lst;
     if (!p->content)
-        return (0);
+        return;
     del(p->content);
     free(p);
     while (p->next)
