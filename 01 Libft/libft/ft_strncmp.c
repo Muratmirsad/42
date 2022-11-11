@@ -1,24 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/11 15:16:40 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/11/11 15:16:40 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_strncmp(const char *str, const char *find, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-    size_t	i_str;
-    size_t	i_find;
-    size_t	key;
+	size_t	i ;
 
-    i_str = 0;
-    key = ft_strlen(find);
-    while (*(str + i_str) && i_str < n)
-    {
-        i_find = 0;
-        while (*(str + i_str) == *(find + i_find))
-        {
-            i_str++;
-            i_find++;
-        }
-        if (i_find == key)
-            return (*(str + (i_str - key)));
-        i_str++;
-    }
-    return (0);
+	i = 0;
+	while ((*(str1 + i) || *(str2 + i)) && i < n)
+	{
+		if (*(str1 + i) != *(str2 + i))
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	return (0);
 }
