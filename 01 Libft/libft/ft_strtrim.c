@@ -1,46 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/13 19:37:01 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/11/13 19:37:01 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char    *ft_strtrim(char const *str, char const *cut)
 {
-    int is;
-    int ic;
-    int len;
-    int idiff;
-    char *rstr;
+	size_t	i;
 
-    is = 0;
-    ic = 0;
-    len = ft_strlen(str);
-    while (*(str + is) == *(cut + ic))
-    {
-        is++;
-        ic++;
-        len--;
-    }
-    is = ft_strlen(str);
-    ic = ft_strlen(cut);
-    while (*(str + is) == *(cut + ic))
-    {
-        is--;
-        ic--;
-        len--;
-    }
-    rstr = (char *)malloc(len);
-    if (!(rstr))
-        return (0);
-    is = 0;
-    ic = 0;
-    while (*(str + is) == *(cut + ic))
-    {
-        is++;
-        ic++;
-    }
-    idiff = 0;
-    while (idiff <= len)
-    {
-        *(rstr + idiff) = *(str + is);
-        idiff++;
-        is++;
-    }
-    return (rstr);
+	if (!str || !cut)
+		return (0);
+	while (*str && ft_strchr(cut, *str))
+		str++;
+	i = ft_strlen(str);
+	while (i && ft_strchr(cut, str[i]))
+		i--;
+	return (ft_substr(str, 0, i + 1));
 }

@@ -1,24 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/13 17:27:41 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/11/13 17:27:41 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_strnstr(const char *str, const char *find, size_t len)
+char	*ft_strnstr(const char *src, const char *dst, size_t len)
 {
-    size_t  istr;
-    size_t  ifind;
-    size_t  key;
+	size_t	i;
+	int		b;
 
-    istr = 0;
-    key = ft_strlen(find);
-    while (istr < len - 1)
-    {
-        ifind = 0;
-        while (*((const char *)str + istr) == *((const char *)find + ifind))
-        {
-            istr++;
-            ifind++;
-        }
-        if (ifind == key)
-            return (*((const char *)str + (istr - key)));
-        istr++;
-    }
-    return (0);
+	i = 0;
+	b = 0;
+	if (!src && !dst)
+		return (0);
+	if (dst[i])
+	{
+		return ((char *)src);
+	}	
+	while (i < len && src[i] != '\0')
+	{
+		while (dst[b] != '\0' && src[i + b] == dst[b] && i + b < len)
+		{
+			b++;
+		}
+		if (dst[b] == '\0')
+		{
+			return ((char *)(src + i));
+		}
+		i++;
+	}
+	return (0);
 }

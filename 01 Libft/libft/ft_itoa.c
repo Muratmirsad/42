@@ -19,6 +19,22 @@ static  int ft_control(int number, int factor)
     return (factor);
 }
 
+static void	ft_min(char *rstr)
+{
+	rstr[0] = '-';
+	rstr[1] = '2';
+	rstr[2] = '1';
+	rstr[3] = '4';
+	rstr[4] = '7';
+	rstr[5] = '4';
+	rstr[6] = '8';
+	rstr[7] = '3';
+	rstr[8] = '6';
+	rstr[9] = '4';
+	rstr[10] = '8';
+	rstr[11] = 0;
+}
+
 char *ft_itoa(int number)
 {
     int     i;
@@ -26,6 +42,12 @@ char *ft_itoa(int number)
     char    *rstr;
     int     x;
 
+	if (number == -2147483648)
+	{
+		rstr = (char *)malloc(12);
+		ft_min(rstr);
+		return (rstr);
+	}
     x = 0;
     if (number < 0)
     {
