@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/14 14:11:26 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/11/14 17:00:23 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static  void    ft_convert(char *rstr, int number, int factor, int x)
+static void	ft_convert(char *rstr, int number, int factor, int x)
 {
-    while (factor-- > 0)
-    {
-        *(rstr + factor + x) = (number % 10) + 48;
-        number /= 10;
-     }
+	while (factor-- > 0)
+	{
+		*(rstr + factor + x) = (number % 10) + 48;
+		number /= 10;
+	}
 }
 
-static  int ft_control(int number, int factor)
+static int	ft_control(int number, int factor)
 {
-    while (number > 9)
-    {
-        number /= 10;
-        factor += 1;
-    }
-    return (factor);
+	while (number > 9)
+	{
+		number /= 10;
+		factor += 1;
+	}
+	return (factor);
 }
 
 static void	ft_min(char *rstr)
@@ -35,12 +47,11 @@ static void	ft_min(char *rstr)
 	rstr[11] = 0;
 }
 
-char *ft_itoa(int number)
+char	*ft_itoa(int number)
 {
-    int     i;
-    int     factor;
-    char    *rstr;
-    int     x;
+	int		factor;
+	char	*rstr;
+	int		x;
 
 	if (number == -2147483648)
 	{
@@ -48,21 +59,19 @@ char *ft_itoa(int number)
 		ft_min(rstr);
 		return (rstr);
 	}
-    x = 0;
-    if (number < 0)
-    {
-        x = 1;
-        number *= -1;
-    }
-    i = 0;
-    factor = 1;
-    factor = ft_control(number, factor);
-    rstr = (char *)malloc(factor + x + 1);
-    if (!rstr)
-        return (0);
-    ft_convert(rstr, number, factor, x);
-    if (x == 1)
-        *rstr = '-';
-    *(rstr + factor + x) = 0;
-    return (rstr);
+	x = 0;
+	if (number < 0)
+	{
+		x = 1;
+		number *= -1;
+	}
+	factor = ft_control(number, 1);
+	rstr = (char *)malloc(factor + x + 1);
+	if (!rstr)
+		return (0);
+	ft_convert(rstr, number, factor, x);
+	if (x == 1)
+		*rstr = '-';
+	*(rstr + factor + x) = 0;
+	return (rstr);
 }

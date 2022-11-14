@@ -12,34 +12,32 @@
 
 #include "libft.h"
 
-char    *ft_strjoin(const char *s1, const char *s2)
+static int	ft_add(const char *str, char *rstr, int irstr, int is)
 {
-    unsigned int    is;
-    unsigned int    irstr;
-    char            *rstr;
+	while (*(str + is))
+	{
+		*(rstr + irstr) = *(str + is);
+		irstr++;
+		is++;
+	}
+	return (irstr);
+}
+
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	unsigned int	is;
+	unsigned int	irstr;
+	char			*rstr;
 
 	if (!s1 || !s2)
 		return (0);
-    is = ft_strlen(s1);
-    is += ft_strlen(s2);
-    rstr = (char *)malloc(is + 1);
-    if (!(rstr))
-        return (0);
-    is = 0;
-    irstr = 0;
-    while (*(s1 + is))
-    {
-        *(rstr + irstr) = *(s1 + is);
-        irstr++;
-        is++;
-    }
-    is = 0;
-    while (*(s2 + is))
-    {
-        *(rstr + irstr) = *(s2 + is);
-        irstr++;
-        is++;
-    }
+	is = ft_strlen(s1);
+	is += ft_strlen(s2);
+	rstr = (char *)malloc(is + 1);
+	if (!(rstr))
+		return (0);
+	irstr = ft_add(s1, rstr, 0, 0);
+	irstr = ft_add(s2, rstr, irstr, 0);
 	*(rstr + irstr) = 0;
-    return (rstr);
+	return (rstr);
 }

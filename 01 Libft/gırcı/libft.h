@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uasci <uasci@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:41:39 by uasci             #+#    #+#             */
-/*   Updated: 2022/10/23 19:24:13 by uasci            ###   ########.fr       */
+/*   Updated: 2022/11/14 18:07:25 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include	<fcntl.h>
 # include	<string.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_isalpha(int c);
@@ -38,7 +43,6 @@ void	*ft_memset(void *b, int c, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_strdup(char *src);
-char	**ft_split(const char *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
@@ -54,5 +58,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dsize);
 size_t	ft_strlen(const char *str);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+int		ft_lstsize(t_list *lst);
 
 #endif

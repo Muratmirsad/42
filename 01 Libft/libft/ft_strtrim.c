@@ -12,16 +12,32 @@
 
 #include "libft.h"
 
-char    *ft_strtrim(char const *str, char const *cut)
+static char	*ft_find(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (*(str + i))
+	{
+		if (*(str + i) == (char)c)
+			return ((char *)(str + i));
+		i++;
+	}
+	if (!c)
+		return ((char *)(str + i));
+	return (0);
+}
+
+char	*ft_strtrim(char const *str, char const *cut)
 {
 	size_t	i;
 
 	if (!str || !cut)
 		return (0);
-	while (*str && ft_strchr(cut, *str))
+	while (*str && ft_find(cut, *str))
 		str++;
 	i = ft_strlen(str);
-	while (i && ft_strchr(cut, str[i]))
+	while (i && ft_find(cut, str[i]))
 		i--;
 	return (ft_substr(str, 0, i + 1));
 }

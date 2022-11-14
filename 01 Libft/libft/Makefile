@@ -6,7 +6,7 @@
 #    By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/08 19:07:10 by jwon              #+#    #+#              #
-#    Updated: 2022/11/10 16:49:40 by mdiraga          ###   ########.fr        #
+#    Updated: 2022/11/14 18:05:22 by mdiraga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,7 @@ SRCS		= ft_memset.c \
 BNS_SRCS	= ft_lstnew.c \
 			  ft_lstadd_front.c \
 			  ft_lstsize.c \
-			  ft_lstlast.c \
-			  ft_lstadd_back.c \
-			  ft_lstdelone.c \
-			  ft_lstclear.c \
-			  ft_lstiter.c \
+			  ft_lstlast.c
 				
 OBJS		= $(SRCS:%.c=%.o)
 

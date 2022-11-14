@@ -1,3 +1,7 @@
 {
-    "github.gitProtocol": "ssh"
+	"github.gitProtocol": "ssh",
+	"files.associations": {
+		"stdio.h": "c",
+		"libft.h": "c"
+	}
 }

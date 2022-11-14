@@ -21,17 +21,17 @@ char	*ft_strnstr(const char *src, const char *dst, size_t len)
 	b = 0;
 	if (!src && !dst)
 		return (0);
-	if (dst[i])
+	if (!dst[i])
 	{
 		return ((char *)src);
 	}	
-	while (i < len && src[i] != '\0')
+	while (i < len && src[i])
 	{
-		while (dst[b] != '\0' && src[i + b] == dst[b] && i + b < len)
+		while (dst[b] && src[i + b] == dst[b] && i + b < len)
 		{
 			b++;
 		}
-		if (dst[b] == '\0')
+		if (!dst[b])
 		{
 			return ((char *)(src + i));
 		}
