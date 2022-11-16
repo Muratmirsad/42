@@ -23,6 +23,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+char	*ft_strchr(const char *str, int c);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -61,7 +62,7 @@ char	*ft_strtrim(char const *str, char const *cut);
 char	**ft_split(const char *str, char c);
 char	*ft_itoa(int number);
 char	*ft_strmapi(const char *str, char (*f)(unsigned int, char));
-void	ft_striterii(char *str, void (*f)(unsigned int, char*));
+void	ft_striteri(char *str, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 void	ft_putendl_fd(char *str, int fd);
