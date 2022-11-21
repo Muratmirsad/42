@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -40,7 +42,7 @@ int		ft_isascii(int a);
 int		ft_isprint(int a);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *str, int c, size_t len);
-void	*ft_bzero(void *str, size_t n);
+void	ft_bzero(void *str, size_t n);
 int		ft_memcmp(const void *ptr, const void *find, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);

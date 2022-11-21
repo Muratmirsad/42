@@ -56,6 +56,8 @@ char	*ft_itoa(int number)
 	if (number == -2147483648)
 	{
 		rstr = (char *)malloc(12);
+		if (!rstr)
+			return (0);
 		ft_min(rstr);
 		return (rstr);
 	}

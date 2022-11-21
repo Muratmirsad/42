@@ -12,13 +12,12 @@
 
 #include "libft.h"
 
-static int	ft_run(char *str, int index, int nb, int x)
+static int	ft_run(char *str, int index, long int nb, int x)
 {
 	while ((9 <= str[index] && str[index] <= 13) || str[index] == 32)
 		index++;
 	if (str[index] == 43)
 		index++;
-	x = 1;
 	if (str[index] == 45)
 	{
 		x = -1;
@@ -40,5 +39,5 @@ static int	ft_run(char *str, int index, int nb, int x)
 
 int	ft_atoi(char *str)
 {
-	return (ft_run(str, 0, 0, 0));
+	return (ft_run(str, 0, 0, 1));
 }
