@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:11:26 by mdiraga           #+#    #+#             */
-/*   Updated: 2022/11/14 17:00:23 by mdiraga          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:59:14 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	ft_convert(char *rstr, int number, int factor, int x)
 		*(rstr + factor + x) = (number % 10) + 48;
 		number /= 10;
 	}
+	if (x == 1)
+		*rstr = '-';
 }
 
 static int	ft_control(int number, int factor)
@@ -72,8 +74,6 @@ char	*ft_itoa(int number)
 	if (!rstr)
 		return (0);
 	ft_convert(rstr, number, factor, x);
-	if (x == 1)
-		*rstr = '-';
 	*(rstr + factor + x) = 0;
 	return (rstr);
 }
