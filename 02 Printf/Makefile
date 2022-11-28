@@ -5,7 +5,7 @@ SRCS		=	ft_putnbr.c \
 				ft_putchar.c
 
 BNS_SRCS	=
-				ft_lstlast.c
+
 				
 OBJS		=	$(SRCS:%.c=%.o)
 
