@@ -3,6 +3,9 @@
 	"files.associations": {
 		"stdio.h": "c",
 		"libft.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"stdarg.h": "c",
+		"libftprintf.h": "c",
+		"unistd.h": "c"
 	}
 }
