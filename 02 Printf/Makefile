@@ -4,9 +4,7 @@ SRCS		=	ft_putnbr.c \
 				ft_putstr.c \
 				ft_putchar.c
 
-BNS_SRCS	=	ft_lstnew.c \
-				ft_lstadd_front.c \
-				ft_lstsize.c \
+BNS_SRCS	=
 				ft_lstlast.c
 				
 OBJS		=	$(SRCS:%.c=%.o)
