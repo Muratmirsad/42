@@ -4,7 +4,8 @@ SRCS		=	ft_printf.c \
 				ft_putnbr.c \
 				ft_putunsigned.c \
 				ft_putstr.c \
-				ft_putchar.c
+				ft_putchar.c \
+				ft_puthexadecimal.c
 
 BNS_SRCS	=
 
