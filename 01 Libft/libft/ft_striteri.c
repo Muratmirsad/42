@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:52:09 by mdiraga           #+#    #+#             */
-/*   Updated: 2022/11/14 15:52:29 by mdiraga          ###   ########.fr       */
+/*   Updated: 2022/12/05 13:03:11 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_striteri(char *str, void (*f)(unsigned int, char*))
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i] != '\0')
 	{
 		f(i, &str[i]);
 		i++;
