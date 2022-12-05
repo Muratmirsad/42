@@ -1,4 +1,4 @@
-# include "libftprintf.h"
+# include "ft_printf.h"
 
 static int	ft_control(const char *str)
 {
@@ -33,7 +33,7 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	while (*(str + i))
 	{
-		while (str[i] == '%' && str[i + 1] == '%')
+		if (str[i] == '%' && str[i + 1] == '%')
 			ft_putchar(str[i++], 0);
 		if (str[i] == '%' && (str[i + 1] == 'd' || str[i + 1] == 'i'))
 			ft_putnbr(va_arg(ar, int), i++);

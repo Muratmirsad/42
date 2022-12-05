@@ -1,4 +1,4 @@
-# include "libftprintf.h"
+# include "ft_printf.h"
 
 int main()
 {
@@ -14,8 +14,8 @@ int main()
 
 	ft_printf("\n\n------------------\n\n");
 
-	ft_printf("FT_PRINTF\n%%%");
-	printf("ORGINAL\n%%%\n");
+	ft_printf("FT_PRINTF\n%%%%%%%%");
+	printf("ORGINAL\n%%%%%%%%\n");
 
 	return (0);
 }
