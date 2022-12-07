@@ -2,8 +2,8 @@
 
 int main()
 {
-	char *str = "test";
-	long	n = 999;
+	//char *str = "test";
+	//long	n = 999;
 
 	//ft_printf("u '87263323':%u\nu '-87263323':%u\nd '-87263323':%d\n", 87263323, -87263323, -87263323);
 	//printf("\nu '87263323':%u\nu '-87263323':%u\nd '-87263323':%d\n", 87263323, -87263323, -87263323);
@@ -19,8 +19,9 @@ int main()
 
 	char *str;
 
-	ft_printf("FT_PRINTF\np: %p", str);
-	printf("ORGINAL\np: %p\n", str);
+	ft_printf("FT_PRINTF\n%p<---", str);
+	printf("ORGINAL\n%p<---\n", str);
+	//printf("ORGINAL\np: %p\n", str);
 
 	return (0);
 }

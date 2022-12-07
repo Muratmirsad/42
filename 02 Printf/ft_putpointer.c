@@ -1,29 +1,23 @@
 # include "ft_printf.h"
 
-static void	ft_put(int nb)
+static void	ft_put(uintptr_t num)
 {
-	nb = nb - 23;
-	write(1, &nb, 1);
-}
-
-void	ft_putr(int nb)
-{
-	if (nb > 16)
+	if (num >= 16)
 	{
-		ft_putr(nb / 16);
-		ft_putr(nb % 16);
+		ft_put(num / 16);
+		ft_put(num % 16);
 	}
-	else if (nb >= 10)
-		ft_put(nb % 10);
 	else
 	{
-		nb += 48;
-		write(1, &nb, 1);
+		if (num <= 9)
+			ft_putchar((num + '0'), 1);
+		else
+			ft_putchar((num - 10 + 'a'), 1);
 	}
 }
 
-void	ft_putpointer(char *p, int nb)
+void	ft_putpointer(unsigned long long p, int nb)
 {
-	ft_strdup(&p);
-	ft_putr(nb);
+	ft_putstr("0x", nb);
+	ft_put(p);
 }

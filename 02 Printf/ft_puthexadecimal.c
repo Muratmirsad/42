@@ -6,7 +6,7 @@ static void	ft_put(int nb, int c)
 	write(1, &nb, 1);
 }
 
-void	ft_puthexadecimal(unsigned int nb, int c)
+void	ft_puthexadecimal(unsigned long long nb, int c)
 {
 	if (nb > 16)
 	{

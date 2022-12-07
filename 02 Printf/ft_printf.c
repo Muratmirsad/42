@@ -44,7 +44,7 @@ int	ft_printf(const char *str, ...)
 		else if (str[i] == '%' && (str[i + 1] == 'x' || str[i + 1] == 'X'))
 			ft_puthexadecimal(va_arg(ar, unsigned int), (int)str[++i]);
 		else if (str[i] == '%' && str[i + 1] == 'p')
-			ft_putpointer(va_arg(ar, char*), i++);
+			ft_putpointer(va_arg(ar, unsigned long long), i++);
 		else if (!(str[i] == '%'))
 			ft_putchar(str[i], i);
 		i++;
