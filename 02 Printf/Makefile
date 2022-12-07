@@ -7,7 +7,8 @@ SRCS		=	ft_printf.c \
 				ft_putchar.c \
 				ft_puthexadecimal.c \
 				ft_putpointer.c \
-				ft_itoa.c
+				ft_itoa.c \
+				ft_putchar2.c
 
 BNS_SRCS	=
 

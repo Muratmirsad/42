@@ -14,5 +14,6 @@ void	ft_putstr(const char *str, int i);
 void	ft_putchar(const char c, int i);
 void	ft_putnbr(int nb, int i);
 char	*ft_itoa(int number);
+void	ft_putchar2(const char *str, int i);
 
 #endif
