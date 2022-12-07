@@ -19,8 +19,8 @@ int main()
 
 	char *str;
 
-	ft_printf("FT_PRINTF\n%p<---", str);
-	printf("ORGINAL\n%p<---\n", str);
+	ft_printf("FT_PRINTF\n%p <---", str);
+	printf("ORGINAL\n%p <---\n", str);
 	//printf("ORGINAL\np: %p\n", str);
 
 	return (0);
