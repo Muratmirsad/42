@@ -1,4 +1,29 @@
-# include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthexadecimal.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/07 17:03:14 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/12/08 02:41:26 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	ft_num(unsigned long long nb)
+{
+	unsigned long long	i;
+
+	i = 0;
+	while (nb > 16)
+	{
+		nb /= 16;
+		i++;
+	}
+	return (++i);
+}
 
 static void	ft_put(int nb, int c)
 {
@@ -6,18 +31,24 @@ static void	ft_put(int nb, int c)
 	write(1, &nb, 1);
 }
 
-void	ft_puthexadecimal(unsigned long long nb, int c)
+int	ft_puthexadecimal(unsigned long long nb, int c)
 {
+	int	i;
+
 	if (nb > 16)
 	{
 		ft_puthexadecimal(nb / 16, c);
 		ft_puthexadecimal(nb % 16, c);
 	}
 	else if (nb >= 10)
+	{
 		ft_put(nb % 10, c);
+	}
 	else
 	{
 		nb += 48;
 		write(1, &nb, 1);
 	}
+	i = ft_num(nb);
+	return (i);
 }

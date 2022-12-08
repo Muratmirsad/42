@@ -1,6 +1,18 @@
-# include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/07 17:52:36 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/12/07 17:55:00 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putstr(const char *str, int i)
+#include "ft_printf.h"
+
+int	ft_putstr(const char *str, int i)
 {
 	i = 0;
 	while (*(str + i))
@@ -8,4 +20,5 @@ void	ft_putstr(const char *str, int i)
 		write(1, &str[i], 1);
 		i++;
 	}
+	return (i);
 }

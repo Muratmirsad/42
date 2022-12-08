@@ -5,8 +5,11 @@ int main()
 	char *str = "test";
 	//long	n = 999;
 
-	//ft_printf("u '87263323':%u\nu '-87263323':%u\nd '-87263323':%d\n", 87263323, -87263323, -87263323);
-	//printf("\nu '87263323':%u\nu '-87263323':%u\nd '-87263323':%d\n", 87263323, -87263323, -87263323);
+	printf("\n%d\n", ft_printf("\nu '87263323':%u\nu '-87263323':%u\nd '-87263323':%d\n", 87263323, -87263323, -87263323));
+	printf("\n%d\n", printf("\nu '87263323':%u\nu '-87263323':%u\nd '-87263323':%d\n", 87263323, -87263323, -87263323));
+
+	//printf("%d\n---\n", ft_printf("%d\n", 100));
+	//printf("%d\n", printf("%d\n", 100));
 
 
 	/*ft_printf("FT_PRINTF\nX: %X\nx: %x\nx: %x\nd: %d\nd: %d\nu: %u\nu: %u\n",123, 123, -123, 123, -123, 123, -123);
@@ -17,8 +20,8 @@ int main()
 	ft_printf("FT_PRINTF\n%%%%%%%%");
 	printf("ORGINAL\n%%%%%%%%\n");*/
 
-	printf("%d\n", ft_printf("FT_PRINTF\n%c <---\n", str));
-	printf("%d\n", printf("ORGINAL\n\n%c%c <---\n", str, str));
+	//printf("%d\n", ft_printf("FT_PRINTF\n\n%s%s <---\n", str, str));
+	//printf("%d\n", printf("->ORGINAL\n\n%s%s <---\n", str, str));
 	//printf("\n%s\n", str);
 
 	//ft_printf("FT_PRINTF\n%p <---", str);
