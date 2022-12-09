@@ -7,16 +7,15 @@ char	*get_next_line(int fd)
 
 	c = (char*)malloc(1);
 	c[1] = 0;
-	str = (char*)malloc(0);
+	str = (char*)malloc(1);
 	str[0] = 0;
 
 	while (1)
 	{
 		if (!(read(fd, c, 1)))
-			return (0);
+			return(0);
 		if (c[0] == '\n')
 			break;
-
 		str = ft_strjoin(str, c);
 	}
 	free(c);

@@ -6,16 +6,10 @@ SRCS		=	ft_printf.c \
 				ft_putstr.c \
 				ft_putchar.c \
 				ft_puthexadecimal.c \
-				ft_putpointer.c \
-				ft_itoa.c \
-				ft_putchar2.c
-
-BNS_SRCS	=
+				ft_putpointer.c
 
 				
 OBJS		=	$(SRCS:%.c=%.o)
-
-BNS_OBJS	=	$(BNS_SRCS:%.c=%.o)
 
 FLAGS		=	-Wall -Werror -Wextra
 
@@ -25,12 +19,8 @@ $(NAME):
 
 all: $(NAME)
 
-bonus: $(NAME)
-	gcc $(FLAGS) -c $(BNS_SRCS) -I ./
-	ar rc $(NAME) $(BNS_OBJS)
-
 clean:
-	rm -f $(OBJS) $(BNS_OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

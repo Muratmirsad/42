@@ -25,7 +25,5 @@ int		ft_putpointer(unsigned long long p, int c);
 int		ft_putstr(const char *str, int i);
 int		ft_putchar(const char c, int i);
 int		ft_putnbr(long long nb, int i);
-char	*ft_itoa(int number);
-void	ft_putchar2(const char *str, int i);
 
 #endif

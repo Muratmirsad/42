@@ -25,8 +25,8 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%' && str[i + 1] == '%')
 			r += ft_putchar(str[i++], 0);
-		if (str[i] == '%' && str[i + 1] == 'c')
-			ft_putchar2(va_arg(ar, char *), i++);
+		else if (str[i] == '%' && str[i + 1] == 'c')
+			r += ft_putchar(va_arg(ar, int), i++);
 		else if (str[i] == '%' && (str[i + 1] == 'd' || str[i + 1] == 'i'))
 			r += ft_putnbr(va_arg(ar, int), i++);
 		else if (str[i] == '%' && str[i + 1] == 's')

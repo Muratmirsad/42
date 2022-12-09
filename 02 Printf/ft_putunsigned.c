@@ -12,31 +12,36 @@
 
 #include "ft_printf.h"
 
-static int	ft_num(unsigned long long nb)
+static int	ft_num(unsigned int nb)
 {
-	unsigned long long	i;
+	int	i;
 
 	i = 0;
-	while (nb > 16)
+	while (nb >= 10)
 	{
-		nb /= 16;
+		nb /= 10;
 		i++;
 	}
 	return (++i);
 }
 
-int	ft_putunsigned(unsigned int nb, int i)
+static void	ft_run(unsigned int nb)
 {
 	if (nb > 9)
 	{
-		ft_putunsigned(nb / 10, i);
-		ft_putunsigned(nb % 10, i);
+		ft_run(nb / 10);
+		ft_run(nb % 10);
 	}
 	else
 	{
 		nb += 48;
 		write(1, &nb, 1);
 	}
+}
+
+int	ft_putunsigned(unsigned int nb, int i)
+{
+	ft_run(nb);
 	i = ft_num(nb);
 	return (i);
 }

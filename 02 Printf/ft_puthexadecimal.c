@@ -17,7 +17,7 @@ static int	ft_num(unsigned long long nb)
 	unsigned long long	i;
 
 	i = 0;
-	while (nb > 16)
+	while (nb >= 16)
 	{
 		nb /= 16;
 		i++;
@@ -31,14 +31,12 @@ static void	ft_put(int nb, int c)
 	write(1, &nb, 1);
 }
 
-int	ft_puthexadecimal(unsigned long long nb, int c)
+static void	ft_run(unsigned long long nb, int c)
 {
-	int	i;
-
-	if (nb > 16)
+	if (nb >= 16)
 	{
-		ft_puthexadecimal(nb / 16, c);
-		ft_puthexadecimal(nb % 16, c);
+		ft_run(nb / 16, c);
+		ft_run(nb % 16, c);
 	}
 	else if (nb >= 10)
 	{
@@ -49,6 +47,11 @@ int	ft_puthexadecimal(unsigned long long nb, int c)
 		nb += 48;
 		write(1, &nb, 1);
 	}
-	i = ft_num(nb);
-	return (i);
+}
+
+int	ft_puthexadecimal(unsigned long long nb, int c)
+{
+	ft_run(nb, c);
+	c = ft_num(nb);
+	return (c);
 }

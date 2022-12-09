@@ -14,6 +14,11 @@
 
 int	ft_putstr(const char *str, int i)
 {
+	if (str == 0)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	i = 0;
 	while (*(str + i))
 	{
