@@ -14,9 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
-# include <stdlib.h>
 
 int		ft_printf(const char *str, ...);
 int		ft_putunsigned(unsigned int nb, int i);

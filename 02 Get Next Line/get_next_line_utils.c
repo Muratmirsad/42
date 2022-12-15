@@ -1,6 +1,6 @@
-# include "get_next_line.h"
+#include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -10,8 +10,26 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
+char	*ft_strchr(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (*(str + i))
+	{
+		if (*(str + i) == (char)c)
+			return ((char *)(str + i));
+		i++;
+	}
+	if (!c)
+		return ((char *)(str + i));
+	return (0);
+}
+
 static int	ft_add(const char *str, char *rstr, int irstr, int is)
 {
+	if(!str)
+		return(0);
 	while (*(str + is))
 	{
 		*(rstr + irstr) = *(str + is);
@@ -21,15 +39,17 @@ static int	ft_add(const char *str, char *rstr, int irstr, int is)
 	return (irstr);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, const char *s2)
 {
 	unsigned int	is;
 	unsigned int	irstr;
 	char			*rstr;
 
-	if (!s1 || !s2)
+	is = 0;
+	if (!s1 && !s2)
 		return (0);
-	is = ft_strlen(s1);
+	if(s1)
+		is += ft_strlen(s1);
 	is += ft_strlen(s2);
 	rstr = (char *)malloc(is + 1);
 	if (!(rstr))
@@ -37,5 +57,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	irstr = ft_add(s1, rstr, 0, 0);
 	irstr = ft_add(s2, rstr, irstr, 0);
 	*(rstr + irstr) = 0;
+	free(s1);
 	return (rstr);
 }

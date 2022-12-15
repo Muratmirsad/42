@@ -1,23 +1,73 @@
-# include "get_next_line.h"
+#include "get_next_line.h"
+
+static char	*ft_swap(const char *str, int rstr_size, int i)
+{
+	static int	index;
+	char		*rstr;
+	int			key;
+
+	key = index;
+	while (str[index] && str[index] != '\n')
+	{
+		rstr_size++;
+		index++;
+	}
+	if (str[index] == '\n')
+	{
+		rstr_size++;
+		index++;
+	}
+	if (key == index)
+		return(0);
+	rstr = (char*)malloc(rstr_size + 1);
+	if(!rstr)
+		return(0);
+	rstr[rstr_size] = 0;
+	while(rstr_size > 0)
+		rstr[rstr_size-- - 1] = str[index + i-- - 1];
+	return(rstr);
+}
+
+static char	*ft_run(int fd, int bytes, char *rstr, char *buff)
+{
+	static char	*str;
+	static int	key;
+
+	while(bytes && !key)
+	{
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if(bytes == -1)
+		{
+			free(str);
+			free(buff);
+			return(0);
+		}
+		buff[bytes] = 0;
+		str = ft_strjoin(str, buff);
+		if (ft_strchr(buff, '\n'))
+			break;
+	}
+	free(buff);
+	rstr = ft_swap(str, 0, 0);
+	if (!rstr && !key)
+	{
+		key = 1;
+		free(str);
+		return(0);
+	}
+	return(rstr);
+}
 
 char	*get_next_line(int fd)
 {
-	char	*str;
-	char	*c;
+	char	*buff;
+	char	*rstr;
 
-	c = (char*)malloc(1);
-	c[1] = 0;
-	str = (char*)malloc(1);
-	str[0] = 0;
-
-	while (1)
-	{
-		if (!(read(fd, c, 1)))
-			return(0);
-		if (c[0] == '\n')
-			break;
-		str = ft_strjoin(str, c);
-	}
-	free(c);
-	return(str);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return(0);
+	buff = (char*)malloc(BUFFER_SIZE + 1);
+	if(!buff)
+		return(0);
+	rstr = ft_run(fd, 1, 0, buff);
+	return(rstr);
 }
