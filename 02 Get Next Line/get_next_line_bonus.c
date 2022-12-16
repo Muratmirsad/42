@@ -64,12 +64,12 @@ static char	*ft_run(int fd, int bytes, char *rstr, char *buff)
 
 char	*get_next_line(int fd)
 {
-	char	*buff;
+	char	**buff;
 	char	*rstr;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buff = (char*)malloc(BUFFER_SIZE + 1);
+	buff[] = (char*)malloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (0);
 	rstr = ft_run(fd, 1, 0, buff);
