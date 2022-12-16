@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/16 14:31:04 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/12/16 14:32:09 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static char	*ft_error(char *str, char *buff)
@@ -26,7 +38,7 @@ static char	*ft_swap(const char *str, int rstr_size, int i)
 	}
 	if (key == index)
 		return (0);
-	rstr = (char*)malloc(rstr_size + 1);
+	rstr = (char *)malloc(rstr_size + 1);
 	if (!rstr)
 		return (0);
 	rstr[rstr_size] = 0;
@@ -43,7 +55,7 @@ static char	*ft_run(int fd, int bytes, char *rstr, char *buff)
 	while (bytes && !key)
 	{
 		bytes = read(fd, buff, BUFFER_SIZE);
-		if(bytes == -1)
+		if (bytes == -1)
 			return (ft_error(str, buff));
 		buff[bytes] = 0;
 		str = ft_strjoin(str, buff);
@@ -69,7 +81,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buff = (char*)malloc(BUFFER_SIZE + 1);
+	buff = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (0);
 	rstr = ft_run(fd, 1, 0, buff);

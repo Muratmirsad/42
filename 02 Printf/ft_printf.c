@@ -6,21 +6,14 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:03:56 by mdiraga           #+#    #+#             */
-/*   Updated: 2022/12/08 02:47:22 by mdiraga          ###   ########.fr       */
+/*   Updated: 2022/12/09 13:17:47 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+static int	ft_run(const char *str, int i, int r, va_list ar)
 {
-	int		i;
-	int		r;
-	va_list	ar;
-
-	va_start(ar, str);
-	i = 0;
-	r = 0;
 	while (*(str + i))
 	{
 		if (str[i] == '%' && str[i + 1] == '%')
@@ -41,6 +34,16 @@ int	ft_printf(const char *str, ...)
 			r += ft_putchar(str[i], i);
 		i++;
 	}
+	return (r);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	int		r;
+	va_list	ar;
+
+	va_start(ar, str);
+	r = ft_run(str, 0, 0, ar);
 	va_end(ar);
 	return (r);
 }

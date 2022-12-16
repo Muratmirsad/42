@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:02:56 by mdiraga           #+#    #+#             */
-/*   Updated: 2022/12/08 02:45:53 by mdiraga          ###   ########.fr       */
+/*   Updated: 2022/12/09 13:20:51 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 int		ft_printf(const char *str, ...);
 int		ft_putunsigned(unsigned int nb, int i);
