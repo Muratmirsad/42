@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/12 17:21:02 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/01/12 17:28:42 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 static void	ft_run(int sig, siginfo_t *info, void *context)
 {
 	static int	bits = 7;
-	static pid_t			client_pid = 0;
 	static char	c;
 
 	(void)context;
-	if (!client_pid)
-		client_pid = info->si_pid;
+	(void)info;
 	if (sig == SIGUSR1)
 		bits--;
 	else if (sig == SIGUSR2)
-		c += 1<<bits--;
+		c += 1 << bits--;
 	if (bits < 0)
 	{
 		write(1, &c, 1);
@@ -21,7 +31,7 @@ static void	ft_run(int sig, siginfo_t *info, void *context)
 	}
 }
 
-int	main()
+int	main(void)
 {
 	struct sigaction	keep_signal;
 
