@@ -25,6 +25,8 @@ clean:
 
 fclean: clean
 	rm -rf $(NAMESERVER) $(NAMECLIENT)
+	rm -rf ./ft_printf/*.o
+	rm -rf ./ft_printf/libftprintf.a
 
 ffclean: fclean
 	make fclean -C ./ft_printf

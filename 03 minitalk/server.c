@@ -12,13 +12,20 @@
 
 #include "minitalk.h"
 
+void	ft_control(int cpid, int c)
+{
+	if (c == 10)
+		kill(cpid, SIGUSR1);
+}
+
 static void	ft_run(int sig, siginfo_t *info, void *context)
 {
 	static int	bits = 7;
+	static int	cpid;
 	static char	c;
 
 	(void)context;
-	(void)info;
+	cpid = info->si_pid;
 	if (sig == SIGUSR1)
 		bits--;
 	else if (sig == SIGUSR2)
@@ -26,6 +33,8 @@ static void	ft_run(int sig, siginfo_t *info, void *context)
 	if (bits < 0)
 	{
 		write(1, &c, 1);
+		if (bits == -1)
+			ft_control(cpid, c);
 		c = 0;
 		bits = 7;
 	}

@@ -12,6 +12,11 @@
 
 #include "minitalk.h"
 
+void	ft_signal_sent()
+{
+	ft_printf("Signal sent successfully.\n");
+}
+
 static void	ft_signal(int pid, char c, int bits, int a_bit)
 {
 	while (bits >= 0)
@@ -34,7 +39,9 @@ int	main(int ar, char **av)
 		return (0);
 	i = 0;
 	pid = ft_atoi(av[1]);
+	signal(SIGUSR1, ft_signal_sent);
 	while (av[2][i])
 		ft_signal(pid, av[2][i++], 7, 0);
 	ft_signal(pid, 10, 7, 0);
+	usleep(10000);
 }
