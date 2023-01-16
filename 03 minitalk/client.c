@@ -6,14 +6,15 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:20:52 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/01/12 17:28:47 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:46:43 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_signal_sent()
+void	ft_signal_sent(int signal)
 {
+	(void)signal;
 	ft_printf("Signal sent successfully.\n");
 }
 

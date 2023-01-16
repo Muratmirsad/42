@@ -22,7 +22,7 @@ $(NAMECLIENT) : $(OBJCLIENT)
 
 clean:
 	rm -rf $(OBJSERVER) $(OBJCLIENT)
-
+	rm -rf ./ft_printf/*.o
 fclean: clean
 	rm -rf $(NAMESERVER) $(NAMECLIENT)
 	rm -rf ./ft_printf/*.o
