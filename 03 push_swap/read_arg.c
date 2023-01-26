@@ -1,11 +1,5 @@
 #include "push_swap.h"
 
-void	ft_convert(int nb)
-{
-	int	*int_p;
-	int_p = ft_intjoin(int_p, nb);
-}
-
 int	ft_factor(char *p, int i)
 {
 	if ((p[i] == 43 || p[i] == 45) &&
@@ -15,11 +9,16 @@ int	ft_factor(char *p, int i)
 		return (-1);
 	return (1);
 }
-//                           0          1        0
-int *ft_handle(char *p, int i, int factor, int nb)
+
+int	*ft_handle(char *p, int i, int factor, int cnt)
 {
 	int	key;
+	int	nb;
+	int	*new;
 
+	nb = 0;
+	new = (int*)malloc(4 * cnt);
+	cnt = 0;
 	while (p[i])
 	{
 		key = 0;
@@ -31,13 +30,14 @@ int *ft_handle(char *p, int i, int factor, int nb)
 			nb += p[i++] - 48;
 			key = 1;
 		}
-		
 		if (key)
-			ft_convert(nb * factor);
+			new[cnt++] = nb;
 		factor = 1;
 		nb = 0;
 		i++;
 	}
+	free(p);
+	return (new);
 }
 
 void	ft_control(char *p)
@@ -52,9 +52,29 @@ void	ft_control(char *p)
 		ft_error(2);
 }
 
-int	read_arg(char **av)
+void	ft_intcontrol(int *ip, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (ip[i] == ip[j])
+				ft_error(3);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	*read_arg(char **av)
 {
 	char	*p;
+	int		*intpointer;
 	int		i;
 	int		cnt;
 
@@ -64,15 +84,16 @@ int	read_arg(char **av)
 	{
 		p = ft_strjoin(p, av[i++]);
 		p = ft_strjoin(p, " ");
-		cnt++;
+	}
+	i = 0;
+	while (p[i])
+	{
+		if(p[i] == 32 && p[i + 1] != 32)
+			cnt++;
+		i++;
 	}
 	ft_control(p);
-	ft_handle(p, 0, 1, 0);
-	return (cnt);
-}
-
-int main(int ar, char **av)
-{
-	(void)ar;
-	read_arg(av);
+	intpointer = ft_handle(p, 0, 1, cnt);
+	ft_intcontrol(intpointer, cnt);
+	return (intpointer);
 }
