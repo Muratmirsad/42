@@ -7,6 +7,6 @@
 
 char	*ft_strjoin_moded(char *s1, const char *s2);
 void	ft_error(int code);
-int		*read_arg(char **av);
+int		*read_arg(char **av, int *size);
 
 #endif

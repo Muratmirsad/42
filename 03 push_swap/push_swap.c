@@ -2,5 +2,7 @@
 
 int	main(int ar, char **av)
 {
-	read_arg(av);
+	int	size;
+
+	read_arg(av, &size);
 }

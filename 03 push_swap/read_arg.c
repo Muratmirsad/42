@@ -71,7 +71,7 @@ void	ft_intcontrol(int *ip, int size)
 	}
 }
 
-int	*read_arg(char **av)
+int	*read_arg(char **av, int *size)
 {
 	char	*p;
 	int		*intpointer;
@@ -95,5 +95,6 @@ int	*read_arg(char **av)
 	ft_control(p);
 	intpointer = ft_handle(p, 0, 1, cnt);
 	ft_intcontrol(intpointer, cnt);
+	*size = cnt;
 	return (intpointer);
 }
