@@ -1,21 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/31 17:38:27 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/01/31 17:43:22 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_error(int code)
 {
-	if (code == 1)
-	{
-		printf("error code: %d\n", code);
-		exit(1);
-	}
-	else if (code == 2)
-	{
-		printf("error code: %d\n", code);
-		exit(2);
-	}
-	else if (code == 3)
-	{
-		printf("error code: %d\n", code);
-		exit(3);
-	}
-	exit(0);
+	printf("Error");
+	exit(code);
 }

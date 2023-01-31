@@ -1,14 +1,7 @@
 #include "push_swap.h"
 
-/*
-
-				Tamamlandı.
-
-*/
-
 static void ft_rotate(int *ip, int cnt)
 {
-	int	i;
 	int	tmp;
 
 	tmp = ip[0];

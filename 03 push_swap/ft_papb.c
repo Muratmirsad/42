@@ -1,10 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_papb.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/31 17:31:28 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/01/31 19:34:47 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-/*
-
-				Tamamlandı.
-
-*/
 
 static void	ft_push(int *ip1, int *ip2, int cnt1, int cnt2)
 {
@@ -23,7 +29,7 @@ void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb)
 	*cntb -= 1;
 }
 
-void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb)//  !!Do nothing iff a is empty.
+void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb)
 {
 	if (!cnta)
 		return ;

@@ -2,6 +2,8 @@ NAME = push_swap
 
 SRC = $(wildcard *.c)
 OBJS = $(SRC:.c=.o)
+LIBFTOBJS = libft/*.o
+FTPRINTFOBJS = ft_printf/*.o
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -27,9 +29,13 @@ $(NAME): ${OBJS}
 
 clean:
 	@rm $(OBJS)
+	@rm $(LIBFTOBJS)
+	@rm $(FTPRINTFOBJS)
 
 fclean: clean
 	@rm $(NAME)
+	@rm $(LIBFTOBJS) libft/libft.a
+	@rm $(FTPRINTFOBJS) ft_printf/libftprintf.a
 
 ffclean: fclean
 	@make fclean -C libft
