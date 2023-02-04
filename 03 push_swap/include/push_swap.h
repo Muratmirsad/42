@@ -14,11 +14,12 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 
 void	ft_error(int code);
 int		*read_arg(char **av, int *size);
+void	sorting(int *stack_a, int *stack_b, int size_a);
 void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_ra(int *ip, int cnt);

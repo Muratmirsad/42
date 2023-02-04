@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	ft_factor(char *p, int i)
 {
@@ -43,7 +43,7 @@ int	*ft_handle(char *p, int i, int factor, int cnt)
 			key = 1;
 		}
 		if (key)
-			new[cnt++] = nb;
+			new[cnt++] = nb * factor;
 		factor = 1;
 		i++;
 	}
@@ -103,7 +103,6 @@ int	*read_arg(char **av, int *size)
 		if (p[i] == 32 && p[i + 1] != 32)
 			cnt++;
 	}
-	printf("%s\n%d\n", p, cnt);  //--------------------
 	ft_control(p);
 	intpointer = ft_handle(p, 0, 1, cnt);
 	ft_intcontrol(intpointer, cnt);

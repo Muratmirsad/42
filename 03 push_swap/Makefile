@@ -1,46 +1,39 @@
 NAME = push_swap
 
-SRC = $(wildcard *.c)
-OBJS = $(SRC:.c=.o)
-LIBFTOBJS = libft/*.o
-FTPRINTFOBJS = ft_printf/*.o
+CC = -Wall -Wextra -Werror
+SRC = src/ft_error.c \
+		src/ft_papb.c \
+		src/ft_rarbrr.c \
+		src/ft_rrarrbrrr.c \
+		src/ft_sasbss.c \
+		src/push_swap.c \
+		src/read_arg.c \
+		src/sorting_1.c
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-LIB= libft/libft.a
-PRINT= ft_printf/libftprintf.a
+OUTS = $(SRC:%.c=%.o)
+RUNOUTS = out/*
+LIBS = libft/libft.a \
+		ft_printf/libftprintf.a
 
-INC_FT = libft
-INC_FT_PRINTF = ft_printf
-
-all: $(LIB) $(PRINT) $(NAME)
+all: $(LIB) $(OUT) $(RUN)
 
 $(LIB):
 	@make -C libft
-
-$(PRINT):
 	@make -C ft_printf
 
-$(NAME): ${OBJS}
-	@$(CC) $(OBJS) -o $(NAME) $(LIB) $(PRINT)
+$(OUT):
+	@gcc $(CC) $(SRC) -c $(OUTS)
+	@mv *.o out/
 
-.c.o:
-	@$(CC) $(CFLAGS) -I $(INC_FT) -I $(INC_FT_PRINTF) -c $< -o $@
+$(RUN):
+	@gcc $(CC) $(RUNOUTS) $(LIBS) -o $(NAME)
 
 clean:
-	@rm $(OBJS)
-	@rm $(LIBFTOBJS)
-	@rm $(FTPRINTFOBJS)
+	@make clean -C libft
+	@make clean -C ft_printf
+	@rm out/*.o
 
-fclean: clean
-	@rm $(NAME)
-	@rm $(LIBFTOBJS) libft/libft.a
-	@rm $(FTPRINTFOBJS) ft_printf/libftprintf.a
-
-ffclean: fclean
+fclean:
 	@make fclean -C libft
 	@make fclean -C ft_printf
-
-re: fclean all
-
-.PHONY: all re clean fclean ffclean
+	@rm out/*

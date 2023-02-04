@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void	ft_push(int *ip1, int *ip2, int cnt1, int cnt2)
 {

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 17:31:48 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/01/31 18:05:11 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/11/14 15:42:00 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/11/14 16:59:32 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int ar, char **av)
+t_list	*ft_lstnew(void *content)
 {
-	int	size;
+	t_list	*rcontent;
 
-	if (ar < 2)
-		ft_error(4);
-		
-
-	int *p;
-	p = read_arg(av, &size);
-
-	while (size-- > 0)
-	{
-		ft_printf("%d\n", p[size]);
-	}
+	rcontent = (t_list *)malloc(sizeof(t_list *));
+	if (!rcontent)
+		return (0);
+	rcontent->content = content;
+	rcontent->next = 0;
+	return (rcontent);
 }
