@@ -20,6 +20,7 @@
 void	ft_error(int code);
 int		*read_arg(char **av, int *size);
 void	sorting(int *stack_a, int *stack_b, int size_a);
+void	sorting_2(int *stack_a, int *stack_b, int size_a, int size_b);
 void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_ra(int *ip, int cnt);

@@ -23,4 +23,5 @@ int	main(int ar, char **av)
 	stack_a = read_arg(av, &size);
 	stack_b = ft_calloc(size, sizeof(int));
 	sorting(stack_a, stack_b, size);
+	free(stack_b);
 }

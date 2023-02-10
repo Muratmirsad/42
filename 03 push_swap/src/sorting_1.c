@@ -3,25 +3,30 @@
 void	sorting(int *stack_a, int *stack_b, int size_a)
 {
 	int size_b;
-	int	index;
 	int	key;
+	int	nb;
 
 	size_b = 0;
-	index = 1;
-	key = size_a - 1;
+	nb = stack_a[size_a / 2];
+	key = size_a;
 	while (key--)
 	{
-		if (stack_a[0] > stack_a[index])
-		{
+		if (stack_a[0] > nb)
 			ft_pb(stack_a, stack_b, &size_a, &size_b);
-			index--;
-		}
-		index++;
+		else
+			ft_ra(stack_a, size_a);
 	}
-
-	while (size_a)
-		printf("%d\n", stack_a[--size_a]);
-	printf("-----\n");
+	sorting_2(stack_a, stack_b, size_a, size_b);
 	while (size_b)
-		printf("%d\n", stack_b[--size_b]);
+	{
+		ft_pa(stack_a, stack_b, &size_a, &size_b);
+		ft_ra(stack_a, size_a);
+	}
+	/*key = size_a;
+	while (key)
+		printf("%d\n", stack_a[size_a - key--]);
+	printf("-----\n");
+	key = size_b;
+	while (key)
+		printf("%d\n", stack_b[size_b - key--]);*/
 }
