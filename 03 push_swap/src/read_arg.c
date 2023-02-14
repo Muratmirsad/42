@@ -60,7 +60,11 @@ void	ft_control(char *p)
 		|| (p[i] >= 48 && p[i] <= 57))
 		i++;
 	if (p[i])
+	{
+		free(p);
 		ft_error(2);
+	}
+
 }
 
 void	ft_intcontrol(int *ip, int size)
