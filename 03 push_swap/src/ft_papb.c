@@ -24,7 +24,7 @@ void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb)
 	if (!cntb)
 		return ;
 	ft_push(ipa, ipb, *cnta, *cntb);
-	printf("pa\n");
+	ft_printf("pa\n");
 	*cnta += 1;
 	*cntb -= 1;
 }
@@ -34,7 +34,7 @@ void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb)
 	if (!cnta)
 		return ;
 	ft_push(ipb, ipa, *cntb, *cnta);
-	printf("pb\n");
+	ft_printf("pb\n");
 	*cntb += 1;
 	*cnta -= 1;
 }

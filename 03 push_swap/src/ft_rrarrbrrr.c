@@ -12,18 +12,18 @@ static void ft_rotate(int *ip, int cnt)
 void	ft_rra(int *ip, int cnt)
 {
 	ft_rotate(ip, cnt);
-	printf("rra\n");
+	ft_printf("rra\n");
 }
 
 void	ft_rrb(int *ip, int cnt)
 {
 	ft_rotate(ip, cnt);
-	printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
 void	ft_rrr(int *ipa, int *ipb, int cnta, int cntb)
 {
 	ft_rotate(ipa, cnta);
 	ft_rotate(ipb, cntb);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
