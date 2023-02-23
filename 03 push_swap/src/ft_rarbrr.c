@@ -4,6 +4,7 @@ static void ft_rotate(int *ip, int cnt)
 {
 	int	tmp;
 
+	printf("test -----> 4\n");  // burada patlıyor
 	tmp = ip[0];
 	ft_memmove(ip, ip + 1, (cnt - 1) * 4);
 	ip[cnt - 1] = tmp;

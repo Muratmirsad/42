@@ -6,6 +6,9 @@
 		"stdlib.h": "c",
 		"stdarg.h": "c",
 		"libftprintf.h": "c",
-		"unistd.h": "c"
-	}
+		"unistd.h": "c",
+		"ft_printf.h": "c",
+		"push_swap.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }

@@ -18,10 +18,17 @@ int	main(int ar, char **av)
 	int	*stack_a;
 	int	*stack_b;
 
-	if (ar < 2)
-		ft_error(4);
+	(void)ar;
 	stack_a = read_arg(av, &size);
+	if (size < 2)
+		ft_error(4);
 	stack_b = ft_calloc(size, sizeof(int));
-	sorting(stack_a, stack_b, size);
+	if (size <= 5)
+		sorting_small_stack(stack_a, size);
+	else
+		sorting(stack_a, stack_b, size);
 	free(stack_b);
+	int i = 0;
+	while (i < 3)
+		printf("%d\n", stack_a[i++]);
 }
