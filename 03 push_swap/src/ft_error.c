@@ -2,6 +2,6 @@
 
 void	ft_error(int code)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 1);
 	exit(code);
 }

@@ -4,7 +4,6 @@ static void ft_rotate(int *ip, int cnt)
 {
 	int	tmp;
 
-	printf("test -----> 4\n");  // burada patlıyor
 	tmp = ip[0];
 	ft_memmove(ip, ip + 1, (cnt - 1) * 4);
 	ip[cnt - 1] = tmp;
@@ -13,18 +12,18 @@ static void ft_rotate(int *ip, int cnt)
 void	ft_ra(int *ip, int cnt)
 {
 	ft_rotate(ip, cnt);
-	ft_printf("ra\n");
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	ft_rb(int *ip, int cnt)
 {
 	ft_rotate(ip, cnt);
-	ft_printf("rb\n");
+	ft_putstr_fd("rb\n", 1);
 }
 
 void	ft_rr(int *ipa, int *ipb, int cnta, int cntb)
 {
 	ft_rotate(ipa, cnta);
 	ft_rotate(ipb, cntb);
-	ft_printf("rr\n");
+	ft_putstr_fd("rr\n", 1);
 }

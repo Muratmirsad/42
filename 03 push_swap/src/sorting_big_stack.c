@@ -18,6 +18,7 @@ void	sorting_big_stack(new_stack_holder *all)
 	int	bit;
 	int	bit_key;
 	int	key;
+	int	i;
 
 	bit = 0;
 	bit_key = find_bit(all->biggest);
@@ -28,24 +29,38 @@ void	sorting_big_stack(new_stack_holder *all)
 		{
 			if ((all->dest_a[0] >> bit) % 2 == 0)
 			{
-				printf("test -----> 1\n");
 				dest_pb(all->dest_a, all->dest_b, &all->size_da, &all->size_db);
 				ft_pb(all->stack_a, all->stack_b, &all->size_a, &all->size_b);
 			}
 			else
 			{
-				printf("test -----> 2\n");
 				dest_ra(all->dest_a, all->size_da);
 				ft_ra(all->stack_a, all->size_a);
 			}
-			printf("size da: %d\nsize db: %d\nsize a: %d\nsize b: %d\n", all->size_da, all->size_db, all->size_a, all->size_b);
+			//printf("size da: %d\nsize db: %d\nsize a: %d\nsize b: %d\n", all->size_da, all->size_db, all->size_a, all->size_b);
+			i = 0;
+			while (i < 7)
+				printf("%d ", all->stack_a[i++]);
+			printf("\n");
+			i = 0;
+			while (i < 7)
+				printf("%d ", all->stack_b[i++]);
+			printf("\n");
 			key--;
 		}
 		while (all->size_b)
 		{
-			printf("test -----> 3\n");
 			dest_pa(all->dest_a, all->dest_b, &all->size_da, &all->size_db);
 			ft_pa(all->stack_a, all->stack_b, &all->size_a, &all->size_b);
+			//printf("size da: %d\nsize db: %d\nsize a: %d\nsize b: %d\n", all->size_da, all->size_db, all->size_a, all->size_b);
+			i = 0;
+			while (i < 7)
+				printf("%d ", all->stack_a[i++]);
+			printf("\n");
+			i = 0;
+			while (i < 7)
+				printf("%d ", all->stack_b[i++]);
+			printf("\n");
 		}
 		bit++;
 	}

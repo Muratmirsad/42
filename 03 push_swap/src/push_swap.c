@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:48 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/01/31 18:05:11 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/02/27 15:44:57 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(int ar, char **av)
 		sorting(stack_a, stack_b, size);
 	free(stack_b);
 	int i = 0;
-	while (i < 3)
+	while (i < ar - 1)
 		printf("%d\n", stack_a[i++]);
 }

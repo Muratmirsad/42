@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:28 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/01/31 19:34:47 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/02/27 17:43:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb)
 	if (!cntb)
 		return ;
 	ft_push(ipa, ipb, *cnta, *cntb);
-	ft_printf("pa\n");
+	ft_putstr_fd("pa\n", 1);
 	*cnta += 1;
 	*cntb -= 1;
 }
@@ -34,7 +34,7 @@ void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb)
 	if (!cnta)
 		return ;
 	ft_push(ipb, ipa, *cntb, *cnta);
-	ft_printf("pb\n");
+	ft_putstr_fd("pb\n", 1);
 	*cntb += 1;
 	*cnta -= 1;
 }

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:42 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/01/31 19:37:28 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/02/27 15:32:31 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
 
 typedef struct stack_holder
 {
