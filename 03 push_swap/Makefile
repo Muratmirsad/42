@@ -1,39 +1,47 @@
 NAME = push_swap
 
-CC = -Wall -Wextra -Werror
-SRC = src/ft_error.c \
+SRCS = src/convert_to_smaller.c \
+		src/ft_error.c \
 		src/ft_papb.c \
 		src/ft_rarbrr.c \
 		src/ft_rrarrbrrr.c \
 		src/ft_sasbss.c \
 		src/push_swap.c \
 		src/read_arg.c \
-		src/sorting_1.c
+		src/sorting_big_stack.c \
+		src/sorting_bubble.c \
+		src/sorting_small_stack.c \
+		src/sorting_utils.c \
+		src/sorting.c
 
-OUTS = $(SRC:%.c=%.o)
-RUNOUTS = out/*
-LIBS = libft/libft.a \
-		ft_printf/libftprintf.a
+LIBFT = libft/libft.a
 
-all: $(LIB) $(OUT) $(RUN)
+CC = gcc
 
-$(LIB):
-	@make -C libft
-	@make -C ft_printf
+CFLAGS = -Wall -Werror -Wextra
 
-$(OUT):
-	@gcc $(CC) $(SRC) -c $(OUTS)
-	@mv *.o out/
+all: $(NAME)
 
-$(RUN):
-	@gcc $(CC) $(RUNOUTS) $(LIBS) -o $(NAME)
+$(NAME): $(SRCS)
+	@clear
+	@echo "\033[33m\n\tCompiling...\n\033[0m"
+	@make -C ./libft
+	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	@clear
+	@echo "\033[32m\n\tOK!\033\n"
+	@ls -l push_swap
 
 clean:
-	@make clean -C libft
-	@make clean -C ft_printf
-	@rm out/*.o
+	@make fclean -C ./libft
+	@clear
+	@echo "\033[32m\n\tLibft files cleared.\033\n"
 
-fclean:
-	@make fclean -C libft
-	@make fclean -C ft_printf
-	@rm out/*
+fclean: clean
+	@rm -rf $(NAME)
+	@clear
+	@ls -la
+	@echo "\033[32m\n\tProgram cleared.\033\n"
+
+re: fclean all
+
+.PHONY: all fclean clean re

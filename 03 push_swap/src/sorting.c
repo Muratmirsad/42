@@ -9,7 +9,7 @@ void	sorting(int *stack_a, int *stack_b, int size_a)
 	all_stack = (new_stack_holder *)malloc(sizeof(new_stack_holder));
 	dest = sorting_bubble(stack_a, size_a);
 	all_stack->biggest = dest[size_a - 1];
-	dest = convert_to_smaller(dest, stack_a, size_a, 0);
+	dest = convert_to_smaller(stack_a, dest, size_a, 0);
 	dest2 = (int*)malloc(sizeof(int) * size_a);
 	all_stack->stack_a = stack_a;
 	all_stack->stack_b = stack_b;

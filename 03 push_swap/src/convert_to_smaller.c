@@ -13,7 +13,7 @@ int	*convert_to_smaller(const int *stack, int *dest, int size, int *smaller)
 		while(j < size)
 		{
 			if (dest[i] == stack[j])
-				smaller[i] = j;
+				smaller[j] = i;
 			j++;
 		}
 		i++;

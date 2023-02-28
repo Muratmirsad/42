@@ -28,7 +28,7 @@ int	main(int ar, char **av)
 	else
 		sorting(stack_a, stack_b, size);
 	free(stack_b);
-	int i = 0;
+	/*int i = 0;
 	while (i < ar - 1)
-		printf("%d\n", stack_a[i++]);
+		printf("%d\n", stack_a[i++]);*/
 }
