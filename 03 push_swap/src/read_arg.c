@@ -16,7 +16,10 @@ int	ft_factor(char *p, int i)
 {
 	if ((p[i] == 43 || p[i] == 45)
 		&& !(p[i + 1] >= 48 && p[i + 1] <= 57))
+	{
+		free(p);
 		ft_error(1);
+	}
 	if (p[i] == 45)
 		return (-1);
 	return (1);
@@ -79,7 +82,10 @@ void	ft_intcontrol(int *ip, int size)
 		while (j < size)
 		{
 			if (ip[i] == ip[j])
+			{
+				free(ip);
 				ft_error(3);
+			}
 			j++;
 		}
 		i++;

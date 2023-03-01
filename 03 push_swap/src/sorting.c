@@ -21,4 +21,6 @@ void	sorting(int *stack_a, int *stack_b, int size_a)
 	all_stack->size_db = 0;
 	all_stack->size = size_a;
 	sorting_big_stack(all_stack);
+	free(all_stack->dest_a);
+	free(all_stack->dest_b);
 }
