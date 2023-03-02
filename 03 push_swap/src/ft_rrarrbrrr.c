@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rrarrbrrr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 21:33:02 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/01 21:33:05 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-static void ft_rotate(int *ip, int cnt)
+static void	ft_rotate(int *ip, int cnt)
 {
 	int	tmp;
 

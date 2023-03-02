@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:48 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/02/27 15:44:57 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/02 02:36:13 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ int	main(int ar, char **av)
 	int	*stack_a;
 	int	*stack_b;
 
-	(void)ar;
-	stack_a = read_arg(av, &size);
+	if (ar < 2)
+		ft_error(6);
+	stack_a = read_arg(av, &size, 2, 1);
 	if (size < 2)
 		ft_error(4);
+	if (sort_control_main(stack_a, size))
+		return (0);
 	stack_b = ft_calloc(size, sizeof(int));
 	if (size <= 5)
-		sorting_small_stack(stack_a, size);
+		sorting_small_stack(stack_a, size, stack_b);
 	else
 		sorting(stack_a, stack_b, size);
 	free(stack_b);
-	/*int i = 0;
-	while (i < ar - 1)
-		printf("%d\n", stack_a[i++]);*/
+	//system("leaks push_swap");
 }

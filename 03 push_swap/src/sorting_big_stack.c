@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_big_stack.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 21:11:20 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/01 22:03:05 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 int	find_bit(int nb)
@@ -13,23 +25,8 @@ int	find_bit(int nb)
 	return (--bit);
 }
 
-void	sorting_big_stack(new_stack_holder *all)
+void	sorting_big_stack(t_stack_holder *all, int bit, int bit_key, int key)
 {
-	int	bit;
-	int	bit_key;
-	int	key;
-	//int	i;
-
-	/*i = 0;
-	while (i < 7)
-		printf("%d ", all->dest_a[i++]);
-	printf("\n");
-	i = 0;
-	while (i < 7)
-		printf("%d ", all->stack_a[i++]);
-	printf("\n\n"); */
-
-	bit = 0;
 	bit_key = find_bit(all->biggest);
 	while (bit <= bit_key)
 	{
@@ -46,34 +43,12 @@ void	sorting_big_stack(new_stack_holder *all)
 				dest_ra(all->dest_a, all->size_da);
 				ft_ra(all->stack_a, all->size_a);
 			}
-			//printf("size da: %d\nsize db: %d\nsize a: %d\nsize b: %d\n", all->size_da, all->size_db, all->size_a, all->size_b);
-			/*i = 0;
-			while (i < 7)
-				printf("%d ", all->dest_a[i++]);
-			printf("\n");
-			i = 0;
-			while (i < 7)
-				printf("%d ", all->stack_a[i++]);
-			printf("\n");
-			i = 0;
-			while (i < 7)
-				printf("%d ", all->stack_b[i++]);
-			printf("\n");*/
 			key--;
 		}
 		while (all->size_b)
 		{
 			dest_pa(all->dest_a, all->dest_b, &all->size_da, &all->size_db);
 			ft_pa(all->stack_a, all->stack_b, &all->size_a, &all->size_b);
-			//printf("size da: %d\nsize db: %d\nsize a: %d\nsize b: %d\n", all->size_da, all->size_db, all->size_a, all->size_b);
-			/*i = 0;
-			while (i < 7)
-				printf("%d ", all->stack_a[i++]);
-			printf("\n");
-			i = 0;
-			while (i < 7)
-				printf("%d ", all->stack_b[i++]);
-			printf("\n");*/
 		}
 		bit++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:42 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/02/27 15:32:31 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/02 01:00:50 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,17 @@ typedef struct stack_holder
 	int	size_db;
 	int	size;
 	int	biggest;
-}		new_stack_holder;
+}	t_stack_holder;
 
 
 void	ft_error(int code);
-int		*read_arg(char **av, int *size);
+int		*read_arg(char **av, int *size, int i, int cnt);
 void	sorting(int *stack_a, int *stcak_b, int size_a);
-int		*convert_to_smaller(const int *stack, int *dest, int size, int *smaller);
+int		*convert(const int *stack, int *dest, int size, int *smaller);
 int		*sorting_bubble(int *stack, int size);
-void	sorting_small_stack(int *stack, int size);
-void	sorting_big_stack(new_stack_holder *all_stack);
+void	sorting_small_stack(int *stack, int size, int *stack_b);
+void	sorting_big_stack(t_stack_holder *all, int bit, int bit_key, int key);
+int		sort_control_main(int *stack, int size);
 void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_ra(int *ip, int cnt);
@@ -53,6 +54,5 @@ void	dest_pa(int *ipa, int *ipb, int *cnta, int *cntb);
 void	dest_pb(int *ipa, int *ipb, int *cnta, int *cntb);
 void	dest_ss(int *ip);
 void	dest_ra(int *ip, int cnt);
-void	dest_rb(int *ip, int cnt);
 
 #endif

@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = src/convert_to_smaller.c \
+SRCS = src/convert.c \
 		src/ft_error.c \
 		src/ft_papb.c \
 		src/ft_rarbrr.c \

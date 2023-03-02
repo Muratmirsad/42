@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_bubble.c                                   :+:      :+:    :+:   */
+/*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 21:11:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/01 22:10:11 by mdiraga          ###   ########.fr       */
+/*   Created: 2023/03/01 21:32:12 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/02 01:04:48 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	*sorting_bubble(int *stack, int size)
+int	*convert(const int *stack, int *dest, int size, int *smaller)
 {
 	int	i;
 	int	j;
-	int	tmp;
-	int	*dest;
 
-	dest = (int *)malloc(sizeof(int) * size);
-	dest = ft_memcpy(dest, stack, size * sizeof(int));
+	smaller = (int *)malloc(sizeof(int) * size);
 	i = 0;
 	while (i < size)
 	{
-		j = i + 1;
+		j = 0;
 		while (j < size)
 		{
-			if (dest[i] > dest[j])
-			{
-				tmp = dest[i];
-				dest[i] = dest[j];
-				dest[j] = tmp;
-			}
+			if (dest[i] == stack[j])
+				smaller[j] = i;
 			j++;
 		}
 		i++;
 	}
-	return (dest);
+	//free(dest);
+	return (smaller);
 }

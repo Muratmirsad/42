@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 21:10:34 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/01 21:57:30 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 static void	ft_push(int *ip1, int *ip2, int cnt1, int cnt2)
@@ -34,21 +46,11 @@ void	dest_ss(int *ip)
 	ip[1] = tmp;
 }
 
-static void ft_rotate(int *ip, int cnt)
+void	dest_ra(int *ip, int cnt)
 {
 	int	tmp;
 
 	tmp = ip[0];
 	ft_memmove(ip, ip + 1, (cnt - 1) * 4);
 	ip[cnt - 1] = tmp;
-}
-
-void	dest_ra(int *ip, int cnt)
-{
-	ft_rotate(ip, cnt);
-}
-
-void	dest_rb(int *ip, int cnt)
-{
-	ft_rotate(ip, cnt);
 }

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:40:50 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/01/31 17:46:37 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/02 01:16:11 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_control(char *p)
 		free(p);
 		ft_error(2);
 	}
-
 }
 
 void	ft_intcontrol(int *ip, int size)
@@ -81,7 +80,7 @@ void	ft_intcontrol(int *ip, int size)
 		j = i + 1;
 		while (j < size)
 		{
-			if (ip[i] == ip[j])
+			if (ip[i] == ip[j] || ip[j] > 2147483647 || ip[j] < -2147483648)
 			{
 				free(ip);
 				ft_error(3);
@@ -92,20 +91,21 @@ void	ft_intcontrol(int *ip, int size)
 	}
 }
 
-int	*read_arg(char **av, int *size)
+int	*read_arg(char **av, int *size, int i, int cnt)
 {
 	char	*p;
 	int		*intpointer;
-	int		i;
-	int		cnt;
+	char	*tmp;
 
-	cnt = 1;
-	i = 2;
 	p = ft_strdup(av[1]);
 	while (av[i])
 	{
-		p = ft_strjoin(p, " ");
-		p = ft_strjoin(p, av[i++]);
+		tmp = p;
+		p = ft_strjoin(tmp, " ");
+		free(tmp);
+		tmp = p;
+		p = ft_strjoin(tmp, av[i++]);
+		free(tmp);
 	}
 	i = 0;
 	while (p[i++])
