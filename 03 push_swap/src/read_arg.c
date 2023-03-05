@@ -31,7 +31,7 @@ int	*ft_handle(char *p, int i, int factor, int cnt)
 	int	nb;
 	int	*new;
 
-	new = (int *)malloc(4 * cnt);
+	new = (int *)malloc(sizeof(int) * cnt);
 	cnt = 0;
 	while (p[i])
 	{
