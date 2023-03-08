@@ -12,7 +12,8 @@ SRCS = src/convert.c \
 		src/sorting_bubble.c \
 		src/sorting_small_stack.c \
 		src/sorting_utils.c \
-		src/sorting.c
+		src/sorting.c \
+		src/push_back.c
 
 LIBFT = libft/libft.a
 

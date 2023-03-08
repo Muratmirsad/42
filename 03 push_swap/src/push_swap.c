@@ -30,6 +30,14 @@ int	main(int ar, char **av)
 		sorting_small_stack(stack_a, size, stack_b);
 	else
 		sorting(stack_a, stack_b, size);
+	/*printf("stack_a\n");
+	int i = 0;
+	while (i < ar - 1)
+		printf("%d\n", stack_a[i++]);
+	printf("\nstack_b\n");
+	i = 0;
+	while (i < ar - 1)
+		printf("%d\n", stack_b[i++]);	*/
 	free(stack_b);
 	//system("leaks push_swap");
 }

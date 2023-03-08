@@ -38,6 +38,7 @@ int		*convert(const int *stack, int *dest, int size, int *smaller);
 int		*sorting_bubble(int *stack, int size);
 void	sorting_small_stack(int *stack, int size, int *stack_b);
 void	sorting_big_stack(t_stack_holder *all, int bit, int bit_key, int key);
+void	push_back(t_stack_holder *all, int i, int j, int x);
 int		sort_control_main(int *stack, int size);
 void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb);
@@ -50,9 +51,9 @@ void	ft_rrr(int *ipa, int *ipb, int cnta, int cntb);
 void	ft_sa(int *ip);
 void	ft_sb(int *ip);
 void	ft_ss(int *ip1, int *ip2);
-void	dest_pa(int *ipa, int *ipb, int *cnta, int *cntb);
-void	dest_pb(int *ipa, int *ipb, int *cnta, int *cntb);
+void	dest_p(int *from, int *to, int *from_size, int *to_size);
 void	dest_ss(int *ip);
-void	dest_ra(int *ip, int cnt);
+void	dest_r(int *ip, int cnt);
+void	dest_rr(int *ip, int cnt);
 
 #endif

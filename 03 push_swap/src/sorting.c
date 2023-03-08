@@ -33,7 +33,7 @@ void	sorting(int *stack_a, int *stack_b, int size_a)
 	all_stack->size_da = size_a;
 	all_stack->size_db = 0;
 	all_stack->size = size_a;
-	sorting_big_stack(all_stack, 0, 0, 0);
+	sorting_big_stack(all_stack, 0, 0, 1);
 	free(all_stack->dest_a);
 	free(all_stack->dest_b);
 	free(all_stack);
