@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 21:32:12 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/02 01:04:48 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/08 18:17:18 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	*convert(const int *stack, int *dest, int size, int *smaller)
 		}
 		i++;
 	}
-	//free(dest);
+	free(dest);
 	return (smaller);
 }

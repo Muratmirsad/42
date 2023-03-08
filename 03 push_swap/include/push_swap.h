@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:42 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/02 01:00:50 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/09 00:12:20 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct stack_holder
 	int	biggest;
 }	t_stack_holder;
 
-
 void	ft_error(int code);
 int		*read_arg(char **av, int *size, int i, int cnt);
 void	sorting(int *stack_a, int *stcak_b, int size_a);
@@ -40,6 +39,8 @@ void	sorting_small_stack(int *stack, int size, int *stack_b);
 void	sorting_big_stack(t_stack_holder *all, int bit, int bit_key, int key);
 void	push_back(t_stack_holder *all, int i, int j, int x);
 int		sort_control_main(int *stack, int size);
+int		*convert_to_intp(long *lp, int size);
+void	ft_intcontrol(long *ip, int size);
 void	ft_pa(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_pb(int *ipa, int *ipb, int *cnta, int *cntb);
 void	ft_ra(int *ip, int cnt);

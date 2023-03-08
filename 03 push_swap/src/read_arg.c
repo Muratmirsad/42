@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:40:50 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/02 01:16:11 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/09 00:25:52 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	ft_factor(char *p, int i)
 	return (1);
 }
 
-int	*ft_handle(char *p, int i, int factor, int cnt)
+long	*ft_handle(char *p, int i, int factor, int cnt)
 {
-	int	key;
-	int	nb;
-	int	*new;
+	int		key;
+	long	nb;
+	long	*new;
 
-	new = (int *)malloc(sizeof(int) * cnt);
+	new = (long *)malloc(sizeof(long) * cnt);
 	cnt = 0;
 	while (p[i])
 	{
@@ -69,34 +69,13 @@ void	ft_control(char *p)
 	}
 }
 
-void	ft_intcontrol(int *ip, int size)
+char	*ft_join(char **av)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (ip[i] == ip[j] || ip[j] > 2147483647 || ip[j] < -2147483648)
-			{
-				free(ip);
-				ft_error(3);
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-int	*read_arg(char **av, int *size, int i, int cnt)
-{
-	char	*p;
-	int		*intpointer;
 	char	*tmp;
+	char	*p;
+	int		i;
 
+	i = 2;
 	p = ft_strdup(av[1]);
 	while (av[i])
 	{
@@ -107,7 +86,16 @@ int	*read_arg(char **av, int *size, int i, int cnt)
 		p = ft_strjoin(tmp, av[i++]);
 		free(tmp);
 	}
-	i = 0;
+	return (p);
+}
+
+int	*read_arg(char **av, int *size, int i, int cnt)
+{
+	char	*p;
+	long	*intpointer;
+	int		*rint;
+
+	p = ft_join(av);
 	while (p[i++])
 	{
 		if (p[i] == 32 && p[i + 1] != 32)
@@ -116,6 +104,7 @@ int	*read_arg(char **av, int *size, int i, int cnt)
 	ft_control(p);
 	intpointer = ft_handle(p, 0, 1, cnt);
 	ft_intcontrol(intpointer, cnt);
+	rint = convert_to_intp(intpointer, cnt);
 	*size = cnt;
-	return (intpointer);
+	return (rint);
 }
