@@ -106,6 +106,5 @@ int	*read_arg(char **av, int *size, int i, int cnt)
 	ft_intcontrol(intpointer, cnt);
 	rint = convert_to_intp(intpointer, cnt);
 	*size = cnt;
-	free(intpointer);
 	return (rint);
 }
