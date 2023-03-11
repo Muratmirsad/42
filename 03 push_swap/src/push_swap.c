@@ -32,5 +32,3 @@ int	main(int ar, char **av)
 		sorting(stack_a, stack_b, size);
 	free(stack_b);
 }
-
-// int max error dönecek
