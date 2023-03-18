@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 14:31:40 by mdiraga           #+#    #+#             */
-/*   Updated: 2022/12/16 14:31:41 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/12/07 17:52:36 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/12/07 17:55:00 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-char	*get_next_line(int fd);
-char	*ft_strjoin_mod(char *s1, const char *s2);
-char	*ft_strchr(const char *str, int c);
-size_t	ft_strlen(const char *str);
-
-#endif
+int	ft_putstr(const char *str, int i)
+{
+	if (str == 0)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	i = 0;
+	while (*(str + i))
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}

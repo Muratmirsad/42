@@ -58,7 +58,7 @@ static char	*ft_run(int fd, int bytes, char *rstr, char *buff)
 		if (bytes == -1)
 			return (ft_error(str, buff));
 		buff[bytes] = 0;
-		str = ft_strjoin(str, buff);
+		str = ft_strjoin_mod(str, buff);
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}

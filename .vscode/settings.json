@@ -8,7 +8,9 @@
 		"libftprintf.h": "c",
 		"unistd.h": "c",
 		"ft_printf.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"get_next_line.h": "c",
+		"fcntl.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

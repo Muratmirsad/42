@@ -1,44 +1,30 @@
-NAME		=	so_long
-CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror
-MLX			=	mlx/Makefile.gen
-LFT			=	libft/libft.a
-INC			=	-I ./inc -I ./libft -I ./mlx
-LIB			=	-L ./libft -lft -L ./mlx -Lmlx -lmlx -framework OpenGL -framework AppKit
-OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
-SRC			=	main.c
+NAME=so_long
+CFLAGS = -Wall -Werror -Wextra -I./minilibx -g
+LFLAGS = -framework AppKit -framework OpenGL -L./minilibx -lmlx
+MLX = ./minilibx/libmlx.a
+LIBFT =	./ft_printf/libftprintf.a
+GET_NEXT_LINE = ./get_next_line/*.c
+SRCS = src/*.c
 
-all:		$(MLX) $(LFT) obj $(NAME)
+all : $(MLX) $(NAME)
 
-$(NAME):	$(OBJ)
-			$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
+$(NAME): $(SRCS) $(MLX) $(LIBFT) $(GET_NEXT_LINE)
+	@gcc $(CFLAGS) $(LFLAGS) $(SRCS) $(LIBFT) $(GET_NEXT_LINE) -o $(NAME)
 
 $(MLX):
-			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C mlx
-			@echo " [ OK ] | Minilibx ready!"
+	@make -C ./minilibx
 
-$(LFT):		
-			@echo " [ .. ] | Compiling libft.."
-			@make -s -C libft
-			@echo " [ OK ] | Libft ready!"
+$(LIBFT):
+	@make bonus -C ./ft_printf
 
-obj:
-			@mkdir -p obj
-
-obj/%.o:	src/%.c
-			$(CC) $(FLAGS) $(INC) -o $@ -c $<
 
 clean:
-			@make -s $@ -C libft
-			@rm -rf $(OBJ) obj
-			@echo "object files removed."
 
-fclean:		clean
-			@make -s $@ -C libft
-			@rm -rf $(NAME)
-			@echo "binary file removed."
+fclean: clean
+	@rm -rf $(NAME)
+	@make clean -C ./minilibx
+	@make fclean -C ./ft_printf
 
-re:			fclean all
+re : fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: clean fclean re

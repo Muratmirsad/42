@@ -51,7 +51,7 @@ static int	ft_add(const char *str, char *rstr, int irstr, int is)
 	return (irstr);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin_mod(char *s1, const char *s2)
 {
 	unsigned int	is;
 	unsigned int	irstr;
