@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 17:37:05 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/30 19:23:50 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 void	ft_error(void)
 {
 	write(1, "Error\n", 6);
-	system("leaks so_long");
 	exit(1);
 }
 
@@ -33,5 +44,18 @@ int	control_sq(char *c)
 		*c = 'e';
 		return (1);
 	}
+	return (0);
+}
+
+void	move_rule_7(int total_move)
+{
+	ft_printf("total move: %d\n", total_move);
+	exit(1);
+}
+
+int	exit_func(int keycode)
+{
+	ft_printf("exiting...\n");
+	exit(keycode);
 	return (0);
 }

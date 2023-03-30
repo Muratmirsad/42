@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 17:37:50 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/30 19:22:40 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 int	player_move2(int *player, char **map, int move)
@@ -50,9 +62,6 @@ int	player_move(int *player, char **map, int move)
 	else
 		move = player_move2(player, map, move);
 	if (map[player[1]][player[0]] == 'e' && !player[2])
-	{
-		system("leaks so_long");
 		exit(1);
-	}
 	return (move);
 }

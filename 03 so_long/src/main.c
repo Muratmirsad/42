@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 17:38:26 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/30 19:23:59 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
-#include <fcntl.h>
 
 int	main(int ar, char **av)
 {
@@ -20,8 +31,4 @@ int	main(int ar, char **av)
 	player[2] = t_holder->c_size;
 	map[player[1]][player[0]] = '2';
 	render(map, t_holder->last_column * 64, player);
-
-
-	system("leaks so_long");
-	write(1, "OK!\n", 5);
 }

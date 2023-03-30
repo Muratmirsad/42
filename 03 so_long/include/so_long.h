@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 17:36:58 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/30 17:56:45 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -5,6 +17,7 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include "../ft_printf/ft_printf.h"
+# include <fcntl.h>
 # include <stdlib.h>
 
 typedef struct map_stack
@@ -41,5 +54,7 @@ void	render(char **map, int height, int *player);
 void	convert_images(void *mlx_ptr, t_img_holder *t_imgs);
 int		control_sq(char *c);
 int		player_move(int *player, char **map, int move);
+void	move_rule_7(int total_move);
+int		exit_func(int keycode);
 
 #endif

@@ -1,6 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 17:36:53 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/03/30 19:23:18 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
-static void	put_window(t_img_holder *t_imgs, int height, char **map, int *p)
+static void	test(t_img_holder *t_i, int i, int j, int key)
+{
+	if (key == 1)
+		mlx_put_image_to_window(t_i->mlx, t_i->win, t_i->wall_ptr, j, i);
+	else if (key == 2)
+		mlx_put_image_to_window(t_i->mlx, t_i->win, t_i->coll_ptr, j, i);
+	else if (key == 3)
+		mlx_put_image_to_window(t_i->mlx, t_i->win, t_i->exit_ptr, j, i);
+	else if (key == 4)
+		mlx_put_image_to_window(t_i->mlx, t_i->win, t_i->void_ptr, j, i);
+	else if (key == 5)
+		mlx_put_image_to_window(t_i->mlx, t_i->win, t_i->void_ptr, j, i);
+	else if (key == 6)
+		mlx_put_image_to_window(t_i->mlx, t_i->win, t_i->player_ptr, i, j);
+}
+
+static void	put_window(t_img_holder *t_i, int height, char **map, int *p)
 {
 	int	i;
 	int	j;
@@ -12,31 +40,25 @@ static void	put_window(t_img_holder *t_imgs, int height, char **map, int *p)
 		while (map[i][j])
 		{
 			if (map[i][j] == '1')
-				mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->wall_ptr, j * 64, i * 64);
+				test(t_i, i * 64, j * 64, 1);
 			else if (map[i][j] == 'c')
-				mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->coll_ptr, j * 64, i * 64);
+				test(t_i, i * 64, j * 64, 2);
 			else if (map[i][j] == 'e')
-				mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->exit_ptr, j * 64, i * 64);
+				test(t_i, i * 64, j * 64, 3);
 			else if (map[i][j] == '2')
-				mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->void_ptr, j * 64, i * 64);
+				test(t_i, i * 64, j * 64, 4);
 			else if (map[i][j] == '0')
-				mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->void_ptr, j * 64, i * 64);
+				test(t_i, i * 64, j * 64, 5);
 			j++;
 		}
 		i++;
 	}
-	mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->player_ptr, p[0] * 64, p[1] * 64);
-}
-
-static void	move_rule_7(int total_move)
-{
-	ft_printf("total move: %d\n", total_move);
-	exit(1);
+	test(t_i, p[0] * 64, p[1] * 64, 6);
 }
 
 static void	player_xy(int *player, int move, char **map, t_img_holder *t_holder)
 {
-	static t_img_holder	*t_s_holder;
+	static t_img_holder	*t_s;
 	static char			**s_map;
 	static int			*s_player;
 	static int			total_move = 0;
@@ -46,18 +68,18 @@ static void	player_xy(int *player, int move, char **map, t_img_holder *t_holder)
 	{
 		s_player = player;
 		s_map = map;
-		t_s_holder = t_holder;
+		t_s = t_holder;
 		return ;
 	}
 	if (move == 7)
 		move_rule_7(total_move);
 	total_move += player_move(s_player, s_map, move);
-	mlx_clear_window(t_s_holder->mlx, t_s_holder->win);
-	put_window(t_s_holder, t_s_holder->height, s_map, t_s_holder->player);
+	mlx_clear_window(t_s->mlx, t_s->win);
+	put_window(t_s, t_s->height, s_map, t_s->player);
 	tmp = ft_itoa(total_move);
 	ft_printf("total move: %d\n", total_move);
-	mlx_put_image_to_window(t_s_holder->mlx, t_s_holder->win, t_s_holder->black_ptr, 18, 4);
-	mlx_string_put(t_s_holder->mlx, t_s_holder->win, 20, 20, 0xFFFFFF, tmp);
+	mlx_put_image_to_window(t_s->mlx, t_s->win, t_s->black_ptr, 18, 4);
+	mlx_string_put(t_s->mlx, t_s->win, 20, 20, 0xFFFFFF, tmp);
 	free(tmp);
 }
 
@@ -106,6 +128,6 @@ void	render(char **map, int height, int *player)
 	player_xy(player, 0, map, t_imgs);
 	put_window(t_imgs, height, map, player);
 	mlx_hook(win, 2, 1L << 0, key_func, NULL);
-
+	mlx_hook(win, 17, 1L << 17, exit_func, NULL);
 	mlx_loop(mlx);
 }
