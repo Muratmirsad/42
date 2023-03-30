@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:44 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/30 17:37:45 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/03/30 19:29:02 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	**read_map(t_map_stack *t_holder)
 	map = (char **)malloc(sizeof(char *) * 16);
 	while (1)
 	{
-		if (!(line = get_next_line(t_holder->fd)))
+		line = get_next_line(t_holder->fd);
+		if (!line)
 			break ;
 		map_control(line, map, t_holder);
 		map[i++] = line;
