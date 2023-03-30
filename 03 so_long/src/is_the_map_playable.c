@@ -100,4 +100,5 @@ void	is_the_map_playable(char **map, t_map_stack *t_holder)
 	if (!*key || key[1] != key[2])
 		ft_error();
 	t_holder->c_size = key[1];
+	free(key);
 }

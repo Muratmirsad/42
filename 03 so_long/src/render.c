@@ -28,12 +28,18 @@ static void	put_window(t_img_holder *t_imgs, int height, char **map, int *p)
 	mlx_put_image_to_window(t_imgs->mlx, t_imgs->win, t_imgs->player_ptr, p[0] * 64, p[1] * 64);
 }
 
+static void	move_rule_7(int total_move)
+{
+	ft_printf("total move: %d\n", total_move);
+	exit(1);
+}
+
 static void	player_xy(int *player, int move, char **map, t_img_holder *t_holder)
 {
 	static t_img_holder	*t_s_holder;
 	static char			**s_map;
 	static int			*s_player;
-	static int			total_move = 1;
+	static int			total_move = 0;
 	char				*tmp;
 
 	if (move == 0)
@@ -43,11 +49,13 @@ static void	player_xy(int *player, int move, char **map, t_img_holder *t_holder)
 		t_s_holder = t_holder;
 		return ;
 	}
-	tmp = ft_itoa(total_move);
-	ft_printf("total move: %d\n", total_move);
+	if (move == 7)
+		move_rule_7(total_move);
 	total_move += player_move(s_player, s_map, move);
 	mlx_clear_window(t_s_holder->mlx, t_s_holder->win);
 	put_window(t_s_holder, t_s_holder->height, s_map, t_s_holder->player);
+	tmp = ft_itoa(total_move);
+	ft_printf("total move: %d\n", total_move);
 	mlx_put_image_to_window(t_s_holder->mlx, t_s_holder->win, t_s_holder->black_ptr, 18, 4);
 	mlx_string_put(t_s_holder->mlx, t_s_holder->win, 20, 20, 0xFFFFFF, tmp);
 	free(tmp);
