@@ -14,24 +14,22 @@ static void	scan_map(char **map, int i, int j, int *key)
 {
 	if (is_e_here(map, i, j))
 		*key = 1;
-	if (map[i][j - 1] != '1' && map[i][j - 1] != '2' && !*key)
+	if (map[i][j] == 'c')
+		key[2]++;
+	if (control_sq(&map[i][j - 1]))
 	{
-		map[i][j - 1] = '2';
 		scan_map(map, i, j - 1, key);
 	}
-	if (map[i - 1][j] != '1' && map[i - 1][j] != '2' && !*key)
+	if (control_sq(&map[i - 1][j]))
 	{
-		map[i - 1][j] = '2';
 		scan_map(map, i - 1, j, key);
 	}
-	if (map[i][j + 1] != '1' && map[i][j + 1] != '2' && !*key)
+	if (control_sq(&map[i][j + 1]))
 	{
-		map[i][j + 1] = '2';
 		scan_map(map, i, j + 1, key);
 	}
-	if (map[i + 1][j + 1] != '1' && map[i + 1][j + 1] != '2' && !*key)
+	if (control_sq(&map[i + 1][j + 1]))
 	{
-		map[i + 1][j + 1] = '2';
 		scan_map(map, i + 1, j + 1, key);
 	}
 }
@@ -63,7 +61,7 @@ static int	wall_control(char **map, int last_column)
 	return (0);
 }
 
-static void	find_player(char **map, t_map_stack *t_holder)
+static void	find_p_and_c(char **map, t_map_stack *t_holder, int *key)
 {
 	int	i;
 	int	j;
@@ -78,8 +76,9 @@ static void	find_player(char **map, t_map_stack *t_holder)
 			{
 				t_holder->player_x = j;
 				t_holder->player_y = i;
-				return ;
 			}
+			else if (map[i][j] == 'C')
+				key[1]++;
 			j++;
 		}
 		i++;
@@ -88,13 +87,17 @@ static void	find_player(char **map, t_map_stack *t_holder)
 
 void	is_the_map_playable(char **map, t_map_stack *t_holder)
 {
-	int	key;
+	int	*key;
 
-	key = 0;
+	key = (int *)malloc(12);
+	key[0] = 0;
+	key[1] = 0;
+	key[2] = 0;
 	if (wall_control(map, t_holder->last_column))
 		ft_error();
-	find_player(map, t_holder);
-	scan_map(map, t_holder->player_y, t_holder->player_x, &key);
-	if (!key)
+	find_p_and_c(map, t_holder, key);
+	scan_map(map, t_holder->player_y, t_holder->player_x, key);
+	if (!*key || key[1] != key[2])
 		ft_error();
+	t_holder->c_size = key[1];
 }

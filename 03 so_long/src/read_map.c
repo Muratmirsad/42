@@ -24,7 +24,7 @@ static void	map_control(char *line, char **map, t_map_stack *t_holder)
 	int			i;
 
 	i = 0;
-	if (last_line != ft_strlen(line) && last_line != -1)
+	if (last_line != (int)ft_strlen(line) && last_line != -1)
 	{
 		while (i <= t_holder->last_column)
 			free(map[i++]);
