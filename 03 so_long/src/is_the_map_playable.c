@@ -6,72 +6,37 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:10 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/30 17:37:11 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/01 14:39:58 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/*static int	is_e_here(char **map, int i, int j)
-{
-	if (map[i][j - 1] == 'E'
-		|| map[i - 1][j] == 'E'
-		|| map[i][j + 1] == 'E'
-		|| map[i + 1][j + 1] == 'E')
-		return (1);
-	return (0);
-}
-
-static void	scan_map(char **map, int i, int j, int *key)
-{
-	if (is_e_here(map, i, j))
-		*key = 1;
-	if (map[i][j] == 'c')
-		key[2]++;
-	if (control_sq(&map[i][j - 1]))
-	{
-		scan_map(map, i, j - 1, key);
-	}
-	if (control_sq(&map[i - 1][j]))
-	{
-		scan_map(map, i - 1, j, key);
-	}
-	if (control_sq(&map[i][j + 1]))
-	{
-		scan_map(map, i, j + 1, key);
-	}
-	if (control_sq(&map[i + 1][j + 1]))
-	{
-		scan_map(map, i + 1, j + 1, key);
-	}
-}*/
 static int	scan_map(char **map, int row, int col, int *c)
 {
-    if (map[row][col] == 'E')
-        return 1; // Exit'a ulaşıldı.
+	if (map[row][col] == 'E')
+		return (1);
 	else if (map[row][col] == '1')
-        return 0; // Duvarla karşılaşıldı.
+		return (0);
 	else if (map[row][col] == '2' || map[row][col] == 'c')
-        return 0; // Zaten ziyaret edildi.
+		return (0);
 	else
 	{
-		// Matris üzerinde gezinme işlemi yapılır.
 		if (map[row][col] == '0')
-        	map[row][col] = '2'; // Ziyaret edildi olarak işaretlenir.
+			map[row][col] = '2';
 		else if (map[row][col] == 'C')
 		{
 			map[row][col] = 'c';
-			*c--;
+			c[0]--;
 		}
-    	if ((scan_map(map, row-1, col, c) || // Yukarıya gitmek.
-             scan_map(map, row+1, col, c) || // Aşağıya gitmek.
-             scan_map(map, row, col-1, c) || // Sola gitmek.
-             scan_map(map, row, col+1, c))   // Sağa gitmek.
-            == 1 && *c == 0)
-            return 1;
+		if ((scan_map(map, row - 1, col, c)
+				|| scan_map(map, row + 1, col, c)
+				|| scan_map(map, row, col - 1, c)
+				|| scan_map(map, row, col + 1, c)) == 1 && c[0] == 0)
+			return (1);
 		else
-            return 0;
-    }
+			return (0);
+	}
 }
 
 static int	wall_control(char **map, int last_column)
@@ -118,7 +83,7 @@ static void	find_p_and_c(char **map, t_map_stack *t_holder, int *c)
 				t_holder->player_y = i;
 			}
 			else if (map[i][j] == 'C')
-				*c++;
+				c[0]++;
 			j++;
 		}
 		i++;
@@ -130,11 +95,11 @@ void	is_the_map_playable(char **map, t_map_stack *t_holder)
 	int	*c;
 
 	c = (int *)malloc(4);
-	*c = 0;
+	c[0] = 0;
 	if (wall_control(map, t_holder->last_column))
 		ft_error();
 	find_p_and_c(map, t_holder, c);
-	t_holder->c_size = *c; //c size
+	t_holder->c_size = c[0];
 	if (!scan_map(map, t_holder->player_y, t_holder->player_x, c))
 		ft_error();
 }

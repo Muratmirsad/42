@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:50 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/30 19:22:40 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/01 15:14:53 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ int	player_move2(int *player, char **map, int move)
 	return (1);
 }
 
-int	player_move(int *player, char **map, int move)
+static void	static_exit_func(int total)
+{
+	ft_printf("total move: %d\n", total + 1);
+	exit(1);
+}
+
+int	player_move(int *player, char **map, int move, int total)
 {
 	if (move == 1 && map[player[1] - 1][player[0]] != '1')
 	{
@@ -61,7 +67,7 @@ int	player_move(int *player, char **map, int move)
 	}
 	else
 		move = player_move2(player, map, move);
-	if (map[player[1]][player[0]] == 'e' && !player[2])
-		exit(1);
+	if (map[player[1]][player[0]] == 'E' && !player[2])
+		static_exit_func(total);
 	return (move);
 }

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:36:53 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/30 19:23:18 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/01 15:09:28 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ static void	player_xy(int *player, int move, char **map, t_img_holder *t_holder)
 	}
 	if (move == 7)
 		move_rule_7(total_move);
+	total_move += player_move(s_player, s_map, move, total_move);
 	tmp = ft_itoa(total_move);
 	ft_printf("total move: %d\n", total_move);
-	total_move += player_move(s_player, s_map, move);
 	mlx_clear_window(t_s->mlx, t_s->win);
 	put_window(t_s, t_s->height, s_map, t_s->player);
 	mlx_put_image_to_window(t_s->mlx, t_s->win, t_s->black_ptr, 18, 4);

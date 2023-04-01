@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:44 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/03/30 19:29:02 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/01 15:04:19 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,28 @@ static int	char_control(char c, t_map_stack *t_holder)
 	return (0);
 }
 
-static void	map_control(char *line, char **map, t_map_stack *t_holder)
+void	free_utils(t_map_stack *t_holder, char **map, char *line)
 {
-	static int	last_line = -1;
-	int			i;
+	int	i;
 
 	i = 0;
-	if (last_line != (int)ft_strlen(line) && last_line != -1)
-	{
-		while (i <= t_holder->last_column)
-			free(map[i++]);
-		free(map);
-		free(line);
-		ft_error();
-	}
+	while (i <= t_holder->last_column)
+		free(map[i++]);
+	free(map);
+	free(line);
+	ft_error();
+}
+
+static void	map_control(char *line, char **map, t_map_stack *t_holder)
+{
+	static int	last_line = -2;
+	int			i;
+
+	if (line[(int)ft_strlen(line) - 1] != '\n')
+		last_line--;
+	if (last_line != (int)ft_strlen(line) && last_line != -2)
+		free_utils(t_holder, map, line);
+	i = 0;
 	while (line[i])
 	{
 		if (!char_control(line[i++], t_holder))
