@@ -43,7 +43,7 @@ static void	put_window(t_img_holder *t_i, int height, char **map, int *p)
 				test(t_i, i * 64, j * 64, 1);
 			else if (map[i][j] == 'c')
 				test(t_i, i * 64, j * 64, 2);
-			else if (map[i][j] == 'e')
+			else if (map[i][j] == 'E')
 				test(t_i, i * 64, j * 64, 3);
 			else if (map[i][j] == '2')
 				test(t_i, i * 64, j * 64, 4);
@@ -73,11 +73,11 @@ static void	player_xy(int *player, int move, char **map, t_img_holder *t_holder)
 	}
 	if (move == 7)
 		move_rule_7(total_move);
+	tmp = ft_itoa(total_move);
+	ft_printf("total move: %d\n", total_move);
 	total_move += player_move(s_player, s_map, move);
 	mlx_clear_window(t_s->mlx, t_s->win);
 	put_window(t_s, t_s->height, s_map, t_s->player);
-	tmp = ft_itoa(total_move);
-	ft_printf("total move: %d\n", total_move);
 	mlx_put_image_to_window(t_s->mlx, t_s->win, t_s->black_ptr, 18, 4);
 	mlx_string_put(t_s->mlx, t_s->win, 20, 20, 0xFFFFFF, tmp);
 	free(tmp);

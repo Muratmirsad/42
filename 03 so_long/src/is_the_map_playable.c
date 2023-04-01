@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-static int	is_e_here(char **map, int i, int j)
+/*static int	is_e_here(char **map, int i, int j)
 {
 	if (map[i][j - 1] == 'E'
 		|| map[i - 1][j] == 'E'
@@ -44,6 +44,34 @@ static void	scan_map(char **map, int i, int j, int *key)
 	{
 		scan_map(map, i + 1, j + 1, key);
 	}
+}*/
+static int	scan_map(char **map, int row, int col, int *c)
+{
+    if (map[row][col] == 'E')
+        return 1; // Exit'a ulaşıldı.
+	else if (map[row][col] == '1')
+        return 0; // Duvarla karşılaşıldı.
+	else if (map[row][col] == '2' || map[row][col] == 'c')
+        return 0; // Zaten ziyaret edildi.
+	else
+	{
+		// Matris üzerinde gezinme işlemi yapılır.
+		if (map[row][col] == '0')
+        	map[row][col] = '2'; // Ziyaret edildi olarak işaretlenir.
+		else if (map[row][col] == 'C')
+		{
+			map[row][col] = 'c';
+			*c--;
+		}
+    	if ((scan_map(map, row-1, col, c) || // Yukarıya gitmek.
+             scan_map(map, row+1, col, c) || // Aşağıya gitmek.
+             scan_map(map, row, col-1, c) || // Sola gitmek.
+             scan_map(map, row, col+1, c))   // Sağa gitmek.
+            == 1 && *c == 0)
+            return 1;
+		else
+            return 0;
+    }
 }
 
 static int	wall_control(char **map, int last_column)
@@ -73,7 +101,7 @@ static int	wall_control(char **map, int last_column)
 	return (0);
 }
 
-static void	find_p_and_c(char **map, t_map_stack *t_holder, int *key)
+static void	find_p_and_c(char **map, t_map_stack *t_holder, int *c)
 {
 	int	i;
 	int	j;
@@ -90,7 +118,7 @@ static void	find_p_and_c(char **map, t_map_stack *t_holder, int *key)
 				t_holder->player_y = i;
 			}
 			else if (map[i][j] == 'C')
-				key[1]++;
+				*c++;
 			j++;
 		}
 		i++;
@@ -99,18 +127,14 @@ static void	find_p_and_c(char **map, t_map_stack *t_holder, int *key)
 
 void	is_the_map_playable(char **map, t_map_stack *t_holder)
 {
-	int	*key;
+	int	*c;
 
-	key = (int *)malloc(12);
-	key[0] = 0;
-	key[1] = 0;
-	key[2] = 0;
+	c = (int *)malloc(4);
+	*c = 0;
 	if (wall_control(map, t_holder->last_column))
 		ft_error();
-	find_p_and_c(map, t_holder, key);
-	scan_map(map, t_holder->player_y, t_holder->player_x, key);
-	if (!*key || key[1] != key[2])
+	find_p_and_c(map, t_holder, c);
+	t_holder->c_size = *c; //c size
+	if (!scan_map(map, t_holder->player_y, t_holder->player_x, c))
 		ft_error();
-	t_holder->c_size = key[1];
-	free(key);
 }
