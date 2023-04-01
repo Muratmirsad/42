@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:10 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/04/01 14:39:58 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/01 17:11:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	is_the_map_playable(char **map, t_map_stack *t_holder)
 	if (wall_control(map, t_holder->last_column))
 		ft_error();
 	find_p_and_c(map, t_holder, c);
+	if (c[0] == 0)
+		ft_error();
 	t_holder->c_size = c[0];
 	if (!scan_map(map, t_holder->player_y, t_holder->player_x, c))
 		ft_error();
