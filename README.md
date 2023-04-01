@@ -1,6 +1,6 @@
-### 42 Projects
+# 42 Projects
 
-# 01 libft
+## 01 libft
 
 A library in c language written by myself.
 
