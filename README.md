@@ -1,4 +1,6 @@
-### 42 Projects
+# 42 Projects
+
+# ----- PART 1 -----
 
 ## 01 libft
 
@@ -34,5 +36,6 @@ An algorithm that sorts entered numbers using only certain commands.
 
 2D game I made in c language using minilibx library.
 
+# ----- PART 2 -----
 
 that's all for now :)
