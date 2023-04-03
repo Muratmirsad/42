@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:50 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/04/02 23:54:57 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/03 04:03:54 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	player_move(int *player, char **map, int move, int total)
 	}
 	else
 		move = player_move2(player, map, move);
-	if (map[player[1]][player[0]] == 'E' && !player[2])
+	if (map[player[1]][player[0]] == 'e' && !player[2])
 		static_exit_func(total);
 	return (move);
 }

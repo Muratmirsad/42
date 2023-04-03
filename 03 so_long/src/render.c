@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:36:53 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/04/01 15:09:28 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/03 04:03:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	put_window(t_img_holder *t_i, int height, char **map, int *p)
 				test(t_i, i * 64, j * 64, 1);
 			else if (map[i][j] == 'c')
 				test(t_i, i * 64, j * 64, 2);
-			else if (map[i][j] == 'E')
+			else if (map[i][j] == 'e')
 				test(t_i, i * 64, j * 64, 3);
 			else if (map[i][j] == '2')
 				test(t_i, i * 64, j * 64, 4);

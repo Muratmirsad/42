@@ -6,29 +6,41 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:37:10 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/04/02 23:53:56 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/04/03 04:11:24 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+static void	control_func(char **map, int row, int col, int *c)
+{
+	if (map[row][col] == '0')
+		map[row][col] = '2';
+	else if (map[row][col] == 'C')
+	{
+		map[row][col] = 'c';
+		c[0]--;
+	}
+	else if (map[row][col] == 'E')
+	{
+		map[row][col] = 'e';
+		c[1]--;
+	}
+}
+
 static int	scan_map(char **map, int row, int col, int *c)
 {
-	if (map[row][col] == 'E')
+	if (!c[0] && !c[1])
 		return (1);
 	else if (map[row][col] == '1')
 		return (0);
-	else if (map[row][col] == '2' || map[row][col] == 'c')
+	else if (map[row][col] == '2'
+				|| map[row][col] == 'c'
+				|| map[row][col] == 'e')
 		return (0);
 	else
 	{
-		if (map[row][col] == '0')
-			map[row][col] = '2';
-		else if (map[row][col] == 'C')
-		{
-			map[row][col] = 'c';
-			c[0]--;
-		}
+		control_func(map, row, col, c);
 		if ((scan_map(map, row - 1, col, c)
 				|| scan_map(map, row + 1, col, c)
 				|| scan_map(map, row, col - 1, c)
@@ -94,8 +106,9 @@ void	is_the_map_playable(char **map, t_map_stack *t_holder)
 {
 	int	*c;
 
-	c = (int *)malloc(4);
+	c = (int *)malloc(8);
 	c[0] = 0;
+	c[1] = 1;
 	if (wall_control(map, t_holder->last_column))
 		ft_error();
 	find_p_and_c(map, t_holder, c);
