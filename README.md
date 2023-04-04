@@ -44,6 +44,6 @@ An algorithm that sorts entered numbers using only certain commands.
 ## 04 philosophers
 
 My notes;
-https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/WrVp36g59kj5_jlKq5xEpodXb9m_pZncZ8OrVFyHrHOpVN_9nNha4wfp7A
+https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/Fcnqy8PrGmdcjU2HJldjUOYMHt_I9_Ff4O9S8zB6jLvyafz68_4K7PXckg
 
 that's all for now :)
