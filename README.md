@@ -43,7 +43,6 @@ An algorithm that sorts entered numbers using only certain commands.
 
 ## 04 philosophers
 
-
 My notes;
 https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/WrVp36g59kj5_jlKq5xEpodXb9m_pZncZ8OrVFyHrHOpVN_9nNha4wfp7A
 
