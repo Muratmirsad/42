@@ -38,4 +38,9 @@ An algorithm that sorts entered numbers using only certain commands.
 
 # ----- PART 2 -----
 
+## 04 philosophers
+
+
+My notes: https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/
+
 that's all for now :)
