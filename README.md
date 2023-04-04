@@ -11,7 +11,8 @@ A library in c language written by myself.
 
 Debian server I created. *Files are not in this repo.
 
-My notes but the notes are in Turkish: https://www.evernote.com/shard/s455/sh/2c3cfdf2-83a1-b965-c04f-8e55054210e3/ZgUXuRl0csh9bDU0T5cB_2oOIlI_p9qSckDHq2QAgHn1ZW6T0XoPNIZdYg
+My notes but the notes are in Turkish;
+https://www.evernote.com/shard/s455/sh/2c3cfdf2-83a1-b965-c04f-8e55054210e3/ZgUXuRl0csh9bDU0T5cB_2oOIlI_p9qSckDHq2QAgHn1ZW6T0XoPNIZdYg
 
 
 ## 02 ft_printf
@@ -43,6 +44,7 @@ An algorithm that sorts entered numbers using only certain commands.
 ## 04 philosophers
 
 
-My notes: https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/
+My notes;
+https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/WrVp36g59kj5_jlKq5xEpodXb9m_pZncZ8OrVFyHrHOpVN_9nNha4wfp7A
 
 that's all for now :)
