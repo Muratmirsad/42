@@ -11,7 +11,7 @@ A library in c language written by myself.
 
 Debian server I created. *Files are not in this repo.
 
-My notes but the notes are in Turkish;
+My notes; (TR)
 https://www.evernote.com/shard/s455/sh/2c3cfdf2-83a1-b965-c04f-8e55054210e3/ZgUXuRl0csh9bDU0T5cB_2oOIlI_p9qSckDHq2QAgHn1ZW6T0XoPNIZdYg
 
 
@@ -43,7 +43,7 @@ An algorithm that sorts entered numbers using only certain commands.
 
 ## 04 philosophers
 
-My notes;
+My notes; (EN)
 https://www.evernote.com/shard/s455/sh/8332472c-9f1d-32f4-ebab-36c7252a5bcb/Fcnqy8PrGmdcjU2HJldjUOYMHt_I9_Ff4O9S8zB6jLvyafz68_4K7PXckg
 
 that's all for now :)
