@@ -23,6 +23,7 @@ $(LIBFT):
 clean:
 	@make fclean -C ./libft
 	@make fclean -C ./ft_printf
+	@rm -rf *.dSYM
 
 fclean: clean
 	@rm -rf $(NAME)
