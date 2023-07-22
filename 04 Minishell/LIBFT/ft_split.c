@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_spilt.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:37:24 by bkarlida          #+#    #+#             */
-/*   Updated: 2022/10/27 14:42:55 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:51:07 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	word_count(char const *s, char c)
 	flag = 0;
 	count = 0;
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 	{
 		if (s[i] == c)
@@ -42,7 +44,7 @@ char	*malloc_str(char const *s, char c)
 
 	i = 0;
 	while (s[i] && s[i] != c)
-			i++;
+		i++;
 	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (!word)
 		return (0);
@@ -62,7 +64,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 
-	if (!s)
+	if (s == NULL)
 		return (0);
 	split = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
 	if (!split)

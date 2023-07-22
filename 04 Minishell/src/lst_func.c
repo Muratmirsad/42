@@ -6,13 +6,13 @@
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:05:56 by burakkarlid       #+#    #+#             */
-/*   Updated: 2023/06/06 16:37:22 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:34:12 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
-void	link_lstadd_back(link_list **lst, link_list *new)
+void	link_lstadd_back(t_ink_list **lst, t_ink_list *new)
 {
 	if (*lst == NULL)
 	{
@@ -22,9 +22,9 @@ void	link_lstadd_back(link_list **lst, link_list *new)
 	link_lstlast(*lst)->next = new;
 }
 
-void	link_lstclear(link_list **lst)
+void	link_lstclear(t_ink_list **lst)
 {
-	link_list	*tmp;
+	t_ink_list	*tmp;
 
 	if (!lst)
 	{
@@ -38,16 +38,15 @@ void	link_lstclear(link_list **lst)
 	}
 }
 
-void	link_lstdelone(link_list *lst)
+void	link_lstdelone(t_ink_list *lst)
 {
 	if (!lst)
 		return ;
-		
 	free(lst->content);
 	free(lst);
 }
 
-link_list	*link_lstlast(link_list *lst)
+t_ink_list	*link_lstlast(t_ink_list *lst)
 {
 	if (lst == NULL)
 		return (NULL);
@@ -58,31 +57,15 @@ link_list	*link_lstlast(link_list *lst)
 	return (lst);
 }
 
-link_list	*link_lstnew(char *content, char flag)
+t_ink_list	*link_lstnew(char *content, char flag)
 {
-	link_list	*str;
+	t_ink_list	*str;
 
-	str = malloc(sizeof(link_list));
+	str = malloc(sizeof(t_ink_list));
 	if (!str)
 		return (0);
 	str->content = content;
 	str->flag = flag;
-	str->extra_flag = 1;
 	str->next = NULL;
 	return (str);
-}
-
-int	link_lstsize(link_list *lst)
-{
-	int	i;
-	link_list	*temp;
-
-	i = 0;
-	temp = lst;
-	while (temp)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i);
 }

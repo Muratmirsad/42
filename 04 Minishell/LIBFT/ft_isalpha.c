@@ -6,7 +6,7 @@
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:36:14 by bkarlida          #+#    #+#             */
-/*   Updated: 2023/06/02 16:51:51 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:03:04 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_isalpha(char a)
 {
 	if ((a >= 'A' && a <= 'Z') || (a >= 'a' && a <= 'z'))
-		return(1);
+		return (1);
 	return (0);
 }

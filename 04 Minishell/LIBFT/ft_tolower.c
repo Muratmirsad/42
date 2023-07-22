@@ -6,7 +6,7 @@
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:22:01 by bkarlida          #+#    #+#             */
-/*   Updated: 2023/05/17 09:08:41 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:01:10 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*ft_tolower(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z')
 			str[i] += 32;
-		i++;			
+		i++;
 	}
-	return(str);
+	return (str);
 }

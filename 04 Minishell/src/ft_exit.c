@@ -6,16 +6,37 @@
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 02:15:47 by bkarlida          #+#    #+#             */
-/*   Updated: 2023/05/27 02:17:16 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:08:40 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
+
+int	len_equal(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '=')
+		i++;
+	return (i);
+}
+
+int	is_equal(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '=')
+			return (0);
+	return (1);
+}
 
 int	arg_isdigit(char *a)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = ft_strlen(a);
@@ -29,15 +50,15 @@ int	arg_isdigit(char *a)
 
 void	ft_exit(void)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (g_var.str[i + 1] == NULL)
 	{
 		printf("exit\n");
-		exit(0);
+		exit(1);
 	}
-	else if(arg_isdigit(g_var.str[i + 1]) && g_var.str[i + 2] != NULL)
+	else if (arg_isdigit(g_var.str[i + 1]) && g_var.str[i + 2] != NULL)
 	{
 		printf("exit\n");
 		printf("minishell$: exit: too many arguments\n");
@@ -45,12 +66,25 @@ void	ft_exit(void)
 	else if (arg_isdigit(g_var.str[i + 1]) && g_var.str[i + 2] == NULL)
 	{
 		printf("exit\n");
-		exit(0);
+		exit(ft_atoi(g_var.str[i + 1]));
 	}
 	else
 	{
 		printf("exit\n");
-		printf("minishell$: exit: %s: numeric argument required", g_var.str[i + 1]);
-		exit(0);
+		printf("minishell$: exit: %s: numeric argument required",
+			g_var.str[i + 1]);
+		exit(255);
 	}
+}
+
+int	double_len(char **str)
+{
+	int	i;
+
+	if (!str)
+		return (-1);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

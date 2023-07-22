@@ -6,7 +6,7 @@
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:32:14 by bkarlida          #+#    #+#             */
-/*   Updated: 2023/05/21 00:46:01 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:01:28 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (1);
 	}
 	else
-		return(0);
+		return (0);
 }

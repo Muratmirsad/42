@@ -6,34 +6,11 @@
 /*   By: bkarlida <bkarlida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 13:14:01 by bkarlida          #+#    #+#             */
-/*   Updated: 2023/06/06 19:48:09 by bkarlida         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:33:24 by bkarlida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-
-int	len_equal(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != '=')
-		i++;
-	return (i);
-}
-
-int	is_equal(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == '=')
-			return (0);
-	return (1);
-}
-
+#include "../include/minishell.h"
 
 int	export_equal(char *str)
 {
@@ -110,19 +87,19 @@ void	ft_export(void)
 	int	i;
 	int	len;
 
-	len = splt_len(g_var.str);
+	len = splt_len(g_var.cmds[0]->str);
 	i = 0;
 	while (++i < len)
 	{
-		if (is_alphanum(g_var.str[i],
-				len_equal(g_var.str[i])))
+		if (is_alphanum(g_var.cmds[0]->str[i],
+				len_equal(g_var.cmds[0]->str[i])))
 		{
-			export_fn(g_var.str[i]);
-			if (!is_equal(g_var.str[i]))
-				env_fn(g_var.str[i]);
+			export_fn(g_var.cmds[0]->str[i]);
+			if (!is_equal(g_var.cmds[0]->str[i]))
+				env_fn(g_var.cmds[0]->str[i]);
 		}
 		else
 			printf("minishell: export: %s: not a valid identifier\n",
-				g_var.str[i]);
+				g_var.cmds[0]->str[i]);
 	}
 }
