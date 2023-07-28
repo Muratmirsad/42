@@ -11,7 +11,11 @@
 		"push_swap.h": "c",
 		"get_next_line.h": "c",
 		"fcntl.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"__locale": "c",
+		"locale": "c",
+		"atomic": "c",
+		"bitset": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
