@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:41:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/07/28 14:30:32 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/07/30 15:09:27 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,25 @@ void	exit_func(t_args *t_av, int i)
 	else if (i == 2)
 	{
 		printf("Enter only positive integers.\n");
-		free(t_av);
-	}
-	else if (i == 3 || i == 4)
-	{
-		if (i == 4)
-			printf("Each of the philosophers ate %d times.\n", t_av->notep);
-		free(t_av->ids);
-		free(t_av->not_control);
 		free(t_av->threads);
 		free(t_av->fork);
 		free(t_av);
 	}
+	else if (i == 3 || i == 4)
+	{
+		if (!t_av->any_dead)
+			printf("Each of the philosophers ate %d times.\n", t_av->notep);
+		i = 0;
+		while (i < t_av->nop + 1)
+		{
+			free(t_av->tmp_hold[i]);
+			i++;
+		}
+		free(t_av->tmp_hold);
+		free(t_av->threads);
+		free(t_av->fork);
+	}
+	//!system("leaks philo");
 	exit (i);
 }
 
