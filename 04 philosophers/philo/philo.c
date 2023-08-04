@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/07/30 15:12:36 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/04 16:04:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static void	*dead_func(t_thread *t_one, long long a)
 	}
 	t_one->t_av->any_dead = 1;
 	pthread_mutex_unlock(&t_one->m_dead[0]);
-	usleep((t_one->tte + t_one->tts + 50) * 1000);
-	printf("%lld %d is dead\n", a + t_one->tte + t_one->tts + 50, t_one->id);
 	pthread_mutex_unlock(&t_one->v_fork[0]);
 	pthread_mutex_unlock(&t_one->next->v_fork[0]);
+	usleep((t_one->tte + t_one->tts + 50) * 1000);
+	printf("%lld %d is dead\n", a + t_one->tte + 5, t_one->id);
 	pthread_exit(NULL);
 }
 
@@ -51,6 +51,7 @@ static void	*pthread_func(void *arg)
 		pthread_mutex_lock(&t_one->next->v_fork[0]);
 		gettimeofday(&ct, NULL);
 		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+		//printf("a - b: %lld\n", a - b);
 		if (a - b > t_one->ttd && b)
 			if (dead_func(t_one, a) == NULL)
 				pthread_exit(NULL);
@@ -64,9 +65,12 @@ static void	*pthread_func(void *arg)
 		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
 		printf("%lld %d is sleeping\n", a, t_one->id);
 		usleep(t_one->tts * 1000);
-		if (--t_one->notep == 0)
+		pthread_mutex_lock(&t_one->m_dead[0]);
+		if (--t_one->notep == 0 || t_one->t_av->any_dead)
 			break ;
+		pthread_mutex_unlock(&t_one->m_dead[0]);
 	}
+	pthread_mutex_unlock(&t_one->m_dead[0]);
 	pthread_exit(NULL);
 }
 
@@ -120,8 +124,11 @@ static void	philo_handle(t_args *t_av)
 	init_helper(t_av);
 	i = -1;
 	while (++i < t_av->nop)
+	{
 		pthread_create(&t_av->threads[i], NULL,
 			pthread_func, t_av->tmp_hold[i]);
+		usleep(2);
+	}
 	i = 0;
 	while (i < t_av->nop)
 		pthread_join(t_av->threads[i++], NULL);

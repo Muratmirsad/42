@@ -1,21 +1,3 @@
 {
-	"github.gitProtocol": "ssh",
-	"files.associations": {
-		"stdio.h": "c",
-		"libft.h": "c",
-		"stdlib.h": "c",
-		"stdarg.h": "c",
-		"libftprintf.h": "c",
-		"unistd.h": "c",
-		"ft_printf.h": "c",
-		"push_swap.h": "c",
-		"get_next_line.h": "c",
-		"fcntl.h": "c",
-		"minishell.h": "c",
-		"__locale": "c",
-		"locale": "c",
-		"atomic": "c",
-		"bitset": "c"
-	},
-	"C_Cpp.errorSquiggles": "disabled"
+	"workbench.useExperimentalGridLayout": true,
 }
