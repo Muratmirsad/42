@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:42:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/05 16:59:53 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/05 22:36:47 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ typedef struct s_philo
 void		exit_func(t_args *t_av, int i);
 void		check_args(t_args *t_av, char **av);
 void		one_philo(t_args *t_av);
+void		t_av_init_helper(t_args *t_av);
+void		ft_eating(t_thread *t_one, long long a);
+void		ft_sleeping(t_thread *t_one, long long a);
+int			ft_thinking(t_thread *t_one, int key);
 int			ft_atoi(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:41:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/05 17:35:12 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/06 00:23:50 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	exit_func(t_args *t_av, int i)
 	{
 		if (!t_av->any_dead)
 			printf("Each of the philosophers ate %d times.\n", t_av->notep);
-		// i = 0;
-		// while (i < t_av->nop + 1)
-		// {
-		// 	free(t_av->tmp_hold[i]);
-		// 	i++;
-		// }
-		// free(t_av->tmp_hold);
-		// free(t_av->threads);
-		// free(t_av->fork);
+		i = 0;
+		while (i < t_av->nop)
+		{
+			free(t_av->tmp_hold[i]);
+			i++;
+		}
+		free(t_av->tmp_hold);
+		free(t_av->threads);
+		free(t_av->fork);
 	}
 	else if (i == 5)
 		free(t_av);
@@ -72,4 +72,12 @@ void	check_args(t_args *t_av, char **av)
 		i++;
 	}
 	convert_args(t_av, av);
+}
+
+void	t_av_init_helper(t_args *t_av)
+{
+	t_av->threads = (pthread_t *)malloc(sizeof(t_av->threads) * t_av->nop);
+	t_av->fork
+		= (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * (t_av->nop + 1));
+	t_av->tmp_hold = (t_thread **)malloc(sizeof(t_thread *) * t_av->nop);
 }

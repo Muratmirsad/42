@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/05 18:11:28 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/05 22:35:50 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,42 +29,33 @@ static void	*dead_func(t_thread *t_one, long long a)
 	pthread_mutex_unlock(&t_one->v_fork[0]);
 	pthread_mutex_unlock(&t_one->next->v_fork[0]);
 	usleep((t_one->tte + t_one->tts + 50) * 1000);
-	printf("%lld %d is dead\n", a + t_one->tte + 5, t_one->id);
+	if (t_one->nop % 2)
+		printf("%lld %d is dead\n", a + t_one->tte + 5, t_one->id);
+	else
+		printf("%lld %d is dead\n", a + 5, t_one->id);
 	pthread_exit(NULL);
 }
 
 static void	*pthread_func(void *arg)
 {
-	struct timeval	ct;
-	t_thread		*t_one;
-	long long		a;
-	long long		b;
+	t_thread	*t_one;
+	long long	a;
+	long long	b;
 
 	t_one = (t_thread *)arg;
-	b = 0;
 	while (1)
 	{
-		gettimeofday(&ct, NULL);
-		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-		b = a;
-		printf("%lld %d is thinking\n", a, t_one->id);
+		b = ft_thinking(t_one, 1);
 		pthread_mutex_lock(&t_one->v_fork[0]);
 		pthread_mutex_lock(&t_one->next->v_fork[0]);
-		gettimeofday(&ct, NULL);
-		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-		//printf("a - b: %lld\n", a - b);
+		a = ft_thinking(t_one, 0);
 		if (a - b > t_one->ttd)
 			if (dead_func(t_one, a) == NULL)
 				pthread_exit(NULL);
-		printf("%lld %d has taken a fork\n", a, t_one->id);
-		printf("%lld %d is eating\n", a, t_one->id);
-		usleep(t_one->tte * 1000);
+		ft_eating(t_one, a);
 		pthread_mutex_unlock(&t_one->v_fork[0]);
 		pthread_mutex_unlock(&t_one->next->v_fork[0]);
-		gettimeofday(&ct, NULL);
-		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-		printf("%lld %d is sleeping\n", a, t_one->id);
-		usleep(t_one->tts * 1000);
+		ft_sleeping(t_one, a);
 		pthread_mutex_lock(&t_one->m_dead[0]);
 		if (--t_one->notep == 0 || t_one->t_av->any_dead)
 			break ;
@@ -108,10 +99,7 @@ static void	philo_handle(t_args *t_av)
 	t_thread	*tmp;
 	int			i;
 
-	t_av->threads = (pthread_t *)malloc(sizeof(t_av->threads) * t_av->nop);
-	t_av->fork
-		= (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * (t_av->nop + 1));
-	t_av->tmp_hold = (t_thread **)malloc(sizeof(t_thread *) * t_av->nop);
+	t_av_init_helper(t_av);
 	i = 0;
 	while (i < t_av->nop + 1)
 	{
