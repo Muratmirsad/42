@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:41:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/07/30 18:08:11 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/05 17:35:12 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	exit_func(t_args *t_av, int i)
 	else if (i == 2)
 	{
 		printf("Enter only positive integers.\n");
-		free(t_av->threads);
-		free(t_av->fork);
 		free(t_av);
 	}
 	else if (i == 3 || i == 4)
@@ -54,6 +52,8 @@ void	exit_func(t_args *t_av, int i)
 		// free(t_av->threads);
 		// free(t_av->fork);
 	}
+	else if (i == 5)
+		free(t_av);
 	exit (i);
 }
 

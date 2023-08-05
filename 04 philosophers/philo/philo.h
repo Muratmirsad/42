@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:42:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/07/30 15:11:59 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/05 16:59:53 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_philo
 
 void		exit_func(t_args *t_av, int i);
 void		check_args(t_args *t_av, char **av);
+void		one_philo(t_args *t_av);
 int			ft_atoi(char *str);
 
 #endif

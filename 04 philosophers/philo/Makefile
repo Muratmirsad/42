@@ -1,6 +1,6 @@
 NAME = philo
 CFLAGS = -Wall -Werror -Wextra -fsanitize=thread -g
-SRCS = ft_atoi.c philo.c utils.c
+SRCS = philo.c utils.c one_philo.c ft_atoi.c
 
 all : $(NAME)
 

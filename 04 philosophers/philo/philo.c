@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/04 16:04:45 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/05 18:11:28 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ static void	*pthread_func(void *arg)
 	{
 		gettimeofday(&ct, NULL);
 		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+		b = a;
 		printf("%lld %d is thinking\n", a, t_one->id);
 		pthread_mutex_lock(&t_one->v_fork[0]);
 		pthread_mutex_lock(&t_one->next->v_fork[0]);
 		gettimeofday(&ct, NULL);
 		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
 		//printf("a - b: %lld\n", a - b);
-		if (a - b > t_one->ttd && b)
+		if (a - b > t_one->ttd)
 			if (dead_func(t_one, a) == NULL)
 				pthread_exit(NULL);
-		b = a;
 		printf("%lld %d has taken a fork\n", a, t_one->id);
 		printf("%lld %d is eating\n", a, t_one->id);
 		usleep(t_one->tte * 1000);
@@ -144,6 +144,8 @@ int	main(int ar, char **av)
 	t_av = (t_args *)malloc(sizeof(t_args));
 	t_av->ar = ar;
 	check_args(t_av, av);
+	if (t_av->nop < 2)
+		one_philo(t_av);
 	philo_handle(t_av);
 	return (0);
 }
