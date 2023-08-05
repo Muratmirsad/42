@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:36:16 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/05 22:36:17 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/06 00:32:41 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,28 @@ int	ft_thinking(t_thread *t_one, int key)
 	if (key)
 		printf("%lld %d is thinking\n", a, t_one->id);
 	return (a);
+}
+
+static void	*one_philo_help(void *arg)
+{
+	t_args	*t_av;
+
+	t_av = (t_args *)arg;
+	printf("0 1 has taken a fork\n");
+	printf("%d 1 died\n", t_av->ttd);
+	pthread_exit(NULL);
+}
+
+void	one_philo(t_args *t_av)
+{
+	pthread_t	philo;
+
+	if (!t_av->nop)
+		printf("number of philosophers cannot be 0.\n");
+	else
+	{
+		pthread_create(&philo, NULL, one_philo_help, t_av);
+		pthread_join(philo, NULL);
+	}
+	exit_func(t_av, 5);
 }
