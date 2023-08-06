@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils_helper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:36:16 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/06 00:32:41 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/06 20:09:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_eating(t_thread *t_one, long long a)
+int	ft_eating(t_thread *t_one, long long a)
 {
+	struct timeval	ct;
+
 	printf("%lld %d has taken a fork\n", a, t_one->id);
 	printf("%lld %d is eating\n", a, t_one->id);
 	usleep(t_one->tte * 1000);
+	gettimeofday(&ct, NULL);
+	pthread_mutex_unlock(&t_one->v_fork[0]);
+	pthread_mutex_unlock(&t_one->next->v_fork[0]);
+	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	return (a);
 }
 
-void	ft_sleeping(t_thread *t_one, long long a)
+int	ft_sleeping(t_thread *t_one, long long a)
 {
 	struct timeval	ct;
 
@@ -27,6 +34,9 @@ void	ft_sleeping(t_thread *t_one, long long a)
 	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
 	printf("%lld %d is sleeping\n", a, t_one->id);
 	usleep(t_one->tts * 1000);
+	gettimeofday(&ct, NULL);
+	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	return (a);
 }
 
 int	ft_thinking(t_thread *t_one, int key)
@@ -37,7 +47,12 @@ int	ft_thinking(t_thread *t_one, int key)
 	gettimeofday(&ct, NULL);
 	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
 	if (key)
+	{
 		printf("%lld %d is thinking\n", a, t_one->id);
+		pthread_mutex_lock(&t_one->v_fork[0]);
+		pthread_mutex_lock(&t_one->next->v_fork[0]);
+		return (a);
+	}
 	return (a);
 }
 
@@ -46,6 +61,7 @@ static void	*one_philo_help(void *arg)
 	t_args	*t_av;
 
 	t_av = (t_args *)arg;
+	printf("0 1 is thinking\n");
 	printf("0 1 has taken a fork\n");
 	printf("%d 1 died\n", t_av->ttd);
 	pthread_exit(NULL);

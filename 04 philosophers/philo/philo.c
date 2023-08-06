@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/05 22:35:50 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/06 20:41:03 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-// TODO tek philo test
-//     TODO
+
+//TODO 5 710 300 400
 
 static void	*dead_func(t_thread *t_one, long long a)
 {
@@ -29,10 +29,7 @@ static void	*dead_func(t_thread *t_one, long long a)
 	pthread_mutex_unlock(&t_one->v_fork[0]);
 	pthread_mutex_unlock(&t_one->next->v_fork[0]);
 	usleep((t_one->tte + t_one->tts + 50) * 1000);
-	if (t_one->nop % 2)
-		printf("%lld %d is dead\n", a + t_one->tte + 5, t_one->id);
-	else
-		printf("%lld %d is dead\n", a + 5, t_one->id);
+	printf("%lld %d is dead\n", a, t_one->id);
 	pthread_exit(NULL);
 }
 
@@ -41,21 +38,25 @@ static void	*pthread_func(void *arg)
 	t_thread	*t_one;
 	long long	a;
 	long long	b;
+	long long	c;
 
 	t_one = (t_thread *)arg;
 	while (1)
 	{
-		b = ft_thinking(t_one, 1);
-		pthread_mutex_lock(&t_one->v_fork[0]);
-		pthread_mutex_lock(&t_one->next->v_fork[0]);
+		c = ft_thinking(t_one, 1);
 		a = ft_thinking(t_one, 0);
+		if (a - c > t_one->ttd)
+			if (dead_func(t_one, a) == NULL)
+				pthread_exit(NULL);
+		b = ft_thinking(t_one, 0);
+		a = ft_eating(t_one, a);
 		if (a - b > t_one->ttd)
 			if (dead_func(t_one, a) == NULL)
 				pthread_exit(NULL);
-		ft_eating(t_one, a);
-		pthread_mutex_unlock(&t_one->v_fork[0]);
-		pthread_mutex_unlock(&t_one->next->v_fork[0]);
-		ft_sleeping(t_one, a);
+		a = ft_sleeping(t_one, a);
+		if (a - b > t_one->ttd)
+			if (dead_func(t_one, a) == NULL)
+				pthread_exit(NULL);
 		pthread_mutex_lock(&t_one->m_dead[0]);
 		if (--t_one->notep == 0 || t_one->t_av->any_dead)
 			break ;

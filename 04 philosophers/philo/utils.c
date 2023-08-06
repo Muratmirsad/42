@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:41:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/06 00:23:50 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/06 20:36:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	exit_func(t_args *t_av, int i)
 	}
 	else if (i == 5)
 		free(t_av);
+	system("leaks philo");
 	exit (i);
 }
 
