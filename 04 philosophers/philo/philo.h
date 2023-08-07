@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:42:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/06 19:02:27 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/07 18:59:23 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ int			ft_eating(t_thread *t_one, long long a);
 int			ft_sleeping(t_thread *t_one, long long a);
 int			ft_thinking(t_thread *t_one, int key);
 int			ft_atoi(char *str);
+int			ft_isdigit(int a);
+
 
 #endif

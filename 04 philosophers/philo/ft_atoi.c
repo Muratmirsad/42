@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:26:20 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/07/25 19:26:22 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/07 19:00:27 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ static int	ft_run(char *str, int index, long int nb, int x)
 int	ft_atoi(char *str)
 {
 	return (ft_run(str, 0, 0, 1));
+}
+
+int	ft_isdigit(int a)
+{
+	if (a < '0' || a > '9')
+		return (0);
+	return (1);
 }

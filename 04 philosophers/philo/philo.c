@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/06 20:41:03 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/07 18:55:59 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static void	philo_handle(t_args *t_av)
 		pthread_create(&t_av->threads[i], NULL,
 			pthread_func, t_av->tmp_hold[i]);
 		usleep(2);
-	}
+	} 
 	i = 0;
 	while (i < t_av->nop)
 		pthread_join(t_av->threads[i++], NULL);

@@ -6,18 +6,11 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:41:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/06 20:36:45 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/07 19:37:13 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	ft_isdigit(int a)
-{
-	if (a < '0' || a > '9')
-		return (0);
-	return (1);
-}
 
 static void	convert_args(t_args *t_av, char **av)
 {
@@ -54,7 +47,6 @@ void	exit_func(t_args *t_av, int i)
 	}
 	else if (i == 5)
 		free(t_av);
-	system("leaks philo");
 	exit (i);
 }
 
