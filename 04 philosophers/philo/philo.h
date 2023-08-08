@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:42:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/08 01:14:23 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/08 20:59:34 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void		exit_func(t_args *t_av, int i);
 void		check_args(t_args *t_av, char **av);
 void		one_philo(t_args *t_av);
 void		t_av_init_helper(t_args *t_av);
+int			any_dead_check(t_thread *t_one);
+void		*dead_func(t_thread *t_one, long long a);
 void		ft_eating(t_thread *t_one);
 void		ft_sleeping(t_thread *t_one);
 void		ft_thinking(t_thread *t_one);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/08 03:43:36 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/08 20:59:05 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //TODO 5 710 300 400
 
-static void	*dead_func(t_thread *t_one, long long a)
+void	*dead_func(t_thread *t_one, long long a)
 {
 	pthread_mutex_lock(&t_one->m_dead[0]);
 	if (t_one->t_av->any_dead)
@@ -28,8 +28,8 @@ static void	*dead_func(t_thread *t_one, long long a)
 	pthread_mutex_unlock(&t_one->m_dead[0]);
 	pthread_mutex_unlock(&t_one->v_fork[0]);
 	pthread_mutex_unlock(&t_one->next->v_fork[0]);
-	usleep((t_one->tte + t_one->tts + 50) * 1000);
 	printf("%lld %d is dead\n", a, t_one->id);
+	//usleep((t_one->tte + t_one->tts + 50) * 1000);
 	pthread_exit(NULL);
 }
 
@@ -59,13 +59,11 @@ static void	*pthread_func(void *arg)
 	t_one->last = 0;
 	while (1)
 	{
-		ft_thinking(t_one);
-		if (any_dead_check(t_one))
-			break ;
 		ft_eating(t_one);
 		if (any_dead_check(t_one))
 			break ;
 		ft_sleeping(t_one);
+		ft_thinking(t_one);
 		if (--t_one->notep == 0 || any_dead_check(t_one))
 			break ;
 	}
@@ -123,7 +121,7 @@ static void	philo_handle(t_args *t_av)
 	{
 		pthread_create(&t_av->threads[i], NULL,
 			pthread_func, t_av->tmp_hold[i]);
-		usleep(10);
+		usleep(2);
 	}
 	i = 0;
 	while (i < t_av->nop)
