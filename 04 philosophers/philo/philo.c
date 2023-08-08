@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/07 18:55:59 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/08 03:43:36 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,34 +33,41 @@ static void	*dead_func(t_thread *t_one, long long a)
 	pthread_exit(NULL);
 }
 
+int	any_dead_check(t_thread *t_one)
+{
+	struct timeval	ct;
+	long long		a;
+
+	gettimeofday(&ct, NULL);
+	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	//printf("- %d -  last: %lld\tfark: %lld\n", t_one->id, t_one->last, a - t_one->last);
+	if (a - t_one->last > t_one->ttd)
+		if (dead_func(t_one, a) == NULL)
+			return (1);
+	pthread_mutex_lock(&t_one->m_dead[0]);
+	if (t_one->t_av->any_dead)
+		return (1);
+	pthread_mutex_unlock(&t_one->m_dead[0]);
+	return (0);
+}
+
 static void	*pthread_func(void *arg)
 {
 	t_thread	*t_one;
-	long long	a;
-	long long	b;
-	long long	c;
 
 	t_one = (t_thread *)arg;
+	t_one->last = 0;
 	while (1)
 	{
-		c = ft_thinking(t_one, 1);
-		a = ft_thinking(t_one, 0);
-		if (a - c > t_one->ttd)
-			if (dead_func(t_one, a) == NULL)
-				pthread_exit(NULL);
-		b = ft_thinking(t_one, 0);
-		a = ft_eating(t_one, a);
-		if (a - b > t_one->ttd)
-			if (dead_func(t_one, a) == NULL)
-				pthread_exit(NULL);
-		a = ft_sleeping(t_one, a);
-		if (a - b > t_one->ttd)
-			if (dead_func(t_one, a) == NULL)
-				pthread_exit(NULL);
-		pthread_mutex_lock(&t_one->m_dead[0]);
-		if (--t_one->notep == 0 || t_one->t_av->any_dead)
+		ft_thinking(t_one);
+		if (any_dead_check(t_one))
 			break ;
-		pthread_mutex_unlock(&t_one->m_dead[0]);
+		ft_eating(t_one);
+		if (any_dead_check(t_one))
+			break ;
+		ft_sleeping(t_one);
+		if (--t_one->notep == 0 || any_dead_check(t_one))
+			break ;
 	}
 	pthread_mutex_unlock(&t_one->m_dead[0]);
 	pthread_exit(NULL);
@@ -116,8 +123,8 @@ static void	philo_handle(t_args *t_av)
 	{
 		pthread_create(&t_av->threads[i], NULL,
 			pthread_func, t_av->tmp_hold[i]);
-		usleep(2);
-	} 
+		usleep(10);
+	}
 	i = 0;
 	while (i < t_av->nop)
 		pthread_join(t_av->threads[i++], NULL);
