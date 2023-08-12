@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:41:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/07 19:37:13 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/12 18:43:19 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,30 @@ void	t_av_init_helper(t_args *t_av)
 	t_av->fork
 		= (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * (t_av->nop + 1));
 	t_av->tmp_hold = (t_thread **)malloc(sizeof(t_thread *) * t_av->nop);
+}
+
+void	ft_usleep(t_thread *t_one, long long _time)
+{
+	struct timeval	ct;
+	long long		a;
+	long long		b;
+	int				key;
+
+	a = 0;
+	key = 0;
+	if (t_one->tte * 2 >= t_one->ttd)
+		key = t_one->ttd - t_one->tte;
+	else if (t_one->tte * 3 >= t_one->ttd)
+		key = t_one->ttd - t_one->tte * 2;
+	gettimeofday(&ct, NULL);
+	b = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	while (a - b < _time)
+	{
+		usleep(100);
+		any_dead_check(t_one);
+		gettimeofday(&ct, NULL);
+		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+		if (key && a - b > key)
+			pthread_mutex_unlock(&t_one->next->v_fork[0]);
+	}
 }

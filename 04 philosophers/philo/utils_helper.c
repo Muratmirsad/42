@@ -6,37 +6,11 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:36:16 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/12 18:26:50 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/12 18:43:05 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	ft_usleep(t_thread *t_one, long long _time)
-{
-	struct timeval	ct;
-	long long		a;
-	long long		b;
-	int				key;
-
-	a = 0;
-	key = 0;
-	if (t_one->tte * 2 >= t_one->ttd)
-		key = t_one->ttd - t_one->tte;
-	else if (t_one->tte * 3 >= t_one->ttd)
-		key = t_one->ttd - t_one->tte * 2;
-	gettimeofday(&ct, NULL);
-	b = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-	while (a - b < _time)
-	{
-		usleep(100);
-		any_dead_check(t_one);
-		gettimeofday(&ct, NULL);
-		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-		if (key && a - b > key)
-			pthread_mutex_unlock(&t_one->next->v_fork[0]);
-	}
-}
 
 void	ft_eating(t_thread *t_one)
 {

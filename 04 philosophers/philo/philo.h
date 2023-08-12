@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:42:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/08 20:59:34 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/12 18:44:49 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void		ft_sleeping(t_thread *t_one);
 void		ft_thinking(t_thread *t_one);
 int			ft_atoi(char *str);
 int			ft_isdigit(int a);
-
+void		ft_usleep(t_thread *t_one, long long _time);
 
 #endif

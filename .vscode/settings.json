@@ -1,3 +1,6 @@
 {
 	"workbench.useExperimentalGridLayout": true,
+	"files.associations": {
+		"philo.h": "c"
+	},
 }
