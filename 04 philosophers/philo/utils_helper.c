@@ -3,57 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   utils_helper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:36:16 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/08 21:09:39 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/12 18:26:50 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	ft_usleep(t_thread *t_one, long long _time)
+{
+	struct timeval	ct;
+	long long		a;
+	long long		b;
+	int				key;
+
+	a = 0;
+	key = 0;
+	if (t_one->tte * 2 >= t_one->ttd)
+		key = t_one->ttd - t_one->tte;
+	else if (t_one->tte * 3 >= t_one->ttd)
+		key = t_one->ttd - t_one->tte * 2;
+	gettimeofday(&ct, NULL);
+	b = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	while (a - b < _time)
+	{
+		usleep(100);
+		any_dead_check(t_one);
+		gettimeofday(&ct, NULL);
+		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+		if (key && a - b > key)
+			pthread_mutex_unlock(&t_one->next->v_fork[0]);
+	}
+}
+
 void	ft_eating(t_thread *t_one)
 {
 	struct timeval	ct;
 	long long		a;
-	int				tmp;
 
-	tmp = 0;
 	pthread_mutex_lock(&t_one->v_fork[0]);
 	if (any_dead_check(t_one))
 		return ;
 	pthread_mutex_lock(&t_one->next->v_fork[0]);
+	if (any_dead_check(t_one))
+		return ;
 	gettimeofday(&ct, NULL);
 	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-	t_one->last = a;
 	printf("%lld %d has taken a fork\n", a, t_one->id);
 	printf("%lld %d is eating\n", a, t_one->id);
-	if (t_one->ttd <= t_one->tte)
-	{
-		usleep(5000);
-		pthread_mutex_unlock(&t_one->next->v_fork[0]);
-		pthread_mutex_unlock(&t_one->v_fork[0]);
-		t_one->last = 0;
-		return ;
-	}
-	if (t_one->tte > t_one->tts)
-		usleep(((t_one->ttd - t_one->tte - t_one->tts - 5) * 1000) - tmp);
-	else
-		usleep((t_one->tte) * 1000);
+	t_one->last = a;
+	ft_usleep(t_one, t_one->tte);
 	pthread_mutex_unlock(&t_one->next->v_fork[0]);
-	usleep(((t_one->tte + t_one->tts + 5) * 1000) - tmp);
 	pthread_mutex_unlock(&t_one->v_fork[0]);
 }
 
-void	ft_sleeping(t_thread *t_one) // 200 100 200 
+void	ft_sleeping(t_thread *t_one)
 {
 	struct timeval	ct;
 	long long		a;
+	long long		b;
 
+	a = 0;
 	gettimeofday(&ct, NULL);
-	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-	printf("%lld %d is sleeping\n", a, t_one->id);
-	usleep(t_one->tts * 1000);
+	b = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	printf("%lld %d is sleeping\n", b, t_one->id);
+	while (a - b < t_one->tts)
+	{
+		usleep(100);
+		any_dead_check(t_one);
+		gettimeofday(&ct, NULL);
+		a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
+	}
 }
 
 void	ft_thinking(t_thread *t_one)

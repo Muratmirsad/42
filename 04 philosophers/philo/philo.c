@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:07:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/08 20:59:05 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/12 18:33:28 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,31 @@ void	*dead_func(t_thread *t_one, long long a)
 	pthread_mutex_unlock(&t_one->m_dead[0]);
 	pthread_mutex_unlock(&t_one->v_fork[0]);
 	pthread_mutex_unlock(&t_one->next->v_fork[0]);
+	usleep(100000);
 	printf("%lld %d is dead\n", a, t_one->id);
-	//usleep((t_one->tte + t_one->tts + 50) * 1000);
 	pthread_exit(NULL);
 }
+
 
 int	any_dead_check(t_thread *t_one)
 {
 	struct timeval	ct;
 	long long		a;
 
+	if ((t_one->ttd - 10 >= t_one->tte * 2 && t_one->nop % 3)
+		|| (t_one->ttd - 10 >= t_one->tte * 3 && t_one->nop % 2))
+		return (0);
 	gettimeofday(&ct, NULL);
 	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
-	//printf("- %d -  last: %lld\tfark: %lld\n", t_one->id, t_one->last, a - t_one->last);
-	if (a - t_one->last > t_one->ttd)
+	if (a - t_one->last > t_one->ttd || t_one->last == -1)
 		if (dead_func(t_one, a) == NULL)
 			return (1);
 	pthread_mutex_lock(&t_one->m_dead[0]);
 	if (t_one->t_av->any_dead)
+	{
+		pthread_mutex_unlock(&t_one->m_dead[0]);
 		return (1);
+	}
 	pthread_mutex_unlock(&t_one->m_dead[0]);
 	return (0);
 }
@@ -63,6 +69,8 @@ static void	*pthread_func(void *arg)
 		if (any_dead_check(t_one))
 			break ;
 		ft_sleeping(t_one);
+		if (any_dead_check(t_one))
+			break ;
 		ft_thinking(t_one);
 		if (--t_one->notep == 0 || any_dead_check(t_one))
 			break ;
@@ -95,6 +103,7 @@ static void	init_helper(t_args *t_av)
 		t_av->tmp_hold[i]->tts = t_av->tts;
 		t_av->tmp_hold[i]->notep = t_av->notep;
 		t_av->tmp_hold[i]->start_time = v_time;
+		t_av->tmp_hold[i]->last = v_time;//!
 		t_av->tmp_hold[i]->t_av = t_av;
 		i++;
 	}
