@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 18:44:20 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/12 18:44:41 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/13 12:31:26 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int	any_dead_check(t_thread *t_one)
 	struct timeval	ct;
 	long long		a;
 
-	if ((t_one->ttd >= t_one->tte * 2 && t_one->nop % 3)
-		|| (t_one->ttd >= t_one->tte * 3 && t_one->nop % 2))
+	if (((t_one->ttd >= t_one->tte * 2 && t_one->nop % 3)
+			|| (t_one->ttd >= t_one->tte * 3 && t_one->nop % 2))
+		&& t_one->ttd >= t_one->tte + t_one->tts)
 		return (0);
 	gettimeofday(&ct, NULL);
 	a = ((ct.tv_sec * 1000) + (ct.tv_usec / 1000)) - t_one->start_time;
