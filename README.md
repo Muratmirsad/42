@@ -2,11 +2,7 @@
 
 # ----- PART 1 -----
 
-## 01 libft
-[a link to 01 Libft](https://github.com/Muratmirsad/42/tree/master/01%20Libft/)
-
-
-
+## [01 libft](https://github.com/Muratmirsad/42/tree/master/01%20Libft/)
 
 A library in C language written by myself.
 
