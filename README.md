@@ -1,10 +1,10 @@
 # 42 Projects
 Go to
-[PART 1](#-------PART-1------)
-[PART 2](#-------PART-2------)
-[PART 3](#-------PART-3------)
+[PART 1](#part1)
+[PART 2](#part2)
+[PART 3](#part3)
 
-# ----- PART 1 -----
+# ----- PART 1 ----- {#part1)
 
 ## [01 libft](https://github.com/Muratmirsad/42/tree/master/01%20Libft/)
 
@@ -40,7 +40,7 @@ An algorithm that sorts entered numbers using only certain commands.
 
 2D game I made in C language using minilibx library.
 
-# ----- PART 2 -----
+# ----- PART 2 ----- {#part2)
 
 ## [04 philosophers](https://github.com/Muratmirsad/42/tree/master/04%20philosophers/)
 
