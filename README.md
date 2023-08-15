@@ -4,6 +4,7 @@ Go to
 [PART 2](#part-2)
 [PART 3](#part-3)
 
+{#part-1}
 # ----- PART 1 -----
 
 ## [01 libft](https://github.com/Muratmirsad/42/tree/master/01%20Libft/)
@@ -34,6 +35,7 @@ An algorithm that sorts entered numbers using only certain commands.
 
 2D game I made in C language using minilibx library.
 
+{#part-2}
 # ----- PART 2 -----
 
 ## [04 philosophers](https://github.com/Muratmirsad/42/tree/master/04%20philosophers/)
