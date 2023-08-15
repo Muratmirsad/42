@@ -3,7 +3,7 @@
 # ----- PART 1 -----
 
 ## 01 libft
-[a link]([https://github.com/user/repo/blob/branch/other_file.md](https://github.com/Muratmirsad/42/tree/master/01%20Libft))
+[a link]: https://github.com/Muratmirsad/42/tree/master/01%20Libft
 
 A library in C language written by myself.
 
