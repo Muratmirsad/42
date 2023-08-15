@@ -3,7 +3,7 @@
 # ----- PART 1 -----
 
 ## 01 libft
-[a link to libft](/42/tree/main/libft/)
+[a link to libft](/42/tree/main/01%20Libft/)
 
 
 
