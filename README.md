@@ -3,7 +3,8 @@
 # ----- PART 1 -----
 
 ## 01 libft
-[a link](/tree/main/01%20Libf/)
+[Link to 01 Libf](https://github.com/username/repo/tree/master/01%20Libf/)
+
 
 
 A library in C language written by myself.
