@@ -4,7 +4,7 @@ Go to
 [PART 2](#part-2)
 [PART 3](#part-3)
 
-#PART 1 {#part-1}
+# ----- PART 1 ----- {#part-1}
 
 ## [01 libft](https://github.com/Muratmirsad/42/tree/master/01%20Libft/)
 
