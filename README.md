@@ -3,7 +3,8 @@
 # ----- PART 1 -----
 
 ## 01 libft
-[Link to 01 Libf](https://github.com/username/repo/tree/master/01%20Libf/)
+[a link](/tree/main/42/01%20Libf/)
+
 
 
 
