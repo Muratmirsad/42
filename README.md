@@ -1,6 +1,6 @@
 # 42 Projects
 Go to
-[PART 1](#------part-1-------)
+[PART 1](#------part-1------)
 [PART 2](#------part-2-------)
 [PART 3](#------part-3-------)
 
