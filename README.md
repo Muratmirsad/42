@@ -40,6 +40,8 @@ An algorithm that sorts entered numbers using only certain commands.
 
 ## 04 philosophers
 
+A dinner simulation using threads and mutexes written in C.
+
 ## 04 minishell
 
 A program similar to Bash, written in C.
