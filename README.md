@@ -3,7 +3,7 @@
 # ----- PART 1 -----
 
 ## 01 libft
-[a link] (42/tree/master/01%20Libf)
+[a link] (/tree/master/01%20Libf)
 
 A library in C language written by myself.
 
