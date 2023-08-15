@@ -3,7 +3,8 @@
 # ----- PART 1 -----
 
 ## 01 libft
-[a link to 01 Libft](/42/01%20Libft/)
+[a link to 01 Libft](https://github.com/Muratmirsad/42/tree/master/01%20Libft/)
+
 
 
 
