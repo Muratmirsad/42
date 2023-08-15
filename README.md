@@ -24,7 +24,7 @@ A function that reads data from any file line by line.
 
 ## [03 minitalk](https://github.com/Muratmirsad/42/tree/master/03%20minitalk/)
 
-Program that sends data to each other with 0 and 1 signals.
+Program that sends data to each other with SIGUSR0 and SIGUSR1 signals.
 
 
 ## [03 push_swap](https://github.com/Muratmirsad/42/tree/master/03%20push_swap/)
