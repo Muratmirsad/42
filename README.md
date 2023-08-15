@@ -41,7 +41,8 @@ An algorithm that sorts entered numbers using only certain commands.
 
 2D game I made in C language using minilibx library.
 
-# ----- PART 2 ----- {#part2)
+# ----- PART 2 -----
+{#part2)
 
 ## [04 philosophers](https://github.com/Muratmirsad/42/tree/master/04%20philosophers/)
 
