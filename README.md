@@ -47,3 +47,9 @@ A dinner simulation using threads and mutexes written in C.
 A program similar to Bash, written in C.
 
 ## [05 NetPractice](https://github.com/Muratmirsad/42/tree/master/05%20NetPractice/)
+
+An exercise that helps to learn networking.
+
+## [05 cub3d](https://github.com/Muratmirsad/42/tree/master/05%20cub3d/)
+
+## [05 cpp mobule 0-4](https://github.com/Muratmirsad/42/tree/master/05%20cpp%20module%200-4/)
