@@ -45,3 +45,5 @@ A dinner simulation using threads and mutexes written in C.
 ## [04 minishell](https://github.com/Muratmirsad/42/tree/master/04%20Minishell/)
 
 A program similar to Bash, written in C.
+
+## [05 NetPractice](https://github.com/Muratmirsad/42/tree/master/05%20NetPractice/)
