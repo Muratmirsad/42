@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 16:53:22 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/22 01:43:04 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/22 15:45:26 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(void)
 		else if (command == "EXIT")
 			break ;
 		else
-			std::cout << "command not found (try \"HELP\")" << std::endl;
+			std::cout << "command not found (try \"SEARCH\")" << std::endl;
 	}
 	std::cout << "Exiting..." << std::endl;
 	return (0);

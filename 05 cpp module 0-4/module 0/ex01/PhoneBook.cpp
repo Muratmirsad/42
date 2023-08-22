@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:41:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/22 12:33:04 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/22 17:17:10 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::phonebookAddContact()
 {
-	std::string	tmp;
+	std::string	input;
 
 	this->contact5.setName(this->contact4.getName());
 	this->contact4.setName(this->contact3.getName());
@@ -50,34 +50,33 @@ void	PhoneBook::phonebookAddContact()
 	this->contact2.setSecret(this->contact1.getSecret());
 
 	std::cout << "Enter a name: ";
-	std::cin >> tmp;
-	this->contact1.setName(tmp);
+	std::getline(std::cin, input);
+	this->contact1.setName(input);
 	std::cout << "Enter a surname: ";
-	std::cin >> tmp;
-	this->contact1.setSurname(tmp);
+	std::getline(std::cin, input);
+	this->contact1.setSurname(input);
 	std::cout << "Enter a phone number: ";
-	std::cin >> tmp;
-	this->contact1.setPhone(tmp);
+	std::getline(std::cin, input);
+	this->contact1.setPhone(input);
 	std::cout << "Enter a nickname: ";
-	std::cin >> tmp;
-	this->contact1.setNickname(tmp);
+	std::getline(std::cin, input);
+	this->contact1.setNickname(input);
 	std::cout << "Enter a secret: ";
-	std::cin >> tmp;
-	this->contact1.setSecret(tmp);
+	std::getline(std::cin, input);
+	this->contact1.setSecret(input);
 }
 
 void	put_list(Contact tmp)
 {
-	std::string	tmpArray[5];
+	std::string	tmpArray[4];
 	int			len;
 
 	tmpArray[0] = tmp.getName();
 	tmpArray[1] = tmp.getSurname();
 	tmpArray[2] = tmp.getNickname();
-	tmpArray[3] = tmp.getPhone();
-	tmpArray[4] = tmp.getSecret();
+	tmpArray[3] = tmp.getSecret();
 
-	for (int j = 0; j < 5; j++)
+	for (int j = 0; j < 4; j++)
 	{
 		len = tmpArray[j].length();
 		for (int i = 0; i < 10; i++)
@@ -89,17 +88,29 @@ void	put_list(Contact tmp)
 			}
 			std::cout << tmpArray[j][i];
 		}
-		if (j != 4)
-			std::cout << "\t\t|\t\t";
+		while (len ++ < 10)
+			std::cout << " ";
+		if (j != 3)
+			std::cout << "\t|\t";
 	}
 	std::cout << std::endl;
 }
 
 void	PhoneBook::phonebookListContact()
 {
+	int	input;
+	
+	std::cout << "1 |\t";
 	put_list(this->contact1);
+	std::cout << "2 |\t";
 	put_list(this->contact2);
+	std::cout << "3 |\t";
 	put_list(this->contact3);
+	std::cout << "4 |\t";
 	put_list(this->contact4);
+	std::cout << "5 |\t";
 	put_list(this->contact5);
+
+	std::cout << "Enter the index of the contact you want to view: ";
+	std::cin >> input;
 }
