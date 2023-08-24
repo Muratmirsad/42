@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:41:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/22 17:17:10 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/22 23:19:29 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
+}
+
+std::string	phonebookAddHelper(std::string message)
+{
+	std::string	input;
+
+	while (1)
+	{
+		std::cout << message;
+		std::getline(std::cin, input);	
+		if (input.empty())
+			continue ;
+		else
+			return (input);
+	}
 }
 
 void	PhoneBook::phonebookAddContact()
@@ -49,20 +64,15 @@ void	PhoneBook::phonebookAddContact()
 	this->contact3.setSecret(this->contact2.getSecret());
 	this->contact2.setSecret(this->contact1.getSecret());
 
-	std::cout << "Enter a name: ";
-	std::getline(std::cin, input);
+	input = phonebookAddHelper("Enter a name: ");
 	this->contact1.setName(input);
-	std::cout << "Enter a surname: ";
-	std::getline(std::cin, input);
+	input = phonebookAddHelper("Enter a surname: ");
 	this->contact1.setSurname(input);
-	std::cout << "Enter a phone number: ";
-	std::getline(std::cin, input);
+	input = phonebookAddHelper("Enter a phone number: ");
 	this->contact1.setPhone(input);
-	std::cout << "Enter a nickname: ";
-	std::getline(std::cin, input);
+	input = phonebookAddHelper("Enter a nickname: ");
 	this->contact1.setNickname(input);
-	std::cout << "Enter a secret: ";
-	std::getline(std::cin, input);
+	input = phonebookAddHelper("Enter a secret: ");
 	this->contact1.setSecret(input);
 }
 
@@ -96,11 +106,20 @@ void	put_list(Contact tmp)
 	std::cout << std::endl;
 }
 
+void	put_contact(Contact tmp)
+{
+	std::cout << std::endl << tmp.getName() << "\t|\t";
+	std::cout << tmp.getName() << "\t|\t";
+	std::cout << tmp.getName() << "\t|\t";
+	std::cout << tmp.getName() << "\t|\t";
+	std::cout << tmp.getName() << std::endl << std::endl;
+}
+
 void	PhoneBook::phonebookListContact()
 {
 	int	input;
 	
-	std::cout << "1 |\t";
+	std::cout << std::endl << "1 |\t";
 	put_list(this->contact1);
 	std::cout << "2 |\t";
 	put_list(this->contact2);
@@ -111,6 +130,24 @@ void	PhoneBook::phonebookListContact()
 	std::cout << "5 |\t";
 	put_list(this->contact5);
 
-	std::cout << "Enter the index of the contact you want to view: ";
-	std::cin >> input;
+	while (1){
+		std::cout << "Enter the index of the contact you want to view: ";
+		std::cin >> input;
+		if (input == 1)
+			put_contact(this->contact1);
+		else if (input == 2)
+			put_contact(this->contact2);
+		else if (input == 3)
+			put_contact(this->contact3);
+		else if (input == 4)
+			put_contact(this->contact4);
+		else if (input == 5)
+			put_contact(this->contact5);
+		else{
+			std::cout << "Wrong input" << std::endl;
+			continue;
+	}
+	break ;
+	}
+		
 }

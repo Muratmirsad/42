@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 16:53:22 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/22 15:45:26 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/08/22 23:11:29 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "Enter a command > ";
-		std::cin >> command;
+		std::getline(std::cin, command);
 		if (command == "ADD")
 			book.phonebookAddContact();
 		else if (command == "SEARCH")
 			book.phonebookListContact();
 		else if (command == "EXIT")
 			break ;
-		else
-			std::cout << "command not found (try \"SEARCH\")" << std::endl;
+		
 	}
 	std::cout << "Exiting..." << std::endl;
 	return (0);
