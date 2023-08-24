@@ -2,9 +2,9 @@
 Go to
 [Part 1 (01 - 03)](#------part-1------)
 |
-[Part 2 (04 - 06)](#------part-2------)
+[Part 2 (04 - 05)](#------part-2------)
 |
-[Part 3 (07 - 09)](#------part-3------)
+[Part 3 (06 - 07)](#------part-3------)
 
 # ----- PART 1 -----
 
@@ -53,3 +53,5 @@ An exercise that helps to learn networking.
 ## [05 cub3d](https://github.com/Muratmirsad/42/tree/master/05%20cub3d/)
 
 ## [05 cpp mobule 0-4](https://github.com/Muratmirsad/42/tree/master/05%20cpp%20module%200-4/)
+
+# ----- PART 3 -----
