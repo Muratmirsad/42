@@ -42,7 +42,7 @@ An algorithm that sorts entered numbers using only certain commands.
 
 A dinner simulation using threads and mutexes written in C.
 
-## [03 minishell](https://github.com/Muratmirsad/42/tree/master/03%20Minishell/)
+## [03 minishell](https://github.com/Muratmirsad/42/tree/master/03%20minishell/)
 
 A program similar to Bash, written in C.
 
