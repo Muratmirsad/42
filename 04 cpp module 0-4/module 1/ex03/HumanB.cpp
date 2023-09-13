@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 04:33:36 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/13 09:52:48 by mdiraga          ###   ########.fr       */
+/*   Created: 2023/09/13 14:37:28 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/09/13 16:04:03 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-Zombie*	newZombie(std::string newName)
+HumanB::HumanB(std::string tmpName)
 {
-	Zombie	*_newZombie = new Zombie;
-
-	_newZombie->setName(newName);
-	return (_newZombie);
+    this->_name = tmpName;
 }
 
-Zombie*    zombieHorde(int N, std::string name)
+HumanB::~HumanB()
 {
-	Zombie	*arrayZombie = new Zombie[N];
+    
+}
 
-	while (N--)
-	{
-		arrayZombie[N].setName(name);
-	}
+void    HumanB::attack(void)
+{
+	std::cout	<< this->_name
+				<< " attacks with their "
+				<< this->_weapon.getType()
+				<< std::endl;
+}
 
-	return arrayZombie;
+void    HumanB::setWeapon(Weapon newWeapon)
+{
+    this->_weapon = newWeapon;
 }
