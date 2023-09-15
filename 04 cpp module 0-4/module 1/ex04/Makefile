@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/14 13:46:48 by mdiraga           #+#    #+#              #
-#    Updated: 2023/09/15 18:11:03 by mdiraga          ###   ########.fr        #
+#    Created: 2023/09/15 18:11:17 by mdiraga           #+#    #+#              #
+#    Updated: 2023/09/15 18:11:38 by mdiraga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = program
+NAME = replace
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME):
-	@c++ $(FLAGS) main.cpp HumanA.cpp HumanB.cpp Weapon.cpp -o $(NAME)
+	@c++ $(FLAGS) main.cpp replace.cpp -o $(NAME)
 	@clear
 	@echo "program created."
 

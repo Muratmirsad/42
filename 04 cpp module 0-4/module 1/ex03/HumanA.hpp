@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:41:44 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/14 14:41:45 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:42:04 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 class HumanA
 {
 private:
-    Weapon      _weapon;
     std::string _name;
+    Weapon      &_weapon;
 
 public:
-    HumanA(std::string tmpName, Weapon tmpWeapon);
+    HumanA(std::string tmpName, Weapon &tmpWeapon) : _name(tmpName), _weapon(tmpWeapon) {};
 
     void    attack(void);
 

@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 14:37:28 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/15 18:02:26 by mdiraga          ###   ########.fr       */
+/*   Created: 2023/09/15 18:16:54 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/09/15 18:59:21 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include "replace.hpp"
 
-HumanB::HumanB(std::string tmpName)
+int main(int ac, char **av)
 {
-    this->_name = tmpName;
-}
+    std::string     line;
+    int             i;
+    int             j;
 
-HumanB::~HumanB(void)
-{
+    if (ac != 4)
+        return (0);
     
-}
-
-void    HumanB::attack(void)
-{
-	std::cout	<< this->_name
-				<< " attacks with their "
-				<< this->_weapon->getType()
-				<< std::endl;
-}
-
-void    HumanB::setWeapon(Weapon &newWeapon)
-{
-    this->_weapon = &newWeapon;
 }
