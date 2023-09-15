@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:34:47 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:08 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/09/14 14:33:08 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ const std::string	&Weapon::getType()
     return this->_type;
 }
 
-void				Weapon::setType(std::string _newType)
+void	Weapon::setType(std::string _newType)
 {
 	this->_type = _newType;
 }
