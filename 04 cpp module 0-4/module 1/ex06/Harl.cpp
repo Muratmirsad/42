@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:49:15 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/28 20:12:12 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/09/28 22:15:32 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void  Harl::complain(std::string level)
     int         i = 0;
 
     while (i < 4 && levelArray[i].compare(level))
-        (this->*funcArray[i++])();
-    (this->*funcArray[i])();
+        i++;
+    
+    switch (i)
+    {
+        case 1:
+            (this->*funcArray[0])();
+            
+    }
 }

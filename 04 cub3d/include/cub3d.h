@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 21:49:11 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/28 20:03:47 by mdiraga          ###   ########.fr       */
+/*   Created: 2023/09/29 03:25:25 by mdiraga           #+#    #+#             */
+/*   Updated: 2023/09/29 03:27:10 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CUB3D_H
+# define CUB3D_h
 
-#include <iostream>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-class Harl
-{
-	private:
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-    
-	public:
-	Harl();
-	~Harl();
-	void	complain(std::string level);
-};
+
+
+#endif
