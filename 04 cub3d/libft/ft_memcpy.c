@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 03:25:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/30 21:46:27 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/12/05 10:28:15 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/12/05 17:08:23 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_h
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../get_next_line/get_next_line.h"
-# include "../libft/libft.h"
-
-typedef struct	main_struct
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	**map;
-	int		map_size;
-	int		player_row;
-	int		player_col;
-}	s_info;
+	size_t	i;
 
-#endif
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dst);
+}

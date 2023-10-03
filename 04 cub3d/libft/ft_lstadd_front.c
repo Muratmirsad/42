@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 03:25:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/30 21:46:27 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/11/14 15:40:09 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/11/21 23:12:41 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_h
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../get_next_line/get_next_line.h"
-# include "../libft/libft.h"
-
-typedef struct	main_struct
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	char	**map;
-	int		map_size;
-	int		player_row;
-	int		player_col;
-}	s_info;
-
-#endif
+	if (*lst)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+	*lst = new;
+	new->next = 0;
+}

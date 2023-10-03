@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 03:25:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/30 21:46:27 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/11/14 12:21:43 by mdiraga           #+#    #+#             */
+/*   Updated: 2022/12/05 10:36:12 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_h
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../get_next_line/get_next_line.h"
-# include "../libft/libft.h"
-
-typedef struct	main_struct
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	**map;
-	int		map_size;
-	int		player_row;
-	int		player_col;
-}	s_info;
-
-#endif
+	if (n == -2147483648)
+	{
+		write (fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	if (n < 10)
+		ft_putchar_fd(n + 48, fd);
+}
