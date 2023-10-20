@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 03:24:50 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/09/30 22:01:23 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/10/20 16:39:55 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	control_func(char **map, int row, int col, int *c)
 	else if (map[row][col] == '2') //! DENEYSEL
 		*c--;
 }
+
 
 static int	scan_map(char **map, int row, int col, int *c)
 {
@@ -54,6 +55,7 @@ static int	scan_map(char **map, int row, int col, int *c)
 	}
 }
 
+//	.cub formatindaki dosyanin gereksinimlerini kontrol eden ve bu dosyayi acarak, FD degeri donduren bir fonksiyon
 void    ft_read_file(s_info *s_main, char *map_name)
 {
     char	*line;
@@ -79,6 +81,7 @@ void    ft_read_file(s_info *s_main, char *map_name)
     close(fd);
 }
 
+//	playerin baslangic konumunu arayan bir fonksiyon, eger player bulunamazsa 0, bir veya daha fazla baslangic konumu bulursa 0dasn farkli bir deger dondurecek
 static int	find_player_location(s_info *s_main)
 {
 	int	key;
@@ -108,6 +111,7 @@ static int	find_player_location(s_info *s_main)
 	return (key); //TODO ERROR | if key == 0 player bulunamadi | if key > 1 1den fazla mplayer var 
 }
 
+// BASLANGIC
 void    parser(s_info *s_main, char *map_name)
 {
 	int	c;
