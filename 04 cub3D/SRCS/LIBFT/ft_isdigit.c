@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 21:49:23 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/11/11 15:49:49 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/10/06 16:07:50 by uyilmaz           #+#    #+#             */
+/*   Updated: 2022/10/06 16:11:11 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-
-int main(void)
+int	ft_isdigit(int x)
 {
-	Harl		_harl;
-    std::string	input;
-
-	std::cout << "Levels; DEBUG, INFO, WARNING and ERROR." << std::endl << "Chose a level > ";
-	std::cin >> input;
-	_harl.complain(input);
+	if (x >= '0' && x <= '9')
+		return (1);
+	return (0);
 }

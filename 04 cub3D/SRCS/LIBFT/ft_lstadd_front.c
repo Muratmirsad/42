@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 21:49:23 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/11/11 15:49:49 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/10/16 14:53:18 by uyilmaz           #+#    #+#             */
+/*   Updated: 2022/10/16 15:37:43 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "libft.h"
 
-int main(void)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	Harl		_harl;
-    std::string	input;
-
-	std::cout << "Levels; DEBUG, INFO, WARNING and ERROR." << std::endl << "Chose a level > ";
-	std::cin >> input;
-	_harl.complain(input);
+	new->next = *lst;
+	*lst = new;
 }

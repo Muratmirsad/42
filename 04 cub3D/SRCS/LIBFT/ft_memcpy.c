@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 21:49:23 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/11/11 15:49:49 by mdiraga          ###   ########.fr       */
+/*   Created: 2022/10/07 14:13:38 by uyilmaz           #+#    #+#             */
+/*   Updated: 2022/10/18 17:20:31 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "libft.h"
 
-int main(void)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	Harl		_harl;
-    std::string	input;
+	void	*result;
 
-	std::cout << "Levels; DEBUG, INFO, WARNING and ERROR." << std::endl << "Chose a level > ";
-	std::cin >> input;
-	_harl.complain(input);
+	if (!dst && !src)
+		return (0);
+	result = dst;
+	while (n--)
+		*(char *)dst++ = *(char *)src++;
+	return (result);
 }

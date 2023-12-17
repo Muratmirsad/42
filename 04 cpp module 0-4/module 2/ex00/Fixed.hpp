@@ -17,8 +17,8 @@
 class Fixed
 {
 private:
-    int			_intager;
-    static int	_fracNumber;
+    int					_intager;
+    static const int	_fracNumber = 8;
 
 public:
     Fixed( void );
@@ -27,8 +27,7 @@ public:
 	// kopyalama kurucusu
 	// kopyalama atama operatorunu asiri yukleme
 	// yikici
-	int		getRawBits( void );
+	int		getRawBits( void ) const;
 	void	setRawBits( int const raw);
 			
 };
-
