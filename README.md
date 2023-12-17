@@ -50,7 +50,7 @@ A program similar to Bash, written in C.
 
 An exercise that helps to learn networking.
 
-## [04 cub3d](https://github.com/Muratmirsad/42/tree/master/04%20cub3d/)
+## [04 cub3D](https://github.com/Muratmirsad/42/tree/master/04%20cub3D/)
 
 ## [04 cpp mobule 0-4](https://github.com/Muratmirsad/42/tree/master/04%20cpp%20module%200-4/)
 
