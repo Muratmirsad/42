@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:16:32 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/22 16:00:11 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:32:28 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@
 class PhoneBook
 {
 private:
-	Contact	contact1;
-	Contact contact2;
-	Contact	contact3;
-	Contact	contact4;
-	Contact	contact5;
+	Contact	_contact[8];
+	int		index;
 
 public:
 	PhoneBook();
@@ -30,6 +27,7 @@ public:
 
 	void	phonebookAddContact();
 	void	phonebookListContact();
+	void	put_contact(int index);
 	
 	~PhoneBook();
 };

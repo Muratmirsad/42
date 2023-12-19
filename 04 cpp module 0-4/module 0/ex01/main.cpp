@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 16:53:22 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/22 23:11:29 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:06:38 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	std::string	command;
 
 	std::cout << "Commands: ADD, SEARCH and EXIT." << std::endl;
-	while (1)
+	while (!std::cin.eof())
 	{
 		std::cout << "Enter a command > ";
 		std::getline(std::cin, command);
@@ -28,7 +28,8 @@ int	main(void)
 			book.phonebookListContact();
 		else if (command == "EXIT")
 			break ;
-		
+		else if (std::cin.eof())
+			exit(0);
 	}
 	std::cout << "Exiting..." << std::endl;
 	return (0);

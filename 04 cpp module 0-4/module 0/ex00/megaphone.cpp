@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@42istanbul.com.tr>        +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 16:03:35 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/08/20 16:35:20 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:12:25 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,4 @@ int	main(int ac, char **ar)
 	}
 	std::cout << std::endl;
 }
+
