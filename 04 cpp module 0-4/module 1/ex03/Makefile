@@ -6,7 +6,7 @@
 #    By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 13:46:48 by mdiraga           #+#    #+#              #
-#    Updated: 2023/09/15 18:11:03 by mdiraga          ###   ########.fr        #
+#    Updated: 2023/12/20 22:04:12 by mdiraga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 	@c++ $(FLAGS) main.cpp HumanA.cpp HumanB.cpp Weapon.cpp -o $(NAME)
 	@clear
 	@echo "program created."
