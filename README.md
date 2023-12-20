@@ -50,7 +50,9 @@ A program similar to Bash, written in C.
 
 An exercise that helps to learn networking.
 
-## [04 cub3d](https://github.com/Muratmirsad/42/tree/master/04%20cub3d/)
+## [04 cub3D](https://github.com/Muratmirsad/42/tree/master/04%20cub3D/)
+
+It is a semi-3D game that we wrote in C language using the mlx library after processing the image with the raycasting algorithm.
 
 ## [04 cpp mobule 0-4](https://github.com/Muratmirsad/42/tree/master/04%20cpp%20module%200-4/)
 
