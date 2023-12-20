@@ -20,6 +20,7 @@ int	main()
 	Zombie	*tmp;
 
 	tmp = newZombie("1");
+	tmp->announce();
 	randomChump("2");
 
 	delete tmp;

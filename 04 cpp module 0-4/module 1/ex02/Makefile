@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): main.cpp
 	@c++ $(FLAGS) main.cpp -o $(NAME)
 	@clear
 	@echo "program created."
