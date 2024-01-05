@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:23:24 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/21 17:23:25 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:06:44 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main()
 {
-	std::string	str = "Hello World!";
+	std::string	str = "HI THIS IS BRAIN";
 	std::string	*stringPTR = &str;
 	std::string	&stringREF = str;
 

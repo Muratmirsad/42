@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/22 15:03:00 by mdiraga           #+#    #+#              #
-#    Updated: 2023/12/22 15:04:32 by mdiraga          ###   ########.fr        #
+#    Created: 2024/01/04 11:20:36 by mdiraga           #+#    #+#              #
+#    Updated: 2024/01/04 11:30:43 by mdiraga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = program
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp ClapTrap.cpp
 
 all: $(NAME)
 

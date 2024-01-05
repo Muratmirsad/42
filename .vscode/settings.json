@@ -71,6 +71,9 @@
 		"iomanip": "cpp",
 		"deque": "cpp",
 		"fstream": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"__memory": "cpp",
+		"charconv": "cpp",
+		"memory_resource": "cpp"
 	},
 }

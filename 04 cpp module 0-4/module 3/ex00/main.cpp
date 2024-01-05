@@ -5,24 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 17:00:53 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/22 15:04:55 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/04 11:32:37 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/04 11:37:35 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
 int main()
 {
-    Fixed   a;
-    Fixed   b( a );
-    Fixed   c;
+    ClapTrap    clap1, clap2;
 
-    c = b;
+    clap1.attack( clap2 );
 
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
-    std::cout << c.getRawBits() << std::endl;
-
-    return 0;
+    return (0);
 }
