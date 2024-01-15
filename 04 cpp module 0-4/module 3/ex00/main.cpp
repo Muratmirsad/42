@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:32:37 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/04 11:37:35 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/07 18:24:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {
-    ClapTrap    clap1, clap2;
+    ClapTrap    clap1;
 
-    clap1.attack( clap2 );
+    clap1.attack( "Test!" );
 
     return (0);
 }
