@@ -56,4 +56,10 @@ It is a semi-3D game that we wrote in C language using the mlx library after pro
 
 ## [04 cpp mobule 0-4](https://github.com/Muratmirsad/42/tree/master/04%20cpp%20module%200-4/)
 
+Exercises to improve skills in CPP language.
+
 # ----- PART 3 -----
+
+## [05 cpp mobule 5-9](https://github.com/Muratmirsad/42/tree/master/05%20cpp%20module%205-9/)
+
+Exercises to improve skills in CPP language.
