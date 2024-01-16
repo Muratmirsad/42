@@ -6,7 +6,7 @@ Go to
 |
 [Part 3 (05 - 06)](#------part-3------)
 
-# *----- PART 1 -----*
+# **----- PART 1 -----**
 
 ## [00 libft](https://github.com/Muratmirsad/42/tree/master/00%20Libft/)
 
