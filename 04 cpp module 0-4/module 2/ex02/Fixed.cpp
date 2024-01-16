@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:49:08 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/04 11:18:09 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:05:47 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,34 +177,34 @@ Fixed Fixed::operator--(int)
 	return (tmp);
 }
 
-const Fixed &Fixed::max(const Fixed &var1, const Fixed &var2)
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	if (var1.value > var2.value)
-		return(var1);
+	if (a.value > b.value)
+		return(a);
 
-	return (var2);
+	return (b);
 }
 
-const Fixed &Fixed::min(const Fixed &var1, const Fixed &var2)
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
-	if (var1.value > var2.value)
-		return(var2);
+	if (a.value > b.value)
+		return(b);
 
-	return (var1);
+	return (a);
 }
 
-Fixed &Fixed::max(Fixed &o1, Fixed &o2)
+Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
-	if (o1 > o2)
-		return (o1);
+	if (a > b)
+		return (a);
 
-	return (o2);
+	return (b);
 }
 
-Fixed &Fixed::min(Fixed &o1, Fixed &o2)
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
-	if (o1 > o2)
-		return (o2);
+	if (a > b)
+		return (b);
 
-	return (o1);
+	return (a);
 }

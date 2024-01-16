@@ -6,13 +6,14 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:49:10 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/04 11:18:12 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:13:34 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <math.h>
 
 class Fixed
 {
@@ -45,8 +46,10 @@ public:
     Fixed       operator++( int );
     Fixed&      operator--();
     Fixed       operator--( int );
-    const Fixed &max( const Fixed &var1, const Fixed &var2 );
-    const Fixed &min( const Fixed &var1, const Fixed &var2 );
-    Fixed       &max( Fixed &o1, Fixed &o2 );
-    Fixed       &min( Fixed &o1, Fixed &o2 );
+    static const Fixed &max( const Fixed &a, const Fixed &b );
+    static const Fixed &min( const Fixed &a, const Fixed &b );
+    static Fixed       &max( Fixed &a, Fixed &b );
+    static Fixed       &min( Fixed &a, Fixed &b );
 };
+
+std::ostream&	operator<<(std::ostream& os, const Fixed &fixed);
