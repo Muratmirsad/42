@@ -6,33 +6,36 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:21:47 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/07 22:20:21 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/16 19:41:49 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap( void )
 {
     std::cout << "Default constructor called" << std::endl;
     this->_name = "Default";
-    this->_hitPoints = 10;
-    this->_energyPoints = 10;
-    this->_attackDamage = 0;
+    setData();
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap( std::string name )
 {
     std::cout << "Name constructor called" << std::endl;
     this->_name = name;
+    setData();
+}
+
+ClapTrap::~ClapTrap( void )
+{
+    std::cout << "Default destructor called" << std::endl;
+}
+
+void    ClapTrap::setData( void )
+{
     this->_hitPoints = 10;
     this->_energyPoints = 10;
     this->_attackDamage = 0;
-}
-
-ClapTrap::~ClapTrap()
-{
-    std::cout << "Default destructor called" << std::endl;
 }
 
 void    ClapTrap::attack( const std::string& target )
