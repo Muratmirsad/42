@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 11:32:37 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/19 14:55:36 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/19 11:22:10 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/19 13:03:27 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "ClapTrap.hpp"
 
-int main()
+class FragTrap: public ClapTrap
 {
-    ClapTrap    clap1;
-
-    clap1.printData();
+private:
     
-    clap1.attack( "Test!" );
+public:
+    // Constructors
+	            FragTrap();
+	            FragTrap(std::string name);
+	            FragTrap(const FragTrap& cpy);
+    
+    // Destructor
+	            virtual ~FragTrap();
+            
+    // Overloaded operators
+	FragTrap&	operator=(const FragTrap& cpy);
 
-    return (0);
-}
+    // Member functions
+	void	    highFivesGuys(void);
+};

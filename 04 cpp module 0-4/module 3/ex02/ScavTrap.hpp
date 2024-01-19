@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 11:20:50 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/19 14:54:30 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/18 20:28:23 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/19 13:31:43 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
+#include "ClapTrap.hpp"
 
-class ClapTrap
+class ScavTrap: public ClapTrap
 {
 private:
-    std::string _name;
-    int         _hitPoints;
-    int         _energyPoints;
-    int         _attackDamage;
+    // Private variables
 
 public:
-            ClapTrap( void );
-            ClapTrap( std::string name );
-            ~ClapTrap( void );
-    void    setData( void );
-    void    printData( void );
+    // Constructors
+            ScavTrap( void );
+            ScavTrap( std::string name );
+		    ScavTrap( const ScavTrap& cpy );
+
+    // Destructor
+            ~ScavTrap( void );
+            
+    // Operators
+    ScavTrap& operator=( const ScavTrap& cpy );
+
+    // Member functions
+    void	guardGate( void );
     void    attack( const std::string& target );
-    void    takeDamage( unsigned int amount );
-    void    beRepaired( unsigned int amount );
 };
  

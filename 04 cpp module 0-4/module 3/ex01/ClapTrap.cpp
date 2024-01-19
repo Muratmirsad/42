@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:21:47 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/19 14:54:20 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:53:49 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,33 @@ ClapTrap::~ClapTrap( void )
     std::cout << "Default destructor called" << std::endl;
 }
 
-void    ClapTrap::setData( void )
-{
-    this->_hitPoints = 10;
-    this->_energyPoints = 10;
-    this->_attackDamage = 0;
-}
-
 void    ClapTrap::printData( void )
 {
     std::cout << "_attackDamage: " << this->_attackDamage << std::endl
                 << "_energyPoints: " << this->_energyPoints << std::endl
                 << "_hitPoints: " << this->_hitPoints << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=( const ClapTrap& cpy )
+{
+	this->_attackDamage = cpy._attackDamage;
+	this->_name = cpy._name;
+	this->_energyPoints = cpy._energyPoints;
+	this->_hitPoints = cpy._hitPoints;
+	return *this;
+}
+
+ClapTrap::ClapTrap( const ClapTrap& cpy )
+{
+    *this = cpy;
+    std::cout << "ClapTrap Copy constructor called" << std::endl;
+}
+
+void    ClapTrap::setData( void )
+{
+    this->_hitPoints = 10;
+    this->_energyPoints = 10;
+    this->_attackDamage = 0;
 }
 
 void    ClapTrap::attack( const std::string& target )
