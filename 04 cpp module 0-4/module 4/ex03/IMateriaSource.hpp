@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 19:15:33 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/24 19:29:30 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/24 19:02:38 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/25 21:35:34 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include <iostream>
 
-AMateria::AMateria(std::string const &type) : type(type) {}
-
-std::string const &AMateria::getType() const
+class IMateriaSource
 {
-    return type;
-}
-
-void AMateria::use(ICharacter &target)
-{
-    std::cout << "Default: \"* uses an unspecified skill on " << target.getName() << " *\"" << std::endl;
-}
+public:
+    virtual ~IMateriaSource();
+    virtual void learnMateria(AMateria *m) = 0;
+    virtual AMateria *createMateria(std::string const &type) = 0;
+};

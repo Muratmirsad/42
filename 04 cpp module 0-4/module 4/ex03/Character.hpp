@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 19:15:33 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/24 19:29:30 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/24 19:11:53 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/24 19:30:00 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#pragma once
+
 #include "ICharacter.hpp"
-#include <iostream>
+#include "AMateria.hpp"
 
-AMateria::AMateria(std::string const &type) : type(type) {}
-
-std::string const &AMateria::getType() const
+class Character : public ICharacter
 {
-    return type;
-}
+private:
+    std::string name;
+    AMateria *inventory[4];
 
-void AMateria::use(ICharacter &target)
-{
-    std::cout << "Default: \"* uses an unspecified skill on " << target.getName() << " *\"" << std::endl;
-}
+public:
+    Character(std::string name);
+    ~Character();
+
+    std::string const &getName() const;
+    void equip(AMateria *m);
+    void unequip(int idx);
+    void use(int idx, ICharacter &target);
+};

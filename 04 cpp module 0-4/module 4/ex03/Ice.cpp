@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 19:15:33 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/24 19:29:30 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/24 19:06:11 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/24 19:30:11 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 #include "ICharacter.hpp"
 #include <iostream>
 
-AMateria::AMateria(std::string const &type) : type(type) {}
+Ice::Ice() : AMateria("ice") {}
 
-std::string const &AMateria::getType() const
+AMateria *Ice::clone() const
 {
-    return type;
+    return new Ice(*this);
 }
 
-void AMateria::use(ICharacter &target)
+void Ice::use(ICharacter &target)
 {
-    std::cout << "Default: \"* uses an unspecified skill on " << target.getName() << " *\"" << std::endl;
+    std::cout << "Ice: \"* shoots an ice bolt at " << target.getName() << " *\"" << std::endl;
 }
