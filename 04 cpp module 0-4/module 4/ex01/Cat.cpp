@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:50:03 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/20 15:53:30 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:27:35 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,23 @@ Cat::~Cat( void )
 void Cat::makeSound( void ) const
 {
     std::cout << "Meow! Meow!" << std::endl;
+}
+
+Cat::Cat( const Cat& cpy )
+{
+	*this = cpy;
+	this->_brain = new Brain();
+	std::cout << "Cat copy constructor called" << std::endl;
+}
+
+Cat&    Cat::operator=( const Cat& cpy )
+{
+	std::cout << "Cat copy operator called" << std::endl;
+	this->type = cpy.type;
+	(this->_brain) = new Brain(*(cpy._brain));
+	return *this;
+}
+Brain*  Cat::getBrain( void ) const
+{
+    return this->_brain;
 }

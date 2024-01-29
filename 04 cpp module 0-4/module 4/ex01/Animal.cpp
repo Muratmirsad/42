@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:09:52 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/20 16:05:33 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:34:16 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,17 @@ std::string Animal::getType( void ) const
 void    Animal::makeSound( void ) const
 {
     std::cout << "Some generic animal sound" << std::endl;
+}
+
+Animal::Animal(const Animal& cpy)
+{
+	*this = cpy;
+	std::cout << "Animal copy constructor called" << std::endl;
+}
+
+Animal& Animal::operator=(const Animal& cpy)
+{
+	std::cout << "Animal copy operator called" << std::endl;
+	this->type = cpy.type;
+	return (*this);
 }
