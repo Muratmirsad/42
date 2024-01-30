@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:44:55 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/20 16:48:22 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/30 15:49:39 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,17 @@ WrongAnimal::~WrongAnimal( void )
 void    WrongAnimal::makeSound( void ) const
 {
     std::cout << "Some wrong animal sound" << std::endl;
+}
+
+WrongAnimal::WrongAnimal(const WrongAnimal& cpy)
+{
+	*this = cpy;
+	std::cout << "WrongAnimal copy constructor called" << std::endl;
+}
+
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& cpy)
+{
+	std::cout << "WrongAnimal copy operator called" << std::endl;
+	(void)cpy;
+	return (*this);
 }

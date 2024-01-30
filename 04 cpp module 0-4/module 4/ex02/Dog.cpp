@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:19:28 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/29 14:31:58 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/30 17:00:15 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void Dog::makeSound( void ) const
 Dog::Dog( const Dog& cpy )
 {
 	*this = cpy;
-	this->_brain = new Brain();
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 

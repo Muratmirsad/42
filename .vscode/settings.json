@@ -74,6 +74,7 @@
 		"stack": "cpp",
 		"__memory": "cpp",
 		"charconv": "cpp",
-		"memory_resource": "cpp"
+		"memory_resource": "cpp",
+		"filesystem": "cpp"
 	},
 }

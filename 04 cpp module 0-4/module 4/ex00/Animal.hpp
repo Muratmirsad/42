@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:08:34 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/20 16:03:34 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:43:23 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ class Animal {
     public:
                         Animal( void );
                         Animal(std::string animalType);
+                        Animal(const Animal& cpy);
         virtual         ~Animal( void );
-
         std::string     getType( void ) const;
         virtual void    makeSound( void ) const;
+        Animal&         operator=(const Animal& cpy);
 };

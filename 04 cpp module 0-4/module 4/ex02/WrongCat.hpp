@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:49:06 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/20 16:51:27 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:59:07 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 
 class WrongCat : public WrongAnimal {
 public:
-    // Constructor
-            WrongCat();
+                WrongCat();
+                ~WrongCat();
+                WrongCat( const WrongCat& cpy );
 
-    // Destructor
-            ~WrongCat();
-
-    void    makeSound() const;
+    WrongCat&   operator=( const WrongCat& cpy );
+    void        makeSound() const;
 };
