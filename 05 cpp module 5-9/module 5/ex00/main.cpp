@@ -5,32 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 18:14:53 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/02/01 10:43:07 by mdiraga          ###   ########.fr       */
+/*   Created: 2024/01/26 11:39:25 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/01/26 11:41:11 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
+#include "Bureaucrat.hpp"
 
-int main() {
-    Animal *test[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
-    Dog selam;
-    Dog _dog = selam;
-    Dog _dog2(selam);
-    Cat _cat;
-    Cat _cat2(_cat);
+int main()
+{
+    try {
+        Bureaucrat bureaucrat("John Doe", 75);
+        std::cout << bureaucrat << std::endl;
 
-    for (int index = 0; index < 4; index++)
-    {
-        test[index]->makeSound();
+        bureaucrat.incrementGrade();
+        std::cout << bureaucrat << std::endl;
+
+        bureaucrat.decrementGrade();
+        std::cout << bureaucrat << std::endl;
+
+        Bureaucrat highGradeBureaucrat("High Grade", 0);
     }
-
-    selam.makeSound();
-    _dog.makeSound();
-    _dog2.makeSound();
-    _cat2.makeSound();
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
 
     return 0;
 }

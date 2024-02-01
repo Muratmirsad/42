@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:32:43 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/30 16:53:02 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/02/01 10:35:28 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 Brain::Brain( void )
 {
     std::cout << "Brain constructor called" << std::endl;
+}
+
+Brain::Brain(const Brain& brain)
+{
+	std::cout << "Brain copy constructor called" << std::endl;
+	*this = brain;
 }
 
 Brain::~Brain( void )
@@ -33,15 +39,9 @@ void    Brain::setIdea( std::string idea )
 		this->_ideas[i] = idea;
 }
 
-Brain::Brain(const Brain& brain)
-{
-	std::cout << "Brain copy constructor called" << std::endl;
-	*this = brain;
-}
-
 Brain& Brain::operator=(const Brain& brain)
 {
-	std::cout << "Brain '=' operator called" << std::endl;
+	std::cout << "Brain copy operator called" << std::endl;
 	if (this != &brain)
 	{
 		for(int i = 0; i < 100; i++)

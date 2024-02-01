@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/01 10:45:05 by mdiraga           #+#    #+#             */
+/*   Updated: 2024/02/01 10:45:06 by mdiraga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
@@ -14,6 +26,7 @@ int main() {
     {
         test[index]->makeSound();
     }
+
     selam.makeSound();
     _dog.makeSound();
     _dog2.makeSound();
