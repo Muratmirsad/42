@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:46:12 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/24 19:31:47 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/02/01 11:50:08 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int main()
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
 
+
     ICharacter *me = new Character("me");
     AMateria *tmp;
     tmp = src->createMateria("ice");
     me->equip(tmp);
+    getchar(); //!
     tmp = src->createMateria("cure");
     me->equip(tmp);
 

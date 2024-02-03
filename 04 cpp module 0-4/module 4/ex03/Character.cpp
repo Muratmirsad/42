@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 19:11:56 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/24 19:29:38 by mdiraga          ###   ########.fr       */
+/*   Updated: 2024/02/01 11:38:56 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 Character::Character(std::string name) : name(name)
 {
+    std::cout << "Character name constructor called" << std::endl;
     for (int i = 0; i < 4; ++i)
     {
         inventory[i] = nullptr;
@@ -25,6 +26,7 @@ Character::Character(std::string name) : name(name)
 
 Character::~Character()
 {
+    std::cout << "Character name destructor called" << std::endl;
     for (int i = 0; i < 4; ++i)
     {
         delete inventory[i];
@@ -62,4 +64,19 @@ void Character::use(int idx, ICharacter &target)
     {
         inventory[idx]->use(target);
     }
+}
+
+Character&    Character::operator=( const Character& cpy )
+{
+	std::cout << "Character copy operator called" << std::endl;
+	this->name = cpy.name;
+    for (int i = 0; i < 4; i++)
+        this->inventory[i] = cpy.inventory[i];
+	return *this;
+}
+
+Character::Character( const Character& cpy )
+{
+	*this = cpy;
+	std::cout << "Character copy constructor called" << std::endl;
 }
