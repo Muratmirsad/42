@@ -10,7 +10,7 @@ Go to
 
 ## [00 libft](https://github.com/Muratmirsad/42/tree/master/00%20Libft/)
 
-A library in C language written by myself.
+A library in C language coded by myself.
 
 ## [01 born2beroot](https://github.com/Muratmirsad/42/tree/master/01%20born2beroot/)
 
@@ -18,7 +18,7 @@ Debian server I created. *Files are not in this repo.
 
 ## [01 ft_printf](https://github.com/Muratmirsad/42/tree/master/01%20ft_printf/)
 
-Printf function I wrote by myself.
+Printf function I coded by myself.
 
 ## [01 get_next_line](https://github.com/Muratmirsad/42/tree/master/01%20get_next_line/)
 
@@ -40,11 +40,11 @@ An algorithm that sorts entered numbers using only certain commands.
 
 ## [03 philosophers](https://github.com/Muratmirsad/42/tree/master/03%20philosophers/)
 
-A dinner simulation using threads and mutexes written in C.
+A dinner simulation using threads and mutexes coded in C.
 
 ## [03 minishell](https://github.com/Muratmirsad/42/tree/master/03%20minishell/)
 
-A program similar to Bash, written in C.
+A program similar to Bash, coded in C.
 
 ## [04 NetPractice](https://github.com/Muratmirsad/42/tree/master/04%20NetPractice/)
 
@@ -52,7 +52,7 @@ An exercise that helps to learn networking.
 
 ## [04 cub3D](https://github.com/Muratmirsad/42/tree/master/04%20cub3D/)
 
-It is a semi-3D game that we wrote in C language using the mlx library after processing the image with the raycasting algorithm.
+It is a semi-3D game that coded in C language using the mlx library after processing the image with the raycasting algorithm.
 
 ## [04 cpp mobule 0-4](https://github.com/Muratmirsad/42/tree/master/04%20cpp%20module%200-4/)
 
