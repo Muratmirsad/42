@@ -1,6 +1,6 @@
 NAME = program
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Serializer.cpp
+SRCS = main.cpp Generator.cpp Identifier.cpp
 
 all: $(NAME)
 
