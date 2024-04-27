@@ -1,52 +1,41 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 11:36:58 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/26 11:41:33 by mdiraga          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#pragma once
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 class Bureaucrat {
-public:
-    class GradeTooHighException : public std::exception
-    {
-        const char* what() const throw()
-        {
-            return "Grade is too high";
-        }
-    };
+	private:
+		const std::string	name;
+		int					grade;
 
-    class GradeTooLowException : public std::exception
-    {
-        const char* what() const throw()
-        {
-            return "Grade is too low";
-        }
-    };
+	public:
+		class GradeTooHighException : public std::exception {
+		public:
+			virtual const char* what() const throw();
+			GradeTooHighException() throw();
+		};
 
-    Bureaucrat(const std::string& name, int grade);
-    ~Bureaucrat();
+		class GradeTooLowException : public std::exception {
+		public:
+			virtual const char* what() const throw();
+			GradeTooLowException() throw();
+		};
 
-    const std::string& getName() const;
-    int getGrade() const;
+		Bureaucrat(const std::string& name, int grade);
+		Bureaucrat(const Bureaucrat& other);
+		~Bureaucrat();
 
-    void incrementGrade();
-    void decrementGrade();
+		Bureaucrat&	operator=(const Bureaucrat& other);
 
-    friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
+		std::string	getName() const;
+		int			getGrade() const;
 
-private:
-    const std::string name;
-    int grade;
+		void		incrementGrade();
+		void		decrementGrade();
 
-    void validateGrade(int grade);
+		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 };
+
+#endif

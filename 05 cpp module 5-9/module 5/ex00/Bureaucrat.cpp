@@ -1,29 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 11:37:04 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/26 11:42:21 by mdiraga          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Bureaucrat.hpp"
+
+Bureaucrat::GradeTooHighException::GradeTooHighException() throw()
+{
+
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException() throw()
+{
+
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low!";
+}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
-    validateGrade(grade);
+    if (grade < 1)
+        throw GradeTooHighException();
+    else if (grade > 150)
+        throw GradeTooLowException();
     this->grade = grade;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    
+
 }
 
-const std::string& Bureaucrat::getName() const
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.grade)
+{
+
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+    if (this != &other)
+	{
+        this->grade = other.grade;
+    }
+    return *this;
+}
+
+std::string Bureaucrat::getName() const
 {
     return name;
 }
@@ -35,26 +60,16 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-    validateGrade(grade - 1);
+    if (grade <= 1)
+        throw GradeTooHighException();
     grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-    validateGrade(grade + 1);
-    grade++;
-}
-
-void Bureaucrat::validateGrade(int grade)
-{
-    if (grade < 1)
-    {
-        throw GradeTooHighException();
-    }
-    else if (grade > 150)
-    {
+    if (grade >= 150)
         throw GradeTooLowException();
-    }
+    grade++;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)

@@ -1,34 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 11:39:25 by mdiraga           #+#    #+#             */
-/*   Updated: 2024/01/26 11:41:11 by mdiraga          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include <iostream>
 #include "Bureaucrat.hpp"
 
-int main()
-{
+int main() {
     try {
-        Bureaucrat bureaucrat("John Doe", 75);
-        std::cout << bureaucrat << std::endl;
+        Bureaucrat bob("Bob", 50);
+        std::cout << bob << std::endl;
 
-        bureaucrat.incrementGrade();
-        std::cout << bureaucrat << std::endl;
+        bob.incrementGrade();
+        std::cout << "After increment: " << bob << std::endl;
 
-        bureaucrat.decrementGrade();
-        std::cout << bureaucrat << std::endl;
+        bob.decrementGrade();
+        std::cout << "After decrement: " << bob << std::endl;
 
-        Bureaucrat highGradeBureaucrat("High Grade", 0);
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Exception: " << e.what() << std::endl;
+        // Bureaucrat invalid("Invalid", 0);
+        // Bureaucrat tooLow("Too Low", 151);
+	
+    } catch (const std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
     return 0;
