@@ -1,18 +1,20 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#pragma once
 
 #include "AForm.hpp"
-#include "FormNotSignedException.hpp"
+#include <cstdlib>
+#include <ctime>
 
-class RobotomyRequestForm : public AForm {
-private:
-    const std::string _target;
+class RobotomyRequestForm : public AForm
+{
+    private:
+        std::string const _target;
 
-public:
-    RobotomyRequestForm(const std::string& target);
-    ~RobotomyRequestForm() {}
+    public:
+        RobotomyRequestForm(std::string const &target);
+        RobotomyRequestForm(RobotomyRequestForm const &src);
+        ~RobotomyRequestForm();
 
-    void execute(const Bureaucrat& executor) const;
+        RobotomyRequestForm &operator=(RobotomyRequestForm const &rhs);
+
+        void    execute(Bureaucrat const &executor) const;
 };
-
-#endif

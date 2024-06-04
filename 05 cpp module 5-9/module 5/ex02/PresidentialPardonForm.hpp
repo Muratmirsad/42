@@ -1,18 +1,18 @@
-#ifndef PRESIDENTIALPARDONFORM_HPP
-#define PRESIDENTIALPARDONFORM_HPP
+#pragma once
 
 #include "AForm.hpp"
-#include "FormNotSignedException.hpp"
 
-class PresidentialPardonForm : public AForm {
-private:
-    const std::string _target;
+class PresidentialPardonForm : public AForm
+{
+    private:
+        std::string const _target;
 
-public:
-    PresidentialPardonForm(const std::string& target);
-    ~PresidentialPardonForm() {}
+    public:
+        PresidentialPardonForm(std::string const &target);
+        PresidentialPardonForm(PresidentialPardonForm const &src);
+        ~PresidentialPardonForm();
 
-    void execute(const Bureaucrat& executor) const;
+        PresidentialPardonForm &operator=(PresidentialPardonForm const &rhs);
+
+        void    execute(Bureaucrat const &executor) const;
 };
-
-#endif

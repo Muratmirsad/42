@@ -1,21 +1,38 @@
 #include "RobotomyRequestForm.hpp"
-#include <iostream>
-#include <cstdlib> // For rand
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-    : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+{
 
-void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+}
+
+RobotomyRequestForm::~RobotomyRequestForm()
+{
+
+}
+
+void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
+{
     if (!isSigned())
-        throw FormNotSignedException();
-
+    {
+        throw AForm::FormNotSignedException();
+    }
     if (executor.getGrade() > getGradeToExecute())
-        throw GradeTooLowException();
+    {
+        throw AForm::GradeTooLowException();
+    }
 
-    std::cout << "* Drill noises *\n";
-    if (rand() % 2 == 0) {
-        std::cout << _target << " has been robotomized successfully!\n";
-    } else {
-        std::cout << "Robotomy on " << _target << " failed.\n";
+    std::srand(std::time(0));
+    int randomİnt = std::rand() % 2;
+
+    std::cout << "Dididididididi..." << std::endl;
+
+    if (randomİnt)
+    {
+        std::cout << "Drilling was successful!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Drilling was unsuccessful!" << std::endl;
     }
 }
+
