@@ -71,3 +71,5 @@ A website server using Docker (for nginx, mariadb and wordpress).
 ## [05 ft_irc](https://github.com/Muratmirsad/42/tree/master/05%20ft_irc/)
 
 A communication program that coded in C++ using the Internet Relay Chat protocol.
+
+![old](/Projects_-_All_Data_for_students-2.png)
