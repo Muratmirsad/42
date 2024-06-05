@@ -17,38 +17,73 @@ Kısayol (türkçe)
 
 ## [00 libft](https://github.com/Muratmirsad/42/tree/master/00%20Libft/)
 
-- Goal: Create your own standard C library (including functions for strings, memory, lists, etc.) -
-
-- from scratch.
+- Goal: Create your own standard C library (including functions for strings, memory, lists, etc.) from scratch.
 
 - Technologies: C
-Learning Outcomes:
-Deep understanding of how fundamental C functions work.
-Ability to design and implement your own data structures and algorithms.
+
+- Learning Outcomes:
+    Deep understanding of how fundamental C functions work.
+    Ability to design and implement your own data structures and algorithms.
 
 ## [01 born2beroot](https://github.com/Muratmirsad/42/tree/master/01%20born2beroot/)
 
-Debian server I created. *Files are not in this repo.
+- Goal: Set up and configure a Debian server from scratch using command line and basic system administration skills.
+
+- Technologies: Linux, Bash, system administration tools
+
+- Learning Outcomes:
+    Understanding the basics of server administration (users, permissions, network, services).
+    Learning the steps to create a secure server environment.
 
 ## [01 ft_printf](https://github.com/Muratmirsad/42/tree/master/01%20ft_printf/)
 
-Printf function I coded by myself.
+- Goal: Create a custom version of the popular printf function in C.
+
+- Technologies: C, variadic functions
+
+- Learning Outcomes:
+    Understanding how variadic functions work.
+    Writing a function that can handle format specifiers and different data types.
 
 ## [01 get_next_line](https://github.com/Muratmirsad/42/tree/master/01%20get_next_line/)
 
-A function that reads data from any file line by line.
+- Goal: Write a function that can read data from any file line by line, paying attention to memory management.
+
+- Technologies: C, file operations, static variables
+
+- Learning Outcomes:
+    Learning to use buffering and static variables to optimize file reading operations.
+    Implementing careful memory management to prevent memory leaks.
 
 ## [02 minitalk](https://github.com/Muratmirsad/42/tree/master/02%20minitalk/)
 
-Program that sends data to each other with SIGUSR0 and SIGUSR1 signals.
+- Goal: Write a program that sends simple text messages between two processes using UNIX signals (SIGUSR1 and SIGUSR2).
+
+- Technologies: C, UNIX signals, bitwise operations
+
+- Learning Outcomes:
+    Understanding the basics of inter-process communication and how signals are used.
+    Gaining the ability to encode and decode data by manipulating bits.
 
 ## [02 push_swap](https://github.com/Muratmirsad/42/tree/master/02%20push_swap/)
 
-An algorithm that sorts entered numbers using only certain commands.
+- Goal: Develop an algorithm to sort a given array of numbers using a limited set of commands (swap, push, rotate).
+
+- Technologies: C, algorithm design, data structures (stack)
+
+- Learning Outcomes:
+    Ability to analyze and compare the complexity of sorting algorithms.
+    Ability to solve complex problems using the stack data structure.
 
 ## [02 so_long](https://github.com/Muratmirsad/42/tree/master/02%20so_long/)
 
-2D game I made in C language using minilibx library.
+- Goal: Develop a simple 2D game using the minilibx library.
+
+- Technologies: C, minilibx, basic game programming
+
+- Learning Outcomes:
+    Ability to create a graphical user interface (GUI) and manage user interaction.
+    Understanding basic game programming concepts like game loop, sprites, and simple physics.
 
 # ----- PART 2 -----
 
