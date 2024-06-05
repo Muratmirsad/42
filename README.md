@@ -1,16 +1,30 @@
 # 42 Projects
-Go to
+Go to (english)
 [Part 1 (00 - 02)](#------part-1------)
 |
 [Part 2 (03 - 04)](#------part-2------)
 |
 [Part 3 (05 - 06)](#------part-3------)
 
+Kısayol (türkçe)
+[Bölüm 1 (00 - 02)](#------bölüm-1------)
+|
+[Bölüm 2 (03 - 04)](#------bölüm-2------)
+|
+[Bölüm 3 (05 - 06)](#------bölüm-3------)
+
 # ----- PART 1 -----
 
 ## [00 libft](https://github.com/Muratmirsad/42/tree/master/00%20Libft/)
 
-A library in C language coded by myself.
+- Goal: Create your own standard C library (including functions for strings, memory, lists, etc.) -
+
+- from scratch.
+
+- Technologies: C
+Learning Outcomes:
+Deep understanding of how fundamental C functions work.
+Ability to design and implement your own data structures and algorithms.
 
 ## [01 born2beroot](https://github.com/Muratmirsad/42/tree/master/01%20born2beroot/)
 

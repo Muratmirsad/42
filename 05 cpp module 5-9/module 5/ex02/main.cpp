@@ -11,6 +11,7 @@ int main() {
         Bureaucrat alice("Alice", 23);
         Bureaucrat bob("Bob", 25);
 
+
         AForm taxForm("Tax Form", 25, 40);
 
         std::cout << "Before signing:\n" << taxForm << std::endl << std::endl;
