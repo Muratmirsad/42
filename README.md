@@ -86,4 +86,4 @@ A website server using Docker (for nginx, mariadb and wordpress).
 
 A communication program that coded in C++ using the Internet Relay Chat protocol.
 
-![old](/Projects_-_All_Data_for_students-2.png)
+![old](/Projects_-_All_Data_for_students-1.png)
