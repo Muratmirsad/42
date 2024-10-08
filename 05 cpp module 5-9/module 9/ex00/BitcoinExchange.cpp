@@ -3,7 +3,6 @@
 BitcoinExchange::BitcoinExchange(std::string _fileName)
 {
     readData(_fileName);
-    compareData();
 }
 
 BitcoinExchange::~BitcoinExchange()
@@ -12,50 +11,74 @@ BitcoinExchange::~BitcoinExchange()
 }
 
 
-void   BitcoinExchange::readData(std::string _fileName)
+void BitcoinExchange::readData(std::string _fileName)
 {
-    std::ifstream    inputFile(_fileName);
-    std::ifstream    dataFile("data.csv");
+  std::ifstream inputFile(_fileName);
+  std::ifstream dataFile("data.csv");
 
-    if (inputFile.is_open())
+  if (inputFile.is_open() && dataFile.is_open())
+  {
+    std::string rawData;
+    getline(inputFile, rawData);
+    getline(dataFile, rawData);
+
+    // data.csv update
+    while (getline(dataFile, rawData))
     {
-        std::string rawData;
+      addDataBase(rawData);
+    }
 
-        getline(inputFile, rawData);
+    // input.txt
+    while (getline(inputFile, rawData))
+    {
+      if (dataCheck(rawData))
+      {
+        std::string date;
+        double inputValue;
+        extractDateAndValue(rawData, date, inputValue);
 
-        while (getline(inputFile, rawData))
+        // data find
+        std::map<std::string, double>::const_iterator dataIt = _data.find(date);
+        if (dataIt != _data.end())
         {
-            // check data func
-            if (dataCheck(rawData))
-                addInputBase(rawData);
-            else
-                this->_input["error"] = -1;
+          double dataValue = dataIt->second;
+          std::cout << date << " => " << inputValue * dataValue << std::endl;
         }
-
-        inputFile.close();
-    }
-    else
-    {
-        std::cout << "error" << std::endl; // error
-    }
-    
-    if (dataFile.is_open())
-    {
-        std::string rawData;
-
-        getline(dataFile, rawData);
-
-        while (getline(dataFile, rawData))
+        else
         {
-            addDataBase(rawData);
+          dataIt = _data.lower_bound(date);
+          if (dataIt != _data.begin())
+          {
+            --dataIt;
+            double dataValue = dataIt->second;
+            std::cout << date << " => " << inputValue * dataValue << std::endl;
+          }
+          else
+          {
+            std::cout << date << " => Date not found" << std::endl;
+          }
         }
+      }
+      else
+      {
+        std::cout << "Error: Invalid data format" << std::endl;
+      }
+    }
 
-        dataFile.close();
-    }
-    else
-    {
-        std::cout << "error" << std::endl; // error
-    }
+    inputFile.close();
+    dataFile.close();
+  }
+  else
+  {
+    std::cout << "Error: File could not be opened" << std::endl;
+  }
+}
+
+void BitcoinExchange::extractDateAndValue(const std::string& rawData, std::string& date, double& value)
+{
+  size_t pos = rawData.find("|");
+  date = rawData.substr(0, pos - 1);
+  value = std::atof(rawData.substr(pos + 2).c_str());
 }
 
 void    BitcoinExchange::addDataBase(std::string rawData)
@@ -66,16 +89,6 @@ void    BitcoinExchange::addDataBase(std::string rawData)
 
     tmp = std::atof(rawData.substr(bracket + 1).c_str());
     this->_data[rawData.substr(0, bracket)] = tmp;
-}
-
-void    BitcoinExchange::addInputBase(std::string rawData)
-{
-    double  tmp;
-
-    size_t bracket = rawData.find("|");
-
-    tmp = std::atof(rawData.substr(bracket + 1).c_str());
-    this->_input[rawData.substr(0, bracket)] = tmp;
 }
 
 bool BitcoinExchange::dataCheck(std::string rawData)
@@ -155,42 +168,4 @@ bool BitcoinExchange::checkDay(int year, int month, int day)
         // Months with 31 days
         return day <= 31;
     }
-}
-
-void BitcoinExchange::compareData() {
-  for (std::map<std::string, double>::const_iterator it = _input.begin(); it != _input.end(); ++it)
-  {
-    std::string date = it->first;
-    
-    if (date == "error") {
-      std::cout << "error" << std::endl;
-      continue; // Bir sonraki tarihe geç
-    }
-
-    double inputValue = it->second;
-
-    std::map<std::string, double>::const_iterator dataIt = _data.find(date);
-    if (dataIt != _data.end())
-    {
-      // Tarih data map'inde bulundu
-      double dataValue = dataIt->second;
-      std::cout << date << "| " << inputValue * dataValue << std::endl;
-    }
-    else
-    {
-      // Tarih data map'inde bulunamadı, en yakın önceki tarihi ara
-      dataIt = _data.lower_bound(date);
-      if (dataIt != _data.begin())
-      {
-        --dataIt; // Önceki tarihe git
-        double dataValue = dataIt->second;
-        std::cout << date << "| " << inputValue * dataValue << std::endl;
-      }
-      else
-      {
-        // data map'inde daha önceki bir tarih yok
-        std::cout << date << "| Tarih bulunamadı." << std::endl;
-      }
-    }
-  }
 }
