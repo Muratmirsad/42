@@ -75,6 +75,9 @@
 		"__memory": "cpp",
 		"charconv": "cpp",
 		"memory_resource": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"__tree": "cpp",
+		"map": "cpp",
+		"list": "cpp"
 	},
 }

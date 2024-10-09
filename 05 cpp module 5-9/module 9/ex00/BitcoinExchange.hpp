@@ -8,7 +8,6 @@ class BitcoinExchange
 {
 private:
     std::map<std::string, double> _data;
-    std::map<std::string, double> _input;
 
     void    readData(std::string _fileName);
     void    addDataBase(std::string rawData);
