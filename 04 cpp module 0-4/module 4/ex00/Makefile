@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = program
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 
 SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 all: $(NAME)
@@ -27,4 +27,4 @@ clean:
 
 fclean: clean
 
-re: clean all
+re: clean all 

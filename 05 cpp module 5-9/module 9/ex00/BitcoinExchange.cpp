@@ -42,7 +42,13 @@ void BitcoinExchange::readData(std::string _fileName)
         if (dataIt != _data.end())
         {
           double dataValue = dataIt->second;
-          std::cout << date << " => " << inputValue * dataValue << std::endl;
+
+          //! INT_MAX eklenecek
+          if (inputValue <= INT_MAX)
+            std::cout << date << " => " << inputValue << " = " << inputValue * dataValue << std::endl;
+          else
+            std::cerr << "Error: too large a number." << std::endl;
+
         }
         else
         {
@@ -51,17 +57,19 @@ void BitcoinExchange::readData(std::string _fileName)
           {
             --dataIt;
             double dataValue = dataIt->second;
-            std::cout << date << " => " << inputValue * dataValue << std::endl;
+
+            //! INT_MAX eklenecek
+            if (inputValue <= INT_MAX)
+              std::cout << date << " => " << inputValue << " = " << inputValue * dataValue << std::endl;
+            else
+              std::cerr << "Error: too large a number." << std::endl;
+
           }
           else
           {
             std::cout << date << " => Date not found" << std::endl;
           }
         }
-      }
-      else
-      {
-        std::cout << "Error: Invalid data format" << std::endl;
       }
     }
 
@@ -95,6 +103,7 @@ bool BitcoinExchange::dataCheck(std::string rawData)
 {
     std::string year, month, day;
     int i = 0, j = 0;
+    bool sign = false;
 
     while (rawData[i] == ' ')
         i++;
@@ -103,9 +112,12 @@ bool BitcoinExchange::dataCheck(std::string rawData)
         i++, j++;
 
     if (j != 4 || rawData[i] != '-')
+    {
+        std::cout << "Error: Invalid data format" << std::endl;
         return false;
+    }
 
-    year = rawData.substr(i - 4, i - 1);
+    year = rawData.substr(i - 4, 4);
     
     j = 0, i++;
 
@@ -113,9 +125,12 @@ bool BitcoinExchange::dataCheck(std::string rawData)
         i++, j++;
 
     if (j != 2 || rawData[i] != '-')
+    {
+        std::cout << "Error: Invalid data format" << std::endl;
         return false;
+    }
 
-    month = rawData.substr(i - 2, i - 1);
+    month = rawData.substr(i - 2, 2);
 
     j = 0, i++;
     
@@ -123,11 +138,17 @@ bool BitcoinExchange::dataCheck(std::string rawData)
         i++, j++;
 
     if (j != 2 || rawData[i] != ' ' || rawData[i + 1] != '|' || rawData[i + 2] != ' ')
+    {
+        std::cout << "Error: Invalid data format" << std::endl;
         return false;
+    }
 
-    day = rawData.substr(i - 2, i - 1);
+    day = rawData.substr(i - 2, 2);
 
     j = 0, i += 3;
+
+    if (rawData[i] == '-')
+      sign = true, i++;
 
     while (isdigit(rawData[i]))
         i++;
@@ -141,10 +162,31 @@ bool BitcoinExchange::dataCheck(std::string rawData)
     while (rawData[i] == ' ')
         i++;
 
-    if (rawData[i] == '\0' && checkDay(std::atoi(year.c_str()), std::atoi(month.c_str()) , std::atoi(day.c_str())))
-        return true;
+    // std::cout << "y " << year << std::endl;
+    // std::cout << "m " << month << std::endl;
+    // std::cout <<  "d " << day << std::endl;
 
+    if (rawData[i] == '\0')
+    {
+      if (checkDay(std::atoi(year.c_str()), std::atoi(month.c_str()) , std::atoi(day.c_str())))
+      {
+        if (sign)
+        {
+          std::cerr << "Error: not a positive number." << std::endl;
+          return false;
+        }
+        return true;
+      }
+      else
+      {
+        std::cout << "Error: bad input => " << year << "-" << month << "-" << day << std::endl;
+        return false;
+      }
+    }
+
+    std::cout << "Error: Invalid data format" << std::endl;
     return false;
+
 }
 
 bool BitcoinExchange::checkDay(int year, int month, int day)
